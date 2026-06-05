@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alan Todd — Senior Graphic Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Adidas-print inspired palette — dark crimson, warm parchment */
+      --ink:     #0D0B09;
+      --paper:   #EAD9BC;
+      --cream:   #DEC9A4;
+      --red:     #7A1728;       /* Adidas crimson/maroon */
+      --red-mid: #9B2030;
+      --gold:    #B8952A;
+      --rust:    #7A3018;
+      --ash:     #1A1510;
+      --ash2:    #221C16;
+      --mid:     #6B5E52;
+      --mono:    'IBM Plex Mono', monospace;
+      --display: 'Bebas Neue', sans-serif;
+      --serif:   'Playfair Display', serif;
+      --sans:    'Oswald', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--mono);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── CUSTOM CURSOR ─────────────────────────────────────────── */
+    .cursor {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      width: 10px; height: 10px;
+      background: var(--red);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      position: fixed; top: 0; left: 0; z-index: 9998;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(184,149,42,.6);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform .18s ease, width .3s ease, height .3s ease;
+    }
+    .cursor.hover { width: 18px; height: 18px; }
+    .cursor-ring.hover { width: 60px; height: 60px; border-color: var(--red); }
+
+    /* ─── GRAIN OVERLAY — heavier than before ───────────────────── */
+    .grain {
+      position: fixed; inset: -200%; z-index: 100;
+      pointer-events: none;
+      width: 400%; height: 400%;
+      opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      animation: grain .35s steps(1) infinite;
+    }
+    @keyframes grain {
+      0%   { transform: translate(0,0); }
+      10%  { transform: translate(-3%,-2%); }
+      20%  { transform: translate(2%,2%); }
+      30%  { transform: translate(-2%,3%); }
+      40%  { transform: translate(3%,-1%); }
+      50%  { transform: translate(-1%,2%); }
+      60%  { transform: translate(2%,-3%); }
+      70%  { transform: translate(-3%,2%); }
+      80%  { transform: translate(1%,3%); }
+      90%  { transform: translate(-2%,-2%); }
+      100% { transform: translate(0,0); }
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 48px;
+    }
+    nav::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(13,11,9,.92) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .nav-logo {
+      display: flex; align-items: center;
+      text-decoration: none;
+      position: relative;
+    }
+    .nav-logo img {
+      height: 30px; width: auto;
+      opacity: .88;
+      transition: opacity .2s;
+    }
+    .nav-logo:hover img { opacity: 1; }
+    .nav-links {
+      display: flex; gap: 40px; list-style: none; position: relative;
+    }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: .7;
+      transition: opacity .2s, color .2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      height: 100vh; min-height: 700px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 48px 64px;
+      overflow: hidden;
+    }
+
+    /* Deep atmospheric background — Disney+ / 12th Man inspired */
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        /* warm amber fire glow bleeding up from bottom corners */
+        radial-gradient(ellipse 55% 35% at 15% 100%, rgba(122,23,40,.5) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 35% at 85% 100%, rgba(122,23,40,.4) 0%, transparent 60%),
+        /* mid atmospheric depth — warm centre */
+        radial-gradient(ellipse 70% 50% at 50% 60%, rgba(139,58,26,.15) 0%, transparent 65%),
+        /* top dark fade */
+        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(13,11,9,.9) 0%, transparent 80%),
+        /* base gradient */
+        linear-gradient(175deg, #0D0B09 0%, #1A1008 45%, #0D0B09 100%);
+    }
+    /* large watermark monogram */
+    .hero-bg::after {
+      content: 'AT';
+      position: absolute;
+      right: -1vw; top: 50%; transform: translateY(-50%);
+      font-family: var(--display);
+      font-size: clamp(280px, 32vw, 440px);
+      color: rgba(234,217,188,.025);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -.02em;
+    }
+
+    /* distressed diagonal rules — like worn print */
+    .hero-lines {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;
+    }
+    .hero-lines::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 80px,
+        rgba(184,149,42,.014) 80px,
+        rgba(184,149,42,.014) 81px
+      );
+    }
+    /* bottom vignette to ground the text */
+    .hero-lines::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+      background: linear-gradient(to top, rgba(13,11,9,.6) 0%, transparent 100%);
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: .62rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .hero-label::before {
+      content: '';
+      display: block; width: 40px; height: 1px; background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(72px, 9.5vw, 148px);
+      line-height: .92;
+      letter-spacing: .02em;
+      color: var(--paper);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    /* TODD in crimson red */
+    .hero-title .line-accent { color: var(--red-mid); }
+    /* DESIGN — solid paper colour, same as name */
+    .hero-title .line-solid  { color: var(--paper); }
+
+    .hero-bottom {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 40px;
+    }
+    .hero-desc {
+      max-width: 380px;
+      font-family: var(--mono);
+      font-size: .72rem;
+      line-height: 1.8;
+      color: rgba(234,217,188,.5);
+      letter-spacing: .04em;
+    }
+    .hero-meta {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: .6rem;
+      letter-spacing: .16em;
+      color: rgba(234,217,188,.28);
+      line-height: 2.1;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll {
+      position: absolute; right: 48px; top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      writing-mode: vertical-rl;
+      font-family: var(--mono);
+      font-size: .55rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: rgba(234,217,188,.28);
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block; width: 1px; height: 80px;
+      background: linear-gradient(to bottom, rgba(234,217,188,.28), transparent);
+    }
+
+    /* ─── MARQUEE ────────────────────────────────────────────────── */
+    .marquee-wrap {
+      overflow: hidden;
+      border-top: 1px solid rgba(234,217,188,.06);
+      border-bottom: 1px solid rgba(234,217,188,.06);
+      padding: 13px 0;
+      background: rgba(122,23,40,.07);
+    }
+    .marquee-track {
+      display: flex; gap: 0;
+      animation: marquee 28s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-track span {
+      font-family: var(--display);
+      font-size: 1rem;
+      letter-spacing: .18em;
+      color: rgba(234,217,188,.14);
+      padding: 0 40px;
+      text-transform: uppercase;
+    }
+    .marquee-track span.accent { color: var(--red); opacity: .45; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION SHARED ─────────────────────────────────────────── */
+    section { position: relative; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: .6rem;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 56px;
+    }
+    .section-label::before {
+      content: '';
+      display: block; width: 30px; height: 1px; background: var(--gold);
+    }
+
+    /* ─── WORK ───────────────────────────────────────────────────── */
+    #work {
+      padding: 120px 48px;
+      background: var(--ink);
+      /* Adidas-style cross-hatch behind work section */
+      position: relative;
+    }
+    #work::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 59px,
+        rgba(234,217,188,.018) 59px,
+        rgba(234,217,188,.018) 60px
+      );
+    }
+
+    .work-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 80px;
+      gap: 40px;
+      position: relative; z-index: 1;
+    }
+    .work-title {
+      font-family: var(--display);
+      font-size: clamp(56px, 7vw, 112px);
+      line-height: .9;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      color: var(--paper);
+    }
+    .work-title .outline {
+      -webkit-text-stroke: 1px rgba(234,217,188,.25);
+      color: transparent;
+    }
+    .work-count {
+      font-family: var(--mono);
+      font-size: .6rem;
+      letter-spacing: .2em;
+      color: rgba(234,217,188,.25);
+      text-transform: uppercase;
+      padding-top: 8px;
+    }
+
+    /* project list */
+    .projects { display: flex; flex-direction: column; gap: 2px; position: relative; z-index: 1; }
+
+    .project {
+      position: relative;
+      display: grid;
+      grid-template-columns: 80px 1fr 220px;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 0;
+      border-top: 1px solid rgba(234,217,188,.06);
+      cursor: none;
+      overflow: hidden;
+      transition: border-color .3s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .project:last-child { border-bottom: 1px solid rgba(234,217,188,.06); }
+    .project:hover { border-color: rgba(184,149,42,.22); }
+
+    .project::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(122,23,40,.05) 100%);
+      opacity: 0;
+      transition: opacity .4s;
+    }
+    .project:hover::before { opacity: 1; }
+
+    .project-num {
+      font-family: var(--display);
+      font-size: 3rem;
+      /* washed-out like the Adidas print numerals */
+      color: rgba(234,217,188,.055);
+      letter-spacing: .04em;
+      line-height: 1;
+    }
+
+    .project-body { position: relative; z-index: 1; }
+    .project-tags {
+      display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: .5rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(184,149,42,.28);
+      padding: 3px 8px;
+    }
+    .project-name {
+      font-family: var(--serif);
+      font-size: clamp(24px, 2.8vw, 42px);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--paper);
+      margin-bottom: 14px;
+      transition: color .3s;
+    }
+    .project:hover .project-name { color: var(--gold); }
+    .project-desc {
+      font-family: var(--mono);
+      font-size: .65rem;
+      line-height: 1.9;
+      color: rgba(234,217,188,.38);
+      max-width: 520px;
+      letter-spacing: .03em;
+    }
+
+    .project-thumb {
+      position: relative;
+      width: 220px; height: 140px;
+      overflow: hidden;
+    }
+    .project-thumb-inner {
+      width: 100%; height: 100%;
+      transform: scale(1.06);
+      transition: transform .6s ease;
+      position: relative;
+    }
+    .project:hover .project-thumb-inner { transform: scale(1); }
+    .project-thumb-inner img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .project-thumb-inner svg { width: 100%; height: 100%; }
+    /* texture over thumbnails */
+    .project-thumb::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .07; mix-blend-mode: overlay;
+    }
+
+    .project-arrow {
+      position: absolute; bottom: 40px; right: 0;
+      font-family: var(--mono);
+      font-size: .55rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--red-mid);
+      opacity: 0;
+      transition: opacity .3s, transform .3s;
+      transform: translateX(-8px);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .project-arrow::after { content: '→'; font-size: .8rem; }
+    .project:hover .project-arrow { opacity: 1; transform: translateX(0); }
+
+    /* ─── FEATURED — Disney+ poster depth ───────────────────────── */
+    #featured {
+      padding: 0;
+      overflow: hidden;
+    }
+    .featured-strip {
+      position: relative;
+      height: 78vh; min-height: 500px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    /* Atmospheric depth layers inspired by 12th Man poster */
+    .featured-bg {
+      position: absolute; inset: 0;
+      background:
+        /* fire/amber ember glow from bottom */
+        radial-gradient(ellipse 80% 40% at 50% 105%, rgba(122,23,40,.65) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 25% at 20% 105%, rgba(139,58,26,.35) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 25% at 80% 105%, rgba(139,58,26,.3) 0%, transparent 50%),
+        /* central atmospheric haze */
+        radial-gradient(ellipse 60% 60% at 50% 50%, rgba(30,18,10,.0) 0%, transparent 70%),
+        /* top dark sky */
+        radial-gradient(ellipse 100% 50% at 50% 0%, rgba(13,11,9,.95) 0%, rgba(13,11,9,.5) 60%, transparent 100%),
+        /* edge vignette */
+        radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(13,11,9,.8) 100%),
+        /* asphalt/concrete base — like the road in the poster */
+        linear-gradient(175deg, #0D0B09 0%, #161008 40%, #1A0D08 60%, #0D0B09 100%);
+    }
+    /* Concrete grid texture */
+    .featured-grid {
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(234,217,188,.018) 79px, rgba(234,217,188,.018) 80px),
+        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(234,217,188,.018) 79px, rgba(234,217,188,.018) 80px);
+    }
+    /* subtle light beam from above */
+    .featured-beam {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 30% 80% at 50% -10%, rgba(184,149,42,.08) 0%, transparent 70%);
+    }
+    /* edge fades */
+    .featured-strip::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(13,11,9,.75) 0%, transparent 18%, transparent 82%, rgba(13,11,9,.75) 100%);
+      pointer-events: none;
+    }
+    .featured-text {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+    }
+    .featured-eyebrow {
+      font-family: var(--mono);
+      font-size: .6rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .featured-headline {
+      font-family: var(--display);
+      font-size: clamp(52px, 9vw, 130px);
+      line-height: .86;
+      color: var(--paper);
+      text-transform: uppercase;
+      /* washed-out print feel — slight text-shadow gives depth */
+      text-shadow: 0 0 80px rgba(122,23,40,.4), 0 2px 0 rgba(0,0,0,.6);
+    }
+    .featured-headline .red { color: var(--red-mid); }
+    /* ghost/outline word — like washed-out ink on concrete */
+    .featured-headline .ghost {
+      -webkit-text-stroke: 1px rgba(234,217,188,.18);
+      color: transparent;
+      text-shadow: none;
+      filter: blur(.4px);
+    }
+    .featured-sub {
+      margin-top: 32px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(14px, 1.5vw, 22px);
+      color: rgba(234,217,188,.35);
+    }
+
+    /* ─── ABOUT — Adidas print palette ──────────────────────────── */
+    #about {
+      padding: 140px 48px 120px;
+      /* Warm Adidas parchment/sand background */
+      background:
+        repeating-linear-gradient(-45deg, transparent, transparent 24px, rgba(13,11,9,.022) 24px, rgba(13,11,9,.022) 25px),
+        linear-gradient(160deg, #E2D0AD 0%, #D8C49A 50%, #E0CCA8 100%);
+      color: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Washed-out Adidas-style background text */
+    #about::after {
+      content: 'AT';
+      position: absolute;
+      right: -60px; bottom: -60px;
+      font-family: var(--display);
+      font-size: 40vw;
+      /* heavy washed-out crimson — like the BC print watermark */
+      color: rgba(122,23,40,.06);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      filter: blur(.5px);
+    }
+
+    .about-grid {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-left .section-label { color: var(--rust); }
+    .about-left .section-label::before { background: var(--rust); }
+
+    .about-heading {
+      font-family: var(--display);
+      font-size: clamp(48px, 6vw, 88px);
+      line-height: .9;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 40px;
+      /* Washed-out print weight */
+      text-shadow: 1px 1px 0 rgba(122,23,40,.12);
+    }
+    .about-heading em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: .65em;
+      color: var(--rust);
+      font-weight: 400;
+    }
+
+    .about-stat-row {
+      display: flex; gap: 48px; margin-bottom: 48px;
+    }
+    .about-stat-num {
+      font-family: var(--display);
+      font-size: 3.4rem;
+      line-height: 1;
+      color: var(--red);
+    }
+    .about-stat-label {
+      font-family: var(--mono);
+      font-size: .58rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 4px;
+    }
+
+    .about-bio {
+      font-family: var(--serif);
+      font-size: clamp(14px, 1.4vw, 17px);
+      line-height: 1.82;
+      color: rgba(13,11,9,.7);
+      max-width: 540px;
+    }
+    .about-bio strong { color: var(--ink); font-weight: 700; }
+
+    .philosophy-block {
+      margin-top: 48px;
+      border-left: 3px solid var(--red);
+      padding-left: 24px;
+    }
+    .philosophy-label {
+      font-family: var(--mono);
+      font-size: .55rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 12px;
+    }
+    .philosophy-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(17px, 1.7vw, 22px);
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    /* skills */
+    .skills-grid {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 56px;
+    }
+    .skill-pill {
+      font-family: var(--mono);
+      font-size: .56rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid rgba(13,11,9,.18);
+      color: var(--ink);
+      background: transparent;
+      transition: background .2s, color .2s;
+    }
+    .skill-pill:hover { background: var(--ink); color: var(--paper); }
+
+    /* testimonials */
+    .testimonials { display: flex; flex-direction: column; gap: 32px; }
+    .testimonial {
+      padding: 28px 28px 24px;
+      background: rgba(13,11,9,.04);
+      border-top: 2px solid rgba(13,11,9,.08);
+      position: relative;
+    }
+    .testimonial::before {
+      content: '\201C';
+      position: absolute; top: 10px; left: 18px;
+      font-family: var(--serif);
+      font-size: 4rem;
+      line-height: 1;
+      color: rgba(122,23,40,.12);
+      pointer-events: none;
+    }
+    .testimonial-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: .92rem;
+      line-height: 1.78;
+      color: rgba(13,11,9,.68);
+      margin-bottom: 16px;
+      padding-top: 8px;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .author-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--ash);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--display);
+      font-size: .85rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: .75rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .author-role {
+      font-family: var(--mono);
+      font-size: .52rem;
+      letter-spacing: .12em;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+
+    /* ─── PROCESS — dark ash, vertical column lines ──────────────── */
+    #process {
+      padding: 80px 48px;
+      background: var(--ash2);
+      position: relative;
+      overflow: hidden;
+    }
+    #process::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(234,217,188,.025) 119px, rgba(234,217,188,.025) 120px),
+        /* subtle ember glow at bottom */
+        radial-gradient(ellipse 80% 30% at 50% 100%, rgba(122,23,40,.2) 0%, transparent 60%);
+    }
+    .process-grid {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .process-item {
+      padding: 48px 32px;
+      border-left: 1px solid rgba(234,217,188,.05);
+    }
+    .process-num {
+      font-family: var(--display);
+      font-size: 3.5rem;
+      /* heavy washed-out numerals — Adidas style */
+      color: rgba(184,149,42,.12);
+      line-height: 1;
+      margin-bottom: 20px;
+      filter: blur(.3px);
+    }
+    .process-name {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: .85rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--paper);
+      margin-bottom: 12px;
+    }
+    .process-desc {
+      font-family: var(--mono);
+      font-size: .6rem;
+      line-height: 1.9;
+      color: rgba(234,217,188,.3);
+      letter-spacing: .04em;
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────────────── */
+    #contact {
+      padding: 140px 48px 100px;
+      background: var(--ink);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Disney+ atmospheric depth behind CTA */
+    #contact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 40% at 50% 100%, rgba(122,23,40,.4) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 50% 50%, rgba(30,15,8,.0) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* washed-out background text */
+    #contact::after {
+      content: 'LET\A WORK';
+      white-space: pre;
+      position: absolute;
+      left: 50%; top: 50%; transform: translate(-50%, -50%);
+      font-family: var(--display);
+      font-size: 28vw;
+      line-height: .85;
+      color: rgba(234,217,188,.018);
+      pointer-events: none;
+      user-select: none;
+      filter: blur(.5px);
+    }
+    .contact-label {
+      font-family: var(--mono);
+      font-size: .62rem;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      position: relative; z-index: 1;
+    }
+    .contact-headline {
+      font-family: var(--display);
+      font-size: clamp(48px, 8vw, 120px);
+      line-height: .9;
+      text-transform: uppercase;
+      color: var(--paper);
+      margin-bottom: 16px;
+      position: relative; z-index: 1;
+      text-shadow: 0 0 60px rgba(122,23,40,.3);
+    }
+    .contact-headline .ghost {
+      -webkit-text-stroke: 1px rgba(234,217,188,.18);
+      color: transparent;
+      text-shadow: none;
+    }
+    .contact-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(14px, 1.6vw, 21px);
+      color: rgba(234,217,188,.4);
+      margin-bottom: 56px;
+      position: relative; z-index: 1;
+    }
+    .contact-cta {
+      display: inline-flex; align-items: center; gap: 16px;
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--gold);
+      padding: 18px 44px;
+      text-decoration: none;
+      position: relative; z-index: 1;
+      transition: background .25s, color .25s;
+    }
+    .contact-cta:hover { background: var(--red); color: var(--paper); }
+    .contact-cta::after { content: '→'; font-size: 1rem; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      padding: 28px 48px;
+      border-top: 1px solid rgba(234,217,188,.05);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-sig img {
+      height: 24px; width: auto;
+      opacity: .22;
+    }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: .52rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(234,217,188,.18);
+    }
+    .footer-links {
+      display: flex; gap: 28px; list-style: none;
+    }
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: .52rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(234,217,188,.22);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ─── REVEAL ANIMATIONS ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .85s ease, transform .85s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0; transform: translateX(-32px);
+      transition: opacity .85s ease, transform .85s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      nav { padding: 20px 24px; }
+      #hero, #work, #about, #process, #contact, footer { padding-left: 24px; padding-right: 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .project { grid-template-columns: 60px 1fr; }
+      .project-thumb { display: none; }
+      .hero-scroll { display: none; }
+      .hero-bottom { flex-direction: column; gap: 24px; }
+    }
+    @media (max-width: 560px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .about-stat-row { gap: 28px; }
+      .hero-title { font-size: 15vw; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Grain -->
+<div class="grain"></div>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ─── NAV ─────────────────────────────────────────────────────── -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="work/AlanTodd_Signature-wht.png" alt="Alan Todd" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-scroll">Scroll</div>
+
+  <div class="hero-content">
+    <div class="hero-label">Senior Graphic Designer &nbsp;·&nbsp; Brand &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Identity</div>
+    <h1 class="hero-title">
+      ALAN<br/>
+      <span class="line-accent">TODD</span><br/>
+      <span class="line-solid">DESIGN</span>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        Crafting visual systems that carry weight —<br/>
+        where every texture, type choice, and mark<br/>
+        is a deliberate act of communication.
+      </p>
+      <div class="hero-meta">
+        Based in Ayrshire, Scotland<br/>
+        Available for Freelance<br/>
+        <span style="color:var(--gold)">Est. 2010</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ───────────────────────────────────────────────────── -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Brand Identity</span><span class="accent">✦</span>
+    <span>Editorial Design</span><span class="accent">✦</span>
+    <span>Campaign Art Direction</span><span class="accent">✦</span>
+    <span>Print &amp; Production</span><span class="accent">✦</span>
+    <span>Typography</span><span class="accent">✦</span>
+    <span>Motion Graphics</span><span class="accent">✦</span>
+    <span>Animation</span><span class="accent">✦</span>
+    <span>21+ Years</span><span class="accent">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span>Brand Identity</span><span class="accent">✦</span>
+    <span>Editorial Design</span><span class="accent">✦</span>
+    <span>Campaign Art Direction</span><span class="accent">✦</span>
+    <span>Print &amp; Production</span><span class="accent">✦</span>
+    <span>Typography</span><span class="accent">✦</span>
+    <span>Motion Graphics</span><span class="accent">✦</span>
+    <span>Animation</span><span class="accent">✦</span>
+    <span>21+ Years</span><span class="accent">✦</span>
+  </div>
+</div>
+
+<!-- ─── WORK ──────────────────────────────────────────────────────── -->
+<section id="work">
+  <div class="work-header reveal">
+    <div>
+      <div class="section-label">Selected Work</div>
+      <h2 class="work-title">
+        THE<br/>
+        <span class="outline">WORK</span>
+      </h2>
+    </div>
+    <div class="work-count">003 Projects</div>
+  </div>
+
+  <div class="projects">
+
+    <!-- Project 01 — Scottish Farmer × Ardbeg -->
+    <a href="project-01.html" class="project reveal">
+      <div class="project-num">01</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag">Print</span>
+          <span class="tag">Digital</span>
+          <span class="tag">Brand Collaboration</span>
+        </div>
+        <h3 class="project-name">The Scottish Farmer × Ardbeg Whisky</h3>
+        <p class="project-desc">
+          Led the print and digital design for a high-profile subscription collaboration between
+          Scotland's premier agricultural publication, The Scottish Farmer, and the iconic Islay
+          single malt brand, Ardbeg.
+        </p>
+        <span class="project-arrow">View Project</span>
+      </div>
+      <div class="project-thumb">
+        <div class="project-thumb-inner" style="position:relative; background:#0D0B09;">
+          <img src="work/Ardbeg BG.jpg" alt="Ardbeg × Scottish Farmer" style="width:100%;height:100%;object-fit:cover;opacity:.75;" />
+          <img src="work/TSF logo wht.png" alt="The Scottish Farmer"
+            style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);max-width:90px;width:auto;height:auto;opacity:.9;" />
+          <div style="position:absolute;bottom:8px;right:10px;font-family:'IBM Plex Mono',monospace;font-size:6px;letter-spacing:2px;color:rgba(234,217,188,.35);text-transform:uppercase;">Est.1893</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Project 02 -->
+    <div class="project reveal">
+      <div class="project-num">02</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag">Editorial</span>
+          <span class="tag">Art Direction</span>
+          <span class="tag">Sports</span>
+        </div>
+        <h3 class="project-name">Draft Season — Campaign Series</h3>
+        <p class="project-desc">
+          A six-week editorial campaign for a regional sports media brand covering draft season.
+          Each chapter used a different archival aesthetic — newspaper, VHS, broadside print —
+          unified by a single typographic throughline that made chaos feel deliberate.
+        </p>
+        <span class="project-arrow">View Project</span>
+      </div>
+      <div class="project-thumb">
+        <div class="project-thumb-inner">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="220" height="140" fill="#0D0B09"/>
+            <line x1="0" y1="35" x2="220" y2="35" stroke="rgba(234,217,188,.035)" stroke-width="1"/>
+            <line x1="0" y1="70" x2="220" y2="70" stroke="rgba(234,217,188,.035)" stroke-width="1"/>
+            <line x1="0" y1="105" x2="220" y2="105" stroke="rgba(234,217,188,.035)" stroke-width="1"/>
+            <rect x="10" y="12" width="200" height="2" fill="rgba(122,23,40,.65)"/>
+            <text x="10" y="32" font-family="monospace" font-size="6" fill="rgba(234,217,188,.25)" letter-spacing="3">VOL. VI — DRAFT SEASON</text>
+            <text x="10" y="68" font-family="'Oswald',sans-serif" font-weight="700" font-size="35" fill="rgba(234,217,188,.9)" letter-spacing="-1">DRAFT</text>
+            <text x="10" y="86" font-family="'Oswald',sans-serif" font-weight="300" font-size="17" fill="rgba(234,217,188,.4)" letter-spacing="6">WEEK</text>
+            <rect x="140" y="50" width="68" height="52" fill="rgba(184,149,42,.07)" rx="1"/>
+            <text x="157" y="83" font-family="monospace" font-size="22" fill="rgba(184,149,42,.45)" font-weight="bold">VI</text>
+            <rect x="10" y="115" width="200" height="1" fill="rgba(234,217,188,.06)"/>
+            <text x="10" y="130" font-family="monospace" font-size="5.5" fill="rgba(234,217,188,.18)" letter-spacing="2">EDITORIAL CAMPAIGN · 2023</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 03 -->
+    <div class="project reveal">
+      <div class="project-num">03</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="tag">Identity System</span>
+          <span class="tag">Motion</span>
+          <span class="tag">Digital</span>
+        </div>
+        <h3 class="project-name">Meridian Studio — Visual Identity</h3>
+        <p class="project-desc">
+          Complete identity system for an independent creative studio — logo, type scale, motion
+          principles, and a component library designed for the team to extend without losing fidelity.
+          The brand lives across pitch decks, social, physical space, and code.
+        </p>
+        <span class="project-arrow">View Project</span>
+      </div>
+      <div class="project-thumb">
+        <div class="project-thumb-inner">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="220" height="140" fill="#1E1A16"/>
+            <circle cx="110" cy="70" r="58" fill="none" stroke="rgba(184,149,42,.1)" stroke-width="1"/>
+            <circle cx="110" cy="70" r="45" fill="none" stroke="rgba(234,217,188,.05)" stroke-width="1"/>
+            <circle cx="110" cy="70" r="30" fill="none" stroke="rgba(184,149,42,.18)" stroke-width=".5"/>
+            <text x="110" y="64" font-family="'Oswald',sans-serif" font-weight="700" font-size="14" fill="rgba(234,217,188,.9)" letter-spacing="4" text-anchor="middle">MERIDIAN</text>
+            <text x="110" y="80" font-family="monospace" font-size="6" fill="rgba(184,149,42,.65)" letter-spacing="4" text-anchor="middle">STUDIO</text>
+            <line x1="52" y1="70" x2="75" y2="70" stroke="rgba(184,149,42,.45)" stroke-width="1"/>
+            <line x1="145" y1="70" x2="168" y2="70" stroke="rgba(184,149,42,.45)" stroke-width="1"/>
+            <text x="10" y="130" font-family="monospace" font-size="5" fill="rgba(234,217,188,.18)" letter-spacing="2">IDENTITY SYSTEM · 2024</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FEATURED STRIP — Disney+ depth ───────────────────────────── -->
+<section id="featured">
+  <div class="featured-strip">
+    <div class="featured-bg"></div>
+    <div class="featured-grid"></div>
+    <div class="featured-beam"></div>
+    <div class="featured-text reveal">
+      <p class="featured-eyebrow">Design Philosophy</p>
+      <h2 class="featured-headline">
+        MAKE<br/>
+        <span class="ghost">DESIGNS</span><br/>
+        <span class="red">THAT LAST</span>
+      </h2>
+      <p class="featured-sub">Good design doesn't just communicate — it endures.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="about-grid">
+
+    <div class="about-left reveal-left">
+      <div class="section-label">About</div>
+      <h2 class="about-heading">
+        ALAN<br/>TODD<br/>
+        <em>Designer</em>
+      </h2>
+
+      <div class="about-stat-row">
+        <div class="about-stat">
+          <div class="about-stat-num">21+</div>
+          <div class="about-stat-label">Years of Experience</div>
+        </div>
+      </div>
+
+      <p class="about-bio">
+        I'm a graphic designer with over <strong>21 years of experience</strong> keeping design standards
+        high at Newsquest Scotland / The Herald and Times. My approach to design is simple: I take a rough
+        creative brief, steady the ship, and turn it into a <strong>striking final asset that connects
+        with people.</strong>
+        <br/><br/>
+        The design landscape moves fast. Over two decades, I've evolved from print and traditional layout
+        design into <strong>video, motion graphics, and animation.</strong> I thrive on fast deadlines,
+        require no hand-holding, and act as a reliable pair of hands in the studio. No fuss, honest
+        communication, and getting the job done right the first time.
+      </p>
+
+      <div class="philosophy-block">
+        <div class="philosophy-label">Design Philosophy</div>
+        <p class="philosophy-text">
+          "The best design doesn't shout — it holds its ground."
+        </p>
+      </div>
+    </div>
+
+    <div class="about-right reveal">
+      <div class="section-label" style="color:var(--rust);">
+        <span style="display:block;width:30px;height:1px;background:var(--rust);"></span>
+        Expertise
+      </div>
+
+      <div class="skills-grid" style="margin-top:-12px;">
+        <span class="skill-pill">Brand Identity</span>
+        <span class="skill-pill">Art Direction</span>
+        <span class="skill-pill">Editorial Design</span>
+        <span class="skill-pill">Campaign Design</span>
+        <span class="skill-pill">Typography</span>
+        <span class="skill-pill">Print Production</span>
+        <span class="skill-pill">Motion Graphics</span>
+        <span class="skill-pill">Animation</span>
+        <span class="skill-pill">Video</span>
+        <span class="skill-pill">Visual Systems</span>
+        <span class="skill-pill">Adobe CC</span>
+        <span class="skill-pill">Figma</span>
+      </div>
+
+      <div class="section-label" style="color:var(--rust); margin-bottom:28px;">
+        <span style="display:block;width:30px;height:1px;background:var(--rust);"></span>
+        Teammate Reviews
+      </div>
+
+      <div class="testimonials">
+
+        <div class="testimonial">
+          <p class="testimonial-text">
+            Alan has a rare ability to hold the big picture and the tiny detail at the same time.
+            He gave our brand a backbone it never had — a system the whole team could actually use
+            without breaking anything.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div class="author-info">
+              <div class="author-name">Marcus Reid</div>
+              <div class="author-role">Creative Director, Fieldhouse Media</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial">
+          <p class="testimonial-text">
+            Working with Alan is working with someone who actually cares whether the thing is right —
+            not just finished. He pushed back when we were wrong and delivered when it mattered.
+            The campaign we made together is still the benchmark internally.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">JL</div>
+            <div class="author-info">
+              <div class="author-name">Jordan Lee</div>
+              <div class="author-role">VP Brand, Ironfield Athletic</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial">
+          <p class="testimonial-text">
+            Alan's instinct for texture and type is genuinely different. He approaches a brief like
+            a researcher first, then an artist. The result is always work that earns its place
+            rather than just filling it.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SK</div>
+            <div class="author-info">
+              <div class="author-name">Sara Kim</div>
+              <div class="author-role">Senior Designer, Meridian Studio</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PROCESS ───────────────────────────────────────────────────── -->
+<section id="process">
+  <div style="position:relative;z-index:1;margin-bottom:56px;" class="reveal">
+    <div class="section-label">How I Work</div>
+    <h2 style="font-family:var(--display);font-size:clamp(40px,5vw,72px);text-transform:uppercase;line-height:.9;color:var(--paper);">
+      THE<br/><span style="-webkit-text-stroke:1px rgba(234,217,188,.2);color:transparent;">PROCESS</span>
+    </h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-item reveal">
+      <div class="process-num">01</div>
+      <div class="process-name">Listen &amp; Research</div>
+      <p class="process-desc">Every project starts with understanding — the audience, the history, the competitive space. Good marks come from knowing what's already been said.</p>
+    </div>
+    <div class="process-item reveal">
+      <div class="process-num">02</div>
+      <div class="process-name">Concept</div>
+      <p class="process-desc">Wide exploration before narrowing down. I work through dozens of directions before committing — because the second idea is rarely the right one.</p>
+    </div>
+    <div class="process-item reveal">
+      <div class="process-num">03</div>
+      <div class="process-name">Craft &amp; Refine</div>
+      <p class="process-desc">Details are where design earns its keep. Kerning, weight, texture, spacing — the gap between good and great lives in these decisions.</p>
+    </div>
+    <div class="process-item reveal">
+      <div class="process-num">04</div>
+      <div class="process-name">Deliver &amp; Document</div>
+      <p class="process-desc">A brand handed off without a system is a brand that degrades. I document every decision so teams can extend the work with confidence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────────────── -->
+<section id="contact">
+  <p class="contact-label reveal">Get in Touch</p>
+  <h2 class="contact-headline reveal">
+    START A<br/>
+    <span class="ghost">PROJECT</span>
+  </h2>
+  <p class="contact-sub reveal">
+    Let's build together.
+  </p>
+  <a href="mailto:altodrs@icloud.com" class="contact-cta reveal">
+    altodrs@icloud.com
+  </a>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-sig">
+    <img src="work/AlanTodd_Signature-wht.png" alt="Alan Todd" />
+  </div>
+  <p class="footer-copy">© 2026 Alan Todd Design — All Rights Reserved</p>
+  <ul class="footer-links">
+    <li><a href="#">Instagram</a></li>
+    <li><a href="#">LinkedIn</a></li>
+    <li><a href="#">Dribbble</a></li>
+  </ul>
+</footer>
+
+<!-- ─── JS ────────────────────────────────────────────────────────── -->
+<script>
+  /* Custom cursor */
+  const cursor = document.getElementById('cursor');
+  const ring   = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top  = my + 'px';
+  });
+
+  (function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animRing);
+  })();
+
+  document.querySelectorAll('a, button, .project, .skill-pill').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
+      ring.classList.add('hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+      ring.classList.remove('hover');
+    });
+  });
+
+  /* Scroll reveals */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal, .reveal-left').forEach(el => observer.observe(el));
+
+  /* Active nav link highlight */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => {
+          a.style.opacity = a.getAttribute('href') === '#' + e.target.id ? '1' : '.7';
+          a.style.color   = a.getAttribute('href') === '#' + e.target.id ? 'var(--gold)' : '';
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => sectionObserver.observe(s));
+</script>
+
+</body>
+</html>
