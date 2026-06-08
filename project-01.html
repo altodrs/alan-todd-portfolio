@@ -4,21 +4,179 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Scottish Farmer — Alan Todd Design</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    .hero-img-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background-image: url('work/tsf/Ardbeg BG.jpg');
-      background-size: cover; background-position: center;
-      opacity: .18;
+    body { background: var(--paper); color: var(--ink); }
+    nav { background: var(--red); }
+    nav::before { display: none; }
+    .nav-logo img { height: 38px; opacity: 1; }
+    .nav-links a { color: var(--paper); opacity: .9; }
+    .nav-links a:hover { color: var(--gold); opacity: 1; }
+    footer { background: var(--red) !important; border-top: none !important; position: relative; overflow: hidden; }
+    footer::before { content: ''; position: absolute; inset: 0; background: url('work/AdobeStock_566224854.png') center/cover; mix-blend-mode: multiply; opacity: .22; pointer-events: none; }
+    footer > * { position: relative; z-index: 1; }
+    .footer-sig img { height: 38px; }
+    .footer-copy { color: rgba(217,181,150,.6); }
+    .footer-links a { color: rgba(217,181,150,.6); }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .proj-hero { background: var(--ink); }
+    .proj-hero-bg { background: var(--ink) !important; }
+    .proj-hero-img {
+      position: absolute; inset: 0; z-index: 0;
+      background: url('work/tsf/Ardbeg BG.jpg') center/cover;
+      opacity: .22;
     }
-    .hero-img-overlay::after {
+    .proj-hero-content { position: relative; z-index: 3; }
+    .proj-logo { max-height: 80px; max-width: 260px; object-fit: contain; display: block; margin-bottom: 28px; filter: brightness(0) invert(1); }
+    .proj-title { color: var(--paper); font-family: var(--nhg); font-weight: 900; }
+    .proj-subtitle { font-family: var(--nhg-text); font-size: clamp(15px,1.5vw,18px); color: rgba(217,181,150,.6); max-width: 640px; line-height: 1.75; }
+
+    /* ── OVERVIEW ── */
+    .section-parchment {
+      padding: 80px 64px; background: var(--paper); position: relative; overflow: hidden;
+    }
+    .section-parchment::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: url('work/AdobeStock_504131485.png') center/cover;
+      mix-blend-mode: multiply; opacity: .08;
+    }
+    .section-parchment::after {
+      content: ''; position: absolute; top: 0; right: 0; width: 45%; height: 100%; pointer-events: none;
+      background: url('work/AdobeStock_566224854.png') right center/cover;
+      mix-blend-mode: multiply; opacity: .09;
+    }
+    .overview-grid { display: grid; grid-template-columns: 1fr 340px; gap: 72px; position: relative; z-index: 1; }
+    .section-label-dark {
+      font-family: var(--nhg-text); font-size: .68rem; font-weight: 600;
+      letter-spacing: .28em; text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; gap: 14px; margin-bottom: 32px;
+    }
+    .section-label-dark::before { content: ''; display: block; width: 28px; height: 1px; background: var(--red); }
+    .overview-text {
+      font-family: var(--nhg-text); font-size: clamp(15px,1.4vw,17px); font-weight: 300;
+      line-height: 1.9; color: rgba(38,25,8,.72); margin-bottom: 0;
+    }
+    .overview-text strong { color: var(--ink); font-weight: 600; }
+    .proj-meta { }
+    .proj-meta-block { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(38,25,8,.09); }
+    .proj-meta-block:last-child { border: none; }
+    .meta-label { font-family: var(--nhg-text); font-size: .58rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: rgba(38,25,8,.38); margin-bottom: 7px; }
+    .meta-value { font-family: var(--nhg); font-weight: 700; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); line-height: 1.7; }
+    .meta-value.large { font-size: 2.8rem; font-weight: 900; color: var(--red); line-height: 1; }
+
+    /* ── FULL BLEED BANNER ── */
+    .full-bleed { width: 100%; overflow: hidden; position: relative; }
+    .full-bleed img { width: 100%; display: block; max-height: 520px; object-fit: cover; }
+    .full-bleed::after {
       content: ''; position: absolute; inset: 0;
       background: url('work/AdobeStock_566224854.png') center/cover;
+      mix-blend-mode: overlay; opacity: .07; pointer-events: none;
+    }
+
+    /* ── MOCKUP SLIDER SECTION ── */
+    .section-dark {
+      padding: 80px 64px; background: var(--ink); position: relative; overflow: hidden;
+    }
+    .section-dark::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: url('work/AdobeStock_566224854.png') center/cover;
+      mix-blend-mode: overlay; opacity: .1;
+    }
+    .section-dark::after {
+      content: ''; position: absolute; top: 0; right: 0; width: 45%; height: 100%; pointer-events: none;
+      background: url('work/AdobeStock_503747442.png') right center/cover;
       mix-blend-mode: overlay; opacity: .08;
+    }
+    .section-dark .section-label-dark { color: var(--gold); }
+    .section-dark .section-label-dark::before { background: var(--gold); }
+    .section-dark-heading {
+      font-family: var(--nhg); font-size: clamp(28px,3.5vw,52px); font-weight: 900;
+      color: var(--paper); text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 40px;
+      position: relative; z-index: 1;
+    }
+    .slider-wrap { position: relative; z-index: 1; }
+
+    /* ── CASE STUDY ── */
+    .section-red {
+      padding: 80px 64px; background: var(--red); position: relative; overflow: hidden;
+    }
+    .section-red::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: url('work/AdobeStock_566224854.png') center/cover;
+      mix-blend-mode: multiply; opacity: .28;
+    }
+    .section-red::after {
+      content: ''; position: absolute; top: 0; right: 0; width: 45%; height: 100%; pointer-events: none;
+      background: url('work/AdobeStock_503747442.png') right center/cover;
+      mix-blend-mode: multiply; opacity: .2;
+    }
+    .section-red .section-label-dark { color: var(--gold); position: relative; z-index: 1; }
+    .section-red .section-label-dark::before { background: var(--gold); }
+    .case-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+      position: relative; z-index: 1;
+    }
+    .case-block {
+      padding: 40px 36px; background: rgba(38,25,8,.28);
+      border-left: 3px solid rgba(242,193,46,.4); position: relative; overflow: hidden;
+    }
+    .case-block::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('work/AdobeStock_566224854.png') center/cover;
+      mix-blend-mode: overlay; opacity: .04;
+    }
+    .case-block-label {
+      font-family: var(--nhg); font-size: .7rem; font-weight: 800;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px; position: relative; z-index: 1;
+    }
+    .case-block-text {
+      font-family: var(--nhg-text); font-size: .82rem; font-weight: 300;
+      line-height: 1.85; color: rgba(217,181,150,.78); position: relative; z-index: 1;
+    }
+
+    /* ── IMAGE GALLERY ── */
+    .gallery-grid {
+      display: grid; gap: 4px;
+    }
+    .gallery-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .gallery-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .gallery-item { overflow: hidden; position: relative; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: url('work/AdobeStock_566224854.png') center/cover;
+      mix-blend-mode: overlay; opacity: .06;
+    }
+
+    /* ── LOGO FOOTER STRIP ── */
+    .logo-strip {
+      padding: 64px; background: var(--paper); text-align: center; position: relative;
+    }
+    .logo-strip::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: url('work/AdobeStock_504131485.png') center/cover;
+      mix-blend-mode: multiply; opacity: .09;
+    }
+    .logo-strip img { max-height: 72px; max-width: 280px; object-fit: contain; opacity: .5; position: relative; z-index: 1; }
+    .proj-back-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--nhg-text); font-size: .72rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--paper); background: var(--red);
+      padding: 18px 40px; text-decoration: none;
+      transition: background .25s; margin-top: 56px; position: relative; z-index: 1;
+    }
+    .proj-back-cta:hover { background: var(--ink); }
+    .proj-back-cta::before { content: '←'; font-size: .9rem; }
+
+    @media (max-width: 960px) {
+      .overview-grid, .case-grid { grid-template-columns: 1fr; }
+      .section-parchment, .section-dark, .section-red, .logo-strip { padding-left: 28px; padding-right: 28px; }
     }
   </style>
 </head>
@@ -39,73 +197,27 @@
 <!-- HERO -->
 <div class="proj-hero">
   <div class="proj-hero-bg"></div>
-  <div class="hero-img-overlay"></div>
+  <div class="proj-hero-img"></div>
   <div class="proj-hero-content reveal">
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+    <img class="proj-logo" src="work/tsf/TSFwhtlogo.png" alt="The Scottish Farmer" />
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
       <div class="tag">Print</div><div class="tag">Digital</div><div class="tag">Subscription</div>
     </div>
-    <h1 class="proj-title">The Scottish<br/><span>Farmer</span></h1>
-    <p class="proj-subtitle">High-impact subscription campaigns and commercial brand collaborations for Scotland's leading agricultural title.</p>
+    <p class="proj-subtitle">Led the print and digital design strategy for high-profile subscription campaigns and commercial collaborations. Working with Scotland's premier agricultural publication, I translated complex client briefs into high-impact marketing assets that successfully engaged the rural community and strengthened brand loyalty across both physical and digital touchpoints.</p>
   </div>
 </div>
 
-<!-- BODY -->
-<div class="proj-body">
-  <div class="proj-grid">
-
-    <div>
-      <div class="proj-section-label reveal">Overview</div>
-      <p class="proj-desc reveal">
+<!-- OVERVIEW -->
+<div class="section-parchment">
+  <div class="overview-grid">
+    <div class="reveal">
+      <div class="section-label-dark">Overview</div>
+      <p class="overview-text">
         <strong>The Scottish Farmer</strong> is Scotland's longest-running and most widely-read farming publication. As lead designer, I was responsible for the full visual output — from weekly print layouts to multi-channel digital campaigns and commercial partnership assets.
-      </p>
-      <p class="proj-desc reveal">
+        <br/><br/>
         A flagship challenge was the <strong>Ardbeg × Scottish Farmer</strong> collaboration — a premium whisky brand requiring an editorial aesthetic that felt native to the publication while elevating the advertiser's premium positioning.
       </p>
-
-      <!-- SLIDER -->
-      <div class="proj-slider reveal">
-        <div class="slider" id="slider01" style="aspect-ratio:16/10;">
-          <div class="slider-track" id="track01" style="height:100%;">
-            <div class="slide"><img src="work/tsf/Ardbeg_Sub_TSF_OnlineDisplay_LTmockup.png" alt="Ardbeg TSF mockup 1" style="object-fit:contain;background:#0D0B09;" /></div>
-            <div class="slide"><img src="work/tsf/Ardbeg_Sub_TSF_OnlineDisplay_LTmockup 2.png" alt="Ardbeg TSF mockup 2" style="object-fit:contain;background:#0D0B09;" /></div>
-            <div class="slide"><img src="work/tsf/DigitalSummerSale_Sub_TSF_OnlineDisplay_LTmockup.png" alt="Summer Sale mockup" style="object-fit:contain;background:#0D0B09;" /></div>
-            <div class="slide"><img src="work/tsf/Hoggs_WoodhallJckt_Sub_TSF_OnlineDisplay_LTmockup.png" alt="Hoggs Woodhall mockup" style="object-fit:contain;background:#0D0B09;" /></div>
-            <div class="slide"><img src="work/tsf/BannerDesign_TSF_Ardbeg.jpg" alt="Ardbeg banner" style="object-fit:cover;" /></div>
-            <div class="slide"><img src="work/tsf/BannerDesign_TSF_BFriday.jpg" alt="Black Friday banner" style="object-fit:cover;" /></div>
-            <div class="slide"><img src="work/tsf/BannerDesign_TSF_HoggWoodhall.jpg" alt="Hogg Woodhall banner" style="object-fit:cover;" /></div>
-            <div class="slide"><img src="work/tsf/BannerDesign_TSF_MS.jpg" alt="MS banner" style="object-fit:cover;" /></div>
-          </div>
-          <div class="slider-dots" id="dots01"></div>
-        </div>
-      </div>
-
-      <!-- CASE BLOCKS -->
-      <div class="case-blocks">
-        <div class="case-block reveal">
-          <div class="case-block-label">Challenge</div>
-          <p class="case-block-text">To design subscription and commercial advertising assets that maintained The Scottish Farmer's editorial integrity while accommodating diverse commercial partners — from premium whisky brands like Ardbeg to lifestyle clothing and seasonal promotions. Each campaign needed to feel bespoke without breaking the parent brand's visual consistency.</p>
-        </div>
-        <div class="case-block reveal">
-          <div class="case-block-label">Strategy</div>
-          <p class="case-block-text">I established a modular design framework using the publication's masthead typography and a warm editorial colour palette as the constant, while allowing flexibility in photography style and layout structure per campaign. This created a visual family that read as unified yet offered each partner a distinctive voice.</p>
-        </div>
-        <div class="case-block reveal">
-          <div class="case-block-label">Execution</div>
-          <p class="case-block-text">Assets ranged from full-page print ads and direct mail to digital display banners, email headers, and social graphics. For the Ardbeg collaboration, I developed a premium dark editorial aesthetic — rich photography, understated gold typography, and texture-led layouts that felt at home in both print and on-screen environments. All mockups were produced for client sign-off at every stage.</p>
-        </div>
-        <div class="case-block reveal">
-          <div class="case-block-label">Results</div>
-          <p class="case-block-text">Subscription campaign assets consistently outperformed previous benchmarks for click-through engagement. Commercial partners including Ardbeg renewed their partnership arrangements following successful campaign activations. The modular framework has continued to serve the title across subsequent campaigns, delivering consistent quality at scale.</p>
-        </div>
-      </div>
-
-      <div class="proj-images" style="margin-top:48px;">
-        <div class="proj-img-full" style="aspect-ratio:21/9;"><img src="work/tsf/BannerDesign_TSF_Ardbeg.jpg" alt="Ardbeg Banner" /></div>
-        <div class="proj-img-contain" style="min-height:160px;"><img src="work/tsf/TSFwhtlogo.png" alt="TSF Logo" style="width:160px;opacity:.7;" /></div>
-      </div>
     </div>
-
-    <!-- META -->
     <aside class="proj-meta reveal">
       <div class="proj-meta-block">
         <div class="meta-label">Client</div>
@@ -125,14 +237,76 @@
       </div>
       <div class="proj-meta-block">
         <div class="meta-label">Next Project</div>
-        <div style="margin-top:8px;">
-          <a href="project-02.html" style="font-family:var(--nhg-text);font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-decoration:none;">The Herald →</a>
-        </div>
+        <a href="project-02.html" style="font-family:var(--nhg-text);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--red);text-decoration:none;display:flex;align-items:center;gap:6px;margin-top:8px;">The Herald →</a>
       </div>
     </aside>
   </div>
+</div>
 
-  <a href="index.html" class="proj-back-cta reveal">Back to All Work</a>
+<!-- FULL BLEED BANNER -->
+<div class="full-bleed">
+  <img src="work/tsf/BannerDesign_TSF_Ardbeg.jpg" alt="Ardbeg TSF Campaign" />
+</div>
+
+<!-- MOCKUP SLIDER -->
+<div class="section-dark">
+  <div class="section-label-dark reveal">Digital Mockups</div>
+  <h2 class="section-dark-heading reveal">Campaign Assets</h2>
+  <div class="slider-wrap">
+    <div class="slider" id="slider01" style="aspect-ratio:16/9;" >
+      <div class="slider-track" id="track01" style="height:100%;">
+        <div class="slide"><img src="work/tsf/Ardbeg_Sub_TSF_OnlineDisplay_LTmockup.png" alt="Ardbeg mockup 1" style="object-fit:contain;background:#0D0B09;" /></div>
+        <div class="slide"><img src="work/tsf/Ardbeg_Sub_TSF_OnlineDisplay_LTmockup 2.png" alt="Ardbeg mockup 2" style="object-fit:contain;background:#0D0B09;" /></div>
+        <div class="slide"><img src="work/tsf/DigitalSummerSale_Sub_TSF_OnlineDisplay_LTmockup.png" alt="Summer Sale" style="object-fit:contain;background:#0D0B09;" /></div>
+        <div class="slide"><img src="work/tsf/Hoggs_WoodhallJckt_Sub_TSF_OnlineDisplay_LTmockup.png" alt="Hoggs Woodhall" style="object-fit:contain;background:#0D0B09;" /></div>
+        <div class="slide"><img src="work/tsf/BannerDesign_TSF_BFriday.jpg" alt="Black Friday" style="object-fit:cover;" /></div>
+        <div class="slide"><img src="work/tsf/BannerDesign_TSF_HoggWoodhall.jpg" alt="Hogg Woodhall banner" style="object-fit:cover;" /></div>
+        <div class="slide"><img src="work/tsf/BannerDesign_TSF_MS.jpg" alt="MS banner" style="object-fit:cover;" /></div>
+      </div>
+      <div class="slider-dots" id="dots01"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CASE STUDY -->
+<div class="section-red">
+  <div class="section-label-dark reveal">Case Study</div>
+  <div class="case-grid">
+    <div class="case-block reveal">
+      <div class="case-block-label">The Challenge</div>
+      <p class="case-block-text">Create cohesive campaign designs that resonate with a traditional agricultural audience while modernising digital subscription acquisition.</p>
+    </div>
+    <div class="case-block reveal">
+      <div class="case-block-label">The Strategy</div>
+      <p class="case-block-text">Developed a robust visual framework balancing heritage imagery with clean, modern typography to ensure readability across newsprint and mobile screens.</p>
+    </div>
+    <div class="case-block reveal">
+      <div class="case-block-label">The Execution</div>
+      <p class="case-block-text">Designed full-page print advertisements, high-converting digital banners, social media graphics, and collaborative promotional kits for corporate partners.</p>
+    </div>
+    <div class="case-block reveal">
+      <div class="case-block-label">The Results</div>
+      <p class="case-block-text">Delivered a unified brand message that drove measurable increases in subscription sign-ups and established stronger commercial partnerships.</p>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE GALLERY — all remaining assets -->
+<div class="section-parchment" style="padding-top:4px;padding-bottom:4px;">
+  <div class="gallery-grid cols-2" style="position:relative;z-index:1;">
+    <div class="gallery-item" style="aspect-ratio:16/9;"><img src="work/tsf/BannerDesign_TSF_HoggWoodhall.jpg" alt="Hogg Woodhall" /></div>
+    <div class="gallery-item" style="aspect-ratio:16/9;"><img src="work/tsf/BannerDesign_TSF_MS.jpg" alt="MS Campaign" /></div>
+    <div class="gallery-item" style="aspect-ratio:16/9;"><img src="work/tsf/BannerDesign_TSF_BFriday.jpg" alt="Black Friday" /></div>
+    <div class="gallery-item" style="aspect-ratio:16/9;"><img src="work/tsf/Ardbeg BG.jpg" alt="Ardbeg background" /></div>
+  </div>
+</div>
+
+<!-- LOGO STRIP + BACK -->
+<div class="logo-strip">
+  <img src="work/tsf/TSFwhtlogo.png" alt="The Scottish Farmer" style="filter:invert(1) brightness(.3);opacity:.4;" />
+  <div style="margin-top:48px;">
+    <a href="index.html" class="proj-back-cta">Back to All Work</a>
+  </div>
 </div>
 
 <footer>
@@ -149,13 +323,11 @@
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
   (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
   document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('hover');ring.classList.add('hover');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('hover');ring.classList.remove('hover');});});
-  const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.1});
+  const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  // Slider
   (function(){
     const track=document.getElementById('track01'),dotsEl=document.getElementById('dots01');
-    const total=track.querySelectorAll('.slide').length;
-    let cur=0;
+    const total=track.querySelectorAll('.slide').length; let cur=0;
     for(let i=0;i<total;i++){const b=document.createElement('button');if(!i)b.classList.add('active');b.addEventListener('click',()=>go(i));dotsEl.appendChild(b);}
     function go(n){cur=n;track.style.transform='translateX(-'+(n*100)+'%)';dotsEl.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('active',i===n));}
     setInterval(()=>go((cur+1)%total),3500);

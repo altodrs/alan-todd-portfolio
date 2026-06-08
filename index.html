@@ -4,421 +4,456 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alan Todd — Senior Graphic Designer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ─── HERO ─────────────────────────────────────────────── */
-    #hero {
-      position: relative; height: 100vh; min-height: 700px;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 48px 64px; overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
+
+    /* ═══════════════════════════════════════════════
+       SITE FOUNDATION — PARCHMENT
+    ═══════════════════════════════════════════════ */
+    body { background: var(--paper); color: var(--ink); }
+
+    /* Right-side double texture layer (fixed, behind everything) */
+    body::after {
+      content: '';
+      position: fixed; top: 0; right: 0;
+      width: 40vw; height: 100vh;
+      pointer-events: none; z-index: 0;
       background:
-        radial-gradient(ellipse 55% 40% at 15% 100%, rgba(193,39,45,.45) 0%, transparent 55%),
-        radial-gradient(ellipse 55% 40% at 85% 100%, rgba(193,39,45,.35) 0%, transparent 55%),
-        radial-gradient(ellipse 70% 55% at 50% 60%, rgba(140,98,57,.12) 0%, transparent 65%),
-        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(38,25,8,.92) 0%, transparent 75%),
-        linear-gradient(175deg, #261908 0%, #1a1008 45%, #261908 100%);
+        url('work/AdobeStock_503747442.png') right center/cover,
+        url('work/AdobeStock_566224854.png') right center/cover;
+      mix-blend-mode: multiply;
+      opacity: .09;
     }
-    /* grunge texture on hero */
-    .hero-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background: url('work/AdobeStock_566224854.png') center/cover;
-      mix-blend-mode: overlay; opacity: .06; pointer-events: none;
+
+    /* ═══════════════════════════════════════════════
+       NAV — RED BANNER
+    ═══════════════════════════════════════════════ */
+    nav { background: var(--red); }
+    nav::before { display: none; }
+    .nav-logo img { opacity: 1; height: 38px; }
+    .nav-links a { color: var(--paper); opacity: .9; }
+    .nav-links a:hover { color: var(--gold); opacity: 1; }
+
+    /* ═══════════════════════════════════════════════
+       HERO — DARK INK, WHITE TYPE
+    ═══════════════════════════════════════════════ */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 64px 80px; overflow: hidden;
+      background: var(--ink);
     }
-    .hero-bg::before {
-      content: 'AT';
-      position: absolute; right: -2vw; top: 50%; transform: translateY(-50%);
-      font-family: var(--nhg);
-      font-size: clamp(280px, 32vw, 440px); font-weight: 900;
-      color: rgba(217,181,150,.02);
-      line-height: 1; pointer-events: none; user-select: none; letter-spacing: -.02em;
+    #hero::before {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background: url('work/AdobeStock_504131485.png') center/cover;
+      mix-blend-mode: overlay; opacity: .09;
     }
-    .hero-lines {
-      position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;
+    #hero::after {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 55%; height: 100%; z-index: 0; pointer-events: none;
+      background: url('work/AdobeStock_566224854.png') right center/cover;
+      mix-blend-mode: overlay; opacity: .14;
     }
-    .hero-lines::before {
-      content: ''; position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        -55deg, transparent, transparent 80px,
-        rgba(242,193,46,.012) 80px, rgba(242,193,46,.012) 81px
-      );
-    }
-    .hero-lines::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 45%;
-      background: linear-gradient(to top, rgba(38,25,8,.55) 0%, transparent 100%);
+    /* large ghost AT */
+    .hero-at {
+      position: absolute; right: -1vw; top: 50%; transform: translateY(-50%);
+      font-family: var(--nhg); font-size: clamp(300px, 36vw, 500px); font-weight: 900;
+      color: rgba(193,39,45,.055); line-height: .85;
+      pointer-events: none; user-select: none; letter-spacing: -.04em; z-index: 1;
     }
     .hero-content { position: relative; z-index: 2; }
     .hero-label {
-      font-family: var(--nhg-text); font-size: .58rem; font-weight: 400;
-      letter-spacing: .28em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 16px;
-      display: flex; align-items: center; gap: 16px;
+      font-family: var(--nhg-text); font-size: .68rem; font-weight: 500;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 18px;
     }
-    .hero-label::before { content: ''; display: block; width: 38px; height: 1px; background: var(--gold); }
-    .hero-title {
+    .hero-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+    .hero-name {
       font-family: var(--nhg);
-      font-size: clamp(68px, 9.5vw, 150px);
-      font-weight: 900; line-height: .88; letter-spacing: -.02em;
-      color: var(--paper); text-transform: uppercase; margin-bottom: 32px;
+      font-size: clamp(80px, 11vw, 170px);
+      font-weight: 900; line-height: .86; letter-spacing: -.03em;
+      color: #FFFFFF; text-transform: uppercase; margin-bottom: 8px;
     }
-    .hero-title .red { color: var(--red); }
-    .hero-title .dim { color: var(--paper); opacity: .9; }
+    .hero-sub {
+      font-family: var(--nhg);
+      font-size: clamp(28px, 3.8vw, 60px);
+      font-weight: 800; letter-spacing: .04em;
+      color: #FFFFFF; text-transform: uppercase;
+      margin-bottom: 0;
+    }
     .hero-bottom {
       display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
+      margin-top: 48px;
+      border-top: 1px solid rgba(217,181,150,.12); padding-top: 36px;
     }
     .hero-desc {
-      max-width: 380px;
-      font-family: var(--nhg-text); font-size: .72rem; font-weight: 300;
-      line-height: 1.85; color: rgba(217,181,150,.45); letter-spacing: .02em;
+      max-width: 460px;
+      font-family: var(--nhg-text); font-size: .88rem; font-weight: 300;
+      line-height: 1.85; color: rgba(217,181,150,.6); letter-spacing: .01em;
     }
     .hero-meta {
-      text-align: right; font-family: var(--nhg-text); font-size: .58rem; font-weight: 300;
-      letter-spacing: .16em; color: rgba(217,181,150,.28); line-height: 2.1; text-transform: uppercase;
+      text-align: right; font-family: var(--nhg-text); font-size: .68rem; font-weight: 300;
+      letter-spacing: .16em; color: rgba(217,181,150,.45); line-height: 2.3; text-transform: uppercase;
     }
     .hero-scroll {
-      position: absolute; right: 48px; top: 50%; transform: translateY(-50%); z-index: 2;
+      position: absolute; right: 64px; top: 50%; transform: translateY(-50%); z-index: 2;
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       writing-mode: vertical-rl;
-      font-family: var(--nhg-text); font-size: .52rem; font-weight: 300;
-      letter-spacing: .28em; text-transform: uppercase; color: rgba(217,181,150,.28);
+      font-family: var(--nhg-text); font-size: .58rem; font-weight: 300;
+      letter-spacing: .28em; text-transform: uppercase; color: rgba(217,181,150,.3);
     }
     .hero-scroll::after {
       content: ''; display: block; width: 1px; height: 80px;
-      background: linear-gradient(to bottom, rgba(217,181,150,.28), transparent);
+      background: linear-gradient(to bottom, rgba(217,181,150,.3), transparent);
     }
 
-    /* ─── WORK ──────────────────────────────────────────────── */
+    /* ═══════════════════════════════════════════════
+       MARQUEE — WHITE BACKGROUND
+    ═══════════════════════════════════════════════ */
+    .marquee-wrap {
+      background: #FFFFFF;
+      border-top: 1px solid rgba(38,25,8,.07);
+      border-bottom: 1px solid rgba(38,25,8,.07);
+      padding: 14px 0;
+    }
+    .marquee-track span.word {
+      color: rgba(38,25,8,.28);
+      font-size: 1rem;
+    }
+    .ptr { color: var(--ink); opacity: .35; }
+    .ptr img { width: 18px; height: 18px; object-fit: contain; vertical-align: middle; }
+
+    /* ═══════════════════════════════════════════════
+       WORK — PARCHMENT, 2-COL LOGO CARD GRID
+    ═══════════════════════════════════════════════ */
     #work {
-      padding: 120px 48px; background: var(--ink); position: relative; overflow: hidden;
+      padding: 100px 64px 120px; background: var(--paper);
+      position: relative; overflow: hidden;
     }
     #work::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: repeating-linear-gradient(
-        0deg, transparent, transparent 59px,
-        rgba(217,181,150,.014) 59px, rgba(217,181,150,.014) 60px
-      );
+      background: url('work/AdobeStock_504131485.png') center/cover;
+      mix-blend-mode: multiply; opacity: .07;
     }
-    /* grunge texture on work */
     #work::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: url('work/AdobeStock_566224854.png') center/cover;
-      mix-blend-mode: overlay; opacity: .04;
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%; pointer-events: none;
+      background: url('work/AdobeStock_566224854.png') right center/cover;
+      mix-blend-mode: multiply; opacity: .09;
     }
     .work-header {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      margin-bottom: 80px; gap: 40px; position: relative; z-index: 1;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 64px; gap: 40px; position: relative; z-index: 1;
     }
     .work-title {
       font-family: var(--nhg);
-      font-size: clamp(52px, 7vw, 112px); font-weight: 900;
-      line-height: .88; letter-spacing: -.02em; text-transform: uppercase; color: var(--paper);
-    }
-    .work-title .outline {
-      -webkit-text-stroke: 1.5px rgba(217,181,150,.22); color: transparent;
+      font-size: clamp(56px, 7.5vw, 120px); font-weight: 900;
+      line-height: .88; letter-spacing: -.02em; text-transform: uppercase; color: var(--ink);
     }
     .work-count {
-      font-family: var(--nhg-text); font-size: .58rem; font-weight: 300;
-      letter-spacing: .2em; color: rgba(217,181,150,.25); text-transform: uppercase; padding-top: 8px;
+      font-family: var(--nhg-text); font-size: .68rem; font-weight: 300;
+      letter-spacing: .2em; color: rgba(38,25,8,.35); text-transform: uppercase;
     }
-    .projects { display: flex; flex-direction: column; gap: 0; position: relative; z-index: 1; }
-    .project {
-      position: relative;
-      display: grid; grid-template-columns: 72px 1fr 220px;
-      align-items: center; gap: 40px; padding: 40px 0;
-      border-top: 1px solid rgba(217,181,150,.05);
-      cursor: none; overflow: hidden; transition: border-color .3s;
-      text-decoration: none; color: inherit;
+    .section-label-dark {
+      font-family: var(--nhg-text); font-size: .68rem; font-weight: 600;
+      letter-spacing: .28em; text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; gap: 14px; margin-bottom: 48px;
     }
-    .project:last-child { border-bottom: 1px solid rgba(217,181,150,.05); }
-    .project:hover { border-color: rgba(242,193,46,.2); }
-    .project::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(90deg, transparent 0%, rgba(193,39,45,.04) 100%);
-      opacity: 0; transition: opacity .4s;
-    }
-    .project:hover::before { opacity: 1; }
-    .project-num {
-      font-family: var(--nhg); font-size: 2.8rem; font-weight: 900;
-      color: rgba(217,181,150,.04); letter-spacing: .04em; line-height: 1;
-      filter: blur(.3px);
-    }
-    .project-body { position: relative; z-index: 1; }
-    .project-tags { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-    .project-name {
-      font-family: var(--nhg);
-      font-size: clamp(22px, 2.6vw, 40px); font-weight: 700; line-height: 1.02;
-      color: var(--paper); margin-bottom: 14px; transition: color .3s; letter-spacing: -.01em;
-    }
-    .project:hover .project-name { color: var(--gold); }
-    .project-desc {
-      font-family: var(--nhg-text); font-size: .65rem; font-weight: 300;
-      line-height: 1.95; color: rgba(217,181,150,.38); max-width: 540px; letter-spacing: .02em;
-    }
-    .project-thumb {
-      position: relative; width: 220px; height: 140px; overflow: hidden;
-    }
-    .project-thumb::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: url('work/AdobeStock_566224854.png') center/cover;
-      mix-blend-mode: overlay; opacity: .08;
-    }
-    .project-thumb-inner {
-      width: 100%; height: 100%;
-      transform: scale(1.06); transition: transform .6s ease;
-      position: relative;
-    }
-    .project:hover .project-thumb-inner { transform: scale(1); }
-    .project-thumb-inner img { width: 100%; height: 100%; object-fit: cover; }
-    .project-arrow {
-      position: absolute; bottom: 40px; right: 0;
-      font-family: var(--nhg-text); font-size: .52rem; font-weight: 500;
-      letter-spacing: .2em; text-transform: uppercase; color: var(--red);
-      opacity: 0; transition: opacity .3s, transform .3s; transform: translateX(-8px);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .project-arrow::after { content: '→'; font-size: .8rem; }
-    .project:hover .project-arrow { opacity: 1; transform: translateX(0); }
+    .section-label-dark::before { content: ''; display: block; width: 28px; height: 1px; background: var(--red); }
 
-    /* ─── FEATURED ──────────────────────────────────────────── */
+    /* 2-col project card grid */
+    .projects-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+      position: relative; z-index: 1;
+    }
+    .proj-card {
+      position: relative; overflow: hidden; display: block;
+      text-decoration: none; color: inherit;
+      background: var(--ash);
+    }
+    .proj-card-img {
+      position: relative; aspect-ratio: 4/3; overflow: hidden;
+    }
+    .proj-card-img img.card-bg {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .7s cubic-bezier(.4,0,.2,1);
+    }
+    .proj-card:hover .proj-card-img img.card-bg { transform: scale(1.07); }
+    .proj-card-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(38,25,8,.92) 0%, rgba(38,25,8,.4) 50%, rgba(38,25,8,.15) 100%);
+      pointer-events: none; z-index: 1;
+    }
+    .proj-card-img::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('work/AdobeStock_566224854.png') center/cover;
+      mix-blend-mode: overlay; opacity: .1; z-index: 2; pointer-events: none;
+    }
+    /* white logo centred in card */
+    .proj-card-logo {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -65%);
+      z-index: 3; pointer-events: none;
+      max-width: 55%; max-height: 80px;
+      object-fit: contain;
+      opacity: .85; transition: opacity .3s;
+      filter: brightness(0) invert(1);
+    }
+    .proj-card:hover .proj-card-logo { opacity: 1; }
+    /* text overlaid bottom left */
+    .proj-card-body {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 24px 28px; z-index: 3;
+    }
+    .proj-card-num {
+      font-family: var(--nhg-text); font-size: .6rem; font-weight: 600;
+      letter-spacing: .28em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 6px; display: block;
+    }
+    .proj-card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .proj-card-tags .tag {
+      background: rgba(217,181,150,.1); border-color: rgba(217,181,150,.22);
+      color: rgba(217,181,150,.75); font-size: .5rem; padding: 3px 8px;
+    }
+    /* arrow reveal on hover */
+    .proj-card-arrow {
+      position: absolute; top: 24px; right: 24px; z-index: 3;
+      opacity: 0; transform: translate(6px,-6px); transition: opacity .3s, transform .3s;
+    }
+    .proj-card-arrow img { width: 24px; height: 24px; object-fit: contain; }
+    .proj-card:hover .proj-card-arrow { opacity: 1; transform: translate(0,0); }
+
+    /* ═══════════════════════════════════════════════
+       FEATURED — RED FLAT
+    ═══════════════════════════════════════════════ */
     #featured { padding: 0; overflow: hidden; }
     .featured-strip {
-      position: relative; height: 78vh; min-height: 500px;
+      position: relative; min-height: 60vh;
       display: flex; align-items: center; justify-content: center; overflow: hidden;
-    }
-    .featured-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 80% 45% at 50% 110%, rgba(193,39,45,.6) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 25% at 20% 110%, rgba(140,98,57,.35) 0%, transparent 50%),
-        radial-gradient(ellipse 40% 25% at 80% 110%, rgba(140,98,57,.3) 0%, transparent 50%),
-        radial-gradient(ellipse 100% 50% at 50% 0%, rgba(38,25,8,.95) 0%, rgba(38,25,8,.5) 60%, transparent 100%),
-        radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(38,25,8,.8) 100%),
-        linear-gradient(175deg, #261908 0%, #1a0d08 50%, #261908 100%);
-    }
-    .featured-grid {
-      position: absolute; inset: 0;
-      background:
-        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(217,181,150,.016) 79px, rgba(217,181,150,.016) 80px),
-        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(217,181,150,.016) 79px, rgba(217,181,150,.016) 80px);
+      background: var(--red);
     }
     .featured-tex {
       position: absolute; inset: 0;
-      background: url('work/AdobeStock_503747442.png') center/cover;
-      mix-blend-mode: overlay; opacity: .07; pointer-events: none;
+      background: url('work/AdobeStock_566224854.png') center/cover;
+      mix-blend-mode: multiply; opacity: .3; pointer-events: none;
     }
-    .featured-strip::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(38,25,8,.7) 0%, transparent 18%, transparent 82%, rgba(38,25,8,.7) 100%);
-      pointer-events: none;
+    .featured-tex2 {
+      position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+      background: url('work/AdobeStock_503747442.png') right center/cover;
+      mix-blend-mode: multiply; opacity: .2; pointer-events: none;
     }
-    .featured-text { position: relative; z-index: 2; text-align: center; padding: 0 24px; }
+    .featured-text { position: relative; z-index: 2; text-align: center; padding: 80px 24px; }
     .featured-eyebrow {
-      font-family: var(--nhg-text); font-size: .58rem; font-weight: 400;
-      letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+      font-family: var(--nhg-text); font-size: .72rem; font-weight: 600;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
     }
     .featured-headline {
       font-family: var(--nhg);
-      font-size: clamp(52px, 9vw, 130px); font-weight: 900; line-height: .86;
+      font-size: clamp(64px, 10vw, 144px); font-weight: 900; line-height: .86;
       color: var(--paper); text-transform: uppercase; letter-spacing: -.02em;
-      text-shadow: 0 0 80px rgba(193,39,45,.4), 0 2px 0 rgba(0,0,0,.6);
-    }
-    .featured-headline .red { color: var(--red); }
-    .featured-headline .ghost {
-      -webkit-text-stroke: 1px rgba(217,181,150,.16); color: transparent;
-      text-shadow: none; filter: blur(.4px);
     }
     .featured-sub {
-      margin-top: 28px;
-      font-family: var(--nhg-text); font-style: italic; font-size: clamp(14px,1.5vw,21px); font-weight: 300;
-      color: rgba(217,181,150,.35);
+      margin-top: 40px;
+      font-family: var(--nhg-text); font-size: clamp(17px,1.8vw,24px); font-weight: 800;
+      color: var(--gold); letter-spacing: .01em;
     }
 
-    /* ─── ABOUT ─────────────────────────────────────────────── */
+    /* ═══════════════════════════════════════════════
+       ABOUT — PARCHMENT
+    ═══════════════════════════════════════════════ */
     #about {
-      padding: 140px 48px 120px;
-      background:
-        repeating-linear-gradient(-45deg, transparent, transparent 24px, rgba(38,25,8,.018) 24px, rgba(38,25,8,.018) 25px),
-        linear-gradient(160deg, #DEC3A2 0%, #D5B898 50%, #DBBF9F 100%);
+      padding: 120px 64px 100px;
+      background: var(--paper);
       color: var(--ink); position: relative; overflow: hidden;
     }
-    /* canvas texture on about */
     #about .tex-canvas-overlay {
       position: absolute; inset: 0; pointer-events: none;
-      background: url('work/AdobeStock_504131485.png') center/cover repeat;
+      background: url('work/AdobeStock_504131485.png') center/cover;
+      mix-blend-mode: multiply; opacity: .09;
+    }
+    #about .tex-right-overlay {
+      position: absolute; top: 0; right: 0; width: 50%; height: 100%; pointer-events: none;
+      background: url('work/AdobeStock_566224854.png') right center/cover;
       mix-blend-mode: multiply; opacity: .1;
     }
-    /* linen texture */
-    #about .tex-linen-overlay {
-      position: absolute; inset: 0; pointer-events: none;
-      background: url('work/AdobeStock_503672616.png') center/cover repeat;
-      mix-blend-mode: multiply; opacity: .07;
+    .about-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .about-heading {
+      font-family: var(--nhg); font-size: clamp(48px, 6vw, 92px); font-weight: 900; line-height: .88;
+      text-transform: uppercase; color: var(--ink); margin-bottom: 40px; letter-spacing: -.02em;
     }
-    /* large AT watermark */
+    .about-heading em {
+      font-family: var(--nhg-text); font-style: normal; font-size: .42em;
+      font-weight: 300; color: var(--dark-brown); display: block; letter-spacing: .1em;
+      margin-top: 6px; text-transform: lowercase;
+    }
+    .about-stat-row { display: flex; gap: 48px; margin-bottom: 48px; }
+    .about-stat-num { font-family: var(--nhg); font-size: 3.8rem; font-weight: 900; line-height: 1; color: var(--red); }
+    .about-stat-label {
+      font-family: var(--nhg-text); font-size: .64rem; font-weight: 400;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--mid); margin-top: 6px;
+    }
+    .about-bio {
+      font-family: var(--nhg-text); font-size: clamp(15px,1.4vw,17px); font-weight: 300;
+      line-height: 1.9; color: rgba(38,25,8,.72); max-width: 540px;
+    }
+    .about-bio strong { color: var(--ink); font-weight: 600; }
+    .philosophy-block { margin-top: 48px; border-left: 3px solid var(--red); padding-left: 24px; }
+    .philosophy-label {
+      font-family: var(--nhg-text); font-size: .6rem; font-weight: 600;
+      letter-spacing: .25em; text-transform: uppercase; color: var(--dark-brown); margin-bottom: 14px;
+    }
+    .philosophy-text {
+      font-family: var(--nhg-text); font-size: clamp(17px,1.8vw,23px);
+      font-weight: 800; line-height: 1.5; color: var(--gold); letter-spacing: -.01em;
+    }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 56px; }
+    .skill-pill {
+      font-family: var(--nhg-text); font-size: .6rem; font-weight: 400;
+      letter-spacing: .16em; text-transform: uppercase;
+      padding: 7px 16px; border: 1px solid rgba(38,25,8,.22); color: var(--ink);
+      background: transparent; transition: background .2s, color .2s; cursor: default;
+    }
+    .skill-pill:hover { background: var(--ink); color: var(--paper); }
     .about-watermark-wrap {
-      position: relative; overflow: hidden;
-      min-height: 400px;
+      position: relative; overflow: hidden; min-height: 360px;
       display: flex; align-items: center; justify-content: center;
     }
     .about-watermark {
-      font-family: var(--nhg); font-size: clamp(220px, 30vw, 360px); font-weight: 900;
-      color: rgba(38,25,8,.055); line-height: .85;
+      font-family: var(--nhg); font-size: clamp(200px, 28vw, 340px); font-weight: 900;
+      color: rgba(193,39,45,.08); line-height: .85;
       pointer-events: none; user-select: none; letter-spacing: -.04em;
-      filter: blur(.5px);
       position: relative; z-index: 1;
     }
     .about-watermark-tex {
       position: absolute; inset: 0;
       background: url('work/AdobeStock_503747442.png') center/cover;
-      mix-blend-mode: multiply; opacity: .12; z-index: 2;
+      mix-blend-mode: multiply; opacity: .14; z-index: 2;
     }
     .about-watermark-tex2 {
       position: absolute; inset: 0;
       background: url('work/AdobeStock_566224854.png') center/cover;
-      mix-blend-mode: multiply; opacity: .08; z-index: 3;
+      mix-blend-mode: multiply; opacity: .1; z-index: 3;
     }
-    .about-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .about-left .section-label { color: var(--dark-brown); }
-    .about-left .section-label::before { background: var(--dark-brown); }
-    .about-heading {
-      font-family: var(--nhg); font-size: clamp(44px, 5.5vw, 84px); font-weight: 900; line-height: .88;
-      text-transform: uppercase; color: var(--ink); margin-bottom: 40px; letter-spacing: -.02em;
-      text-shadow: 1px 1px 0 rgba(193,39,45,.1);
-    }
-    .about-heading em {
-      font-family: var(--serif); font-style: italic; font-size: .65em;
-      color: var(--dark-brown); font-weight: 400; display: block;
-    }
-    .about-stat-row { display: flex; gap: 48px; margin-bottom: 48px; }
-    .about-stat-num { font-family: var(--nhg); font-size: 3.4rem; font-weight: 900; line-height: 1; color: var(--red); }
-    .about-stat-label {
-      font-family: var(--nhg-text); font-size: .55rem; font-weight: 400;
-      letter-spacing: .18em; text-transform: uppercase; color: var(--mid); margin-top: 4px;
-    }
-    .about-bio {
-      font-family: var(--nhg-text); font-size: clamp(13px,1.35vw,16px); font-weight: 300;
-      line-height: 1.9; color: rgba(38,25,8,.68); max-width: 540px;
-    }
-    .about-bio strong { color: var(--ink); font-weight: 600; }
-    .philosophy-block { margin-top: 48px; border-left: 3px solid var(--red); padding-left: 24px; }
-    .philosophy-label {
-      font-family: var(--nhg-text); font-size: .52rem; font-weight: 500;
-      letter-spacing: .25em; text-transform: uppercase; color: var(--dark-brown); margin-bottom: 12px;
-    }
-    .philosophy-text {
-      font-family: var(--serif); font-style: italic; font-size: clamp(16px,1.7vw,22px); line-height: 1.6; color: var(--ink);
-    }
-    /* skills */
-    .about-right { }
-    .about-right .section-label { color: var(--dark-brown); }
-    .about-right .section-label::before { background: var(--dark-brown); }
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 56px; }
-    .skill-pill {
-      font-family: var(--nhg-text); font-size: .54rem; font-weight: 400;
-      letter-spacing: .16em; text-transform: uppercase;
-      padding: 6px 14px; border: 1px solid rgba(38,25,8,.16); color: var(--ink);
-      background: transparent; transition: background .2s, color .2s; cursor: default;
-    }
-    .skill-pill:hover { background: var(--ink); color: var(--paper); }
 
-    /* ─── PROCESS ───────────────────────────────────────────── */
+    /* ═══════════════════════════════════════════════
+       PROCESS — RED FLAT
+    ═══════════════════════════════════════════════ */
     #process {
-      padding: 80px 48px; background: var(--ash2); position: relative; overflow: hidden;
+      padding: 80px 64px; background: var(--red); position: relative; overflow: hidden;
     }
     #process::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(217,181,150,.022) 119px, rgba(217,181,150,.022) 120px),
-        radial-gradient(ellipse 80% 30% at 50% 100%, rgba(193,39,45,.18) 0%, transparent 60%);
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: url('work/AdobeStock_566224854.png') center/cover;
+      mix-blend-mode: multiply; opacity: .28;
     }
     #process::after {
-      content: ''; position: absolute; inset: 0;
-      background: url('work/AdobeStock_503747442.png') center/cover;
-      mix-blend-mode: overlay; opacity: .07; pointer-events: none;
+      content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; pointer-events: none;
+      background: url('work/AdobeStock_503747442.png') right center/cover;
+      mix-blend-mode: multiply; opacity: .18;
+    }
+    #process .section-label { color: var(--gold); margin-bottom: 24px; }
+    #process .section-label::before { background: var(--gold); }
+    .process-heading {
+      font-family: var(--nhg);
+      font-size: clamp(44px,5.5vw,80px); font-weight: 900;
+      text-transform: uppercase; line-height: .88; letter-spacing: -.02em;
+      color: var(--paper); margin-bottom: 60px; position: relative; z-index: 1;
     }
     .process-grid {
       position: relative; z-index: 1;
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
     }
-    .process-item { padding: 48px 32px; border-left: 1px solid rgba(217,181,150,.05); }
+    .process-item { padding: 40px 28px; border-left: 1px solid rgba(217,181,150,.15); }
     .process-num {
-      font-family: var(--nhg); font-size: 3.5rem; font-weight: 900;
-      color: rgba(242,193,46,.1); line-height: 1; margin-bottom: 20px; filter: blur(.3px);
+      font-family: var(--nhg); font-size: 3.2rem; font-weight: 900;
+      color: rgba(217,181,150,.14); line-height: 1; margin-bottom: 16px;
     }
     .process-name {
-      font-family: var(--nhg); font-size: .82rem; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase; color: var(--paper); margin-bottom: 12px;
+      font-family: var(--nhg); font-size: .9rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--paper); margin-bottom: 12px;
     }
     .process-desc {
-      font-family: var(--nhg-text); font-size: .6rem; font-weight: 300;
-      line-height: 1.95; color: rgba(217,181,150,.3); letter-spacing: .02em;
+      font-family: var(--nhg-text); font-size: .72rem; font-weight: 300;
+      line-height: 1.9; color: rgba(217,181,150,.65); letter-spacing: .01em;
     }
 
-    /* ─── CONTACT ───────────────────────────────────────────── */
+    /* ═══════════════════════════════════════════════
+       CONTACT — PARCHMENT (same as About)
+    ═══════════════════════════════════════════════ */
     #contact {
-      padding: 140px 48px 100px; background: var(--ink); text-align: center; position: relative; overflow: hidden;
+      padding: 140px 64px 100px; background: var(--paper);
+      text-align: center; position: relative; overflow: hidden;
+      color: var(--ink);
     }
     #contact::before {
       content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 70% 40% at 50% 100%, rgba(193,39,45,.38) 0%, transparent 60%),
-        url('work/AdobeStock_566224854.png') center/cover;
-      mix-blend-mode: overlay; opacity: .06; pointer-events: none;
+      background: url('work/AdobeStock_504131485.png') center/cover;
+      mix-blend-mode: multiply; opacity: .09; pointer-events: none;
     }
     #contact::after {
-      content: 'LET\A WORK'; white-space: pre;
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      font-family: var(--nhg); font-size: 28vw; font-weight: 900; line-height: .85;
-      color: rgba(217,181,150,.016); pointer-events: none; user-select: none; filter: blur(.5px);
+      content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+      background: url('work/AdobeStock_566224854.png') right center/cover;
+      mix-blend-mode: multiply; opacity: .1; pointer-events: none;
     }
     .contact-label {
-      font-family: var(--nhg-text); font-size: .58rem; font-weight: 400;
+      font-family: var(--nhg-text); font-size: .7rem; font-weight: 600;
       letter-spacing: .28em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 32px; position: relative; z-index: 1;
+      color: var(--red); margin-bottom: 32px; position: relative; z-index: 1;
     }
     .contact-headline {
       font-family: var(--nhg);
-      font-size: clamp(48px,8vw,120px); font-weight: 900; line-height: .88;
-      text-transform: uppercase; color: var(--paper); margin-bottom: 16px; letter-spacing: -.02em;
+      font-size: clamp(52px,8vw,128px); font-weight: 900; line-height: .88;
+      text-transform: uppercase; color: var(--ink); margin-bottom: 16px; letter-spacing: -.02em;
       position: relative; z-index: 1;
-      text-shadow: 0 0 60px rgba(193,39,45,.28);
-    }
-    .contact-headline .ghost {
-      -webkit-text-stroke: 1px rgba(217,181,150,.16); color: transparent; text-shadow: none;
     }
     .contact-sub {
-      font-family: var(--nhg-text); font-style: italic; font-size: clamp(14px,1.6vw,21px); font-weight: 300;
-      color: rgba(217,181,150,.42); margin-bottom: 56px; position: relative; z-index: 1;
+      font-family: var(--nhg-text); font-size: clamp(16px,1.7vw,22px); font-weight: 300;
+      color: rgba(38,25,8,.55); margin-bottom: 56px; position: relative; z-index: 1;
     }
     .contact-cta {
       display: inline-flex; align-items: center; gap: 16px;
-      font-family: var(--nhg-text); font-size: .68rem; font-weight: 500;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--ink); background: var(--gold);
-      padding: 18px 44px; text-decoration: none; position: relative; z-index: 1;
-      transition: background .25s, color .25s;
+      font-family: var(--nhg-text); font-size: .75rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--paper); background: var(--red);
+      padding: 20px 48px; text-decoration: none; position: relative; z-index: 1;
+      transition: background .25s;
     }
-    .contact-cta:hover { background: var(--red); color: var(--paper); }
+    .contact-cta:hover { background: var(--ink); }
     .contact-cta::after { content: '→'; font-size: 1rem; }
 
-    /* ─── RESPONSIVE ────────────────────────────────────────── */
+    /* ═══════════════════════════════════════════════
+       FOOTER — RED BANNER
+    ═══════════════════════════════════════════════ */
+    footer {
+      background: var(--red) !important;
+      border-top: none !important;
+      position: relative; overflow: hidden;
+    }
+    footer::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: url('work/AdobeStock_566224854.png') center/cover;
+      mix-blend-mode: multiply; opacity: .22;
+    }
+    footer > * { position: relative; z-index: 1; }
+    .footer-sig img { height: 40px; opacity: .95; }
+    .footer-copy { color: rgba(217,181,150,.6); }
+    .footer-links a { color: rgba(217,181,150,.6); }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════ */
     @media (max-width: 960px) {
-      #hero, #work, #about, #process, #contact, footer { padding-left: 24px; padding-right: 24px; }
+      #hero,#work,#about,#process,#contact,footer { padding-left: 28px; padding-right: 28px; }
+      .projects-grid { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .process-grid { grid-template-columns: 1fr 1fr; }
-      .project { grid-template-columns: 60px 1fr; }
-      .project-thumb { display: none; }
       .hero-scroll { display: none; }
       .hero-bottom { flex-direction: column; gap: 24px; }
     }
     @media (max-width: 560px) {
       .process-grid { grid-template-columns: 1fr; }
-      .about-stat-row { gap: 28px; }
-      .hero-title { font-size: 14vw; }
+      body::after { display: none; }
     }
   </style>
 </head>
@@ -440,27 +475,20 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-lines"></div>
+  <div class="hero-at" aria-hidden="true">AT</div>
   <div class="hero-scroll">Scroll</div>
   <div class="hero-content">
     <div class="hero-label">Senior Graphic Designer &nbsp;·&nbsp; Brand &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Identity</div>
-    <h1 class="hero-title">
-      ALAN<br/>
-      <span class="red">TODD</span><br/>
-      <span class="dim">GRAPHIC</span><br/>
-      <span class="dim">DESIGN</span>
-    </h1>
+    <div class="hero-name">ALAN TODD</div>
+    <div class="hero-sub">GRAPHIC DESIGN</div>
     <div class="hero-bottom">
       <p class="hero-desc">
-        Crafting visual systems that carry weight —<br/>
-        where every texture, type choice, and mark<br/>
-        is a deliberate act of communication.
+        Crafting visual systems that carry weight — where every texture, type choice, and mark is a deliberate act of communication.
       </p>
       <div class="hero-meta">
         Based in Ayrshire, Scotland<br/>
         Available for Freelance<br/>
-        <span style="color:var(--gold)">Est. 2010</span>
+        <span style="color:var(--gold);font-weight:600;">Est. 2010</span>
       </div>
     </div>
   </div>
@@ -470,34 +498,34 @@
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span class="word">Brand Identity</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">Editorial Design</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">Print &amp; Production</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">Typography</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">Motion Graphics</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">Animation</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">21+ Years</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <!-- duplicate -->
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
+    <!-- duplicate for seamless loop -->
     <span class="word">Brand Identity</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">Editorial Design</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">Print &amp; Production</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">Typography</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">Motion Graphics</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">Animation</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
     <span class="word">21+ Years</span>
-    <span class="ptr"><svg viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
   </div>
 </div>
 
@@ -505,105 +533,88 @@
 <section id="work">
   <div class="work-header reveal">
     <div>
-      <div class="section-label">Selected Work</div>
-      <h2 class="work-title">MY<br/><span class="outline">WORK</span></h2>
+      <div class="section-label-dark">Selected Work</div>
+      <h2 class="work-title">MY WORK</h2>
     </div>
     <div class="work-count">004 Projects</div>
   </div>
 
-  <div class="projects">
+  <div class="projects-grid">
 
-    <!-- 01 Scottish Farmer -->
-    <a href="project-01.html" class="project reveal">
-      <div class="project-num">01</div>
-      <div class="project-body">
-        <div class="project-tags">
+    <!-- 01 The Scottish Farmer -->
+    <a href="project-01.html" class="proj-card reveal">
+      <div class="proj-card-img">
+        <img class="card-bg" src="work/tsf/Ardbeg_Sub_TSF_OnlineDisplay_LTmockup.png" alt="The Scottish Farmer" />
+        <img class="proj-card-logo" src="work/tsf/TSFwhtlogo.png" alt="The Scottish Farmer logo" />
+      </div>
+      <div class="proj-card-body">
+        <span class="proj-card-num">01 — 2024</span>
+        <div class="proj-card-tags">
           <span class="tag">Print</span><span class="tag">Digital</span><span class="tag">Subscription</span>
         </div>
-        <h3 class="project-name">The Scottish Farmer</h3>
-        <p class="project-desc">Led the print and digital design strategy for high-profile subscription campaigns and commercial collaborations. Translated complex client briefs into high-impact marketing assets that engaged the rural community.</p>
-        <span class="project-arrow">View Project</span>
       </div>
-      <div class="project-thumb">
-        <div class="project-thumb-inner">
-          <img src="work/tsf/Ardbeg BG.jpg" alt="The Scottish Farmer" style="object-fit:cover;" />
-          <img src="work/tsf/TSFwhtlogo.png" alt="TSF Logo" style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:80px;height:auto;opacity:.9;" />
-        </div>
-      </div>
+      <div class="proj-card-arrow"><img src="work/cursor.svg" alt="" /></div>
     </a>
 
     <!-- 02 The Herald -->
-    <a href="project-02.html" class="project reveal">
-      <div class="project-num">02</div>
-      <div class="project-body">
-        <div class="project-tags">
+    <a href="project-02.html" class="proj-card reveal">
+      <div class="proj-card-img">
+        <img class="card-bg" src="work/Her/BannerDesign_Herald_BHQ.jpg" alt="The Herald" />
+        <img class="proj-card-logo" src="work/Her/The-Herald_logowht.png" alt="The Herald logo" />
+      </div>
+      <div class="proj-card-body">
+        <span class="proj-card-num">02 — 2024</span>
+        <div class="proj-card-tags">
           <span class="tag">Editorial</span><span class="tag">Events</span><span class="tag">Sports</span>
         </div>
-        <h3 class="project-name">The Herald</h3>
-        <p class="project-desc">Conceptualised and executed dynamic design assets for a diverse portfolio of high-profile sporting, marketing, and event campaigns aligned with The Herald's prestigious editorial standards.</p>
-        <span class="project-arrow">View Project</span>
       </div>
-      <div class="project-thumb">
-        <div class="project-thumb-inner" style="position:relative;background:#0D0B09;">
-          <img src="work/Her/BannerDesign_Herald_BHQ.jpg" alt="The Herald" />
-          <img src="work/Her/The-Herald_logowht.png" alt="Herald Logo" style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:90px;height:auto;opacity:.85;" />
-        </div>
-      </div>
+      <div class="proj-card-arrow"><img src="work/cursor.svg" alt="" /></div>
     </a>
 
-    <!-- 03 Glasgow Times -->
-    <a href="project-03.html" class="project reveal">
-      <div class="project-num">03</div>
-      <div class="project-body">
-        <div class="project-tags">
+    <!-- 03 The Glasgow Times -->
+    <a href="project-03.html" class="proj-card reveal">
+      <div class="proj-card-img">
+        <img class="card-bg" src="work/GT/TheWeeRedBook_GT_OnlineDisplay_LTmockup-copy.png" alt="The Glasgow Times" />
+        <img class="proj-card-logo" src="work/GT/GlasgowTimes_logoWht.png" alt="The Glasgow Times logo" />
+      </div>
+      <div class="proj-card-body">
+        <span class="proj-card-num">03 — 2024</span>
+        <div class="proj-card-tags">
           <span class="tag">Subscription</span><span class="tag">Print</span><span class="tag">Community</span>
         </div>
-        <h3 class="project-name">The Glasgow Times</h3>
-        <p class="project-desc">Spearheaded targeted subscription marketing designs and drove the visual campaign for iconic annual publications, including leading the creative direction for the legendary Wee Red Book football annual.</p>
-        <span class="project-arrow">View Project</span>
       </div>
-      <div class="project-thumb">
-        <div class="project-thumb-inner" style="position:relative;background:#0D0B09;">
-          <img src="work/GT/BannerDesign_GT_Wrap.jpg" alt="Glasgow Times" />
-          <img src="work/GT/GlasgowTimes_logoWht.png" alt="GT Logo" style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:90px;height:auto;opacity:.85;" />
-        </div>
-      </div>
+      <div class="proj-card-arrow"><img src="work/cursor.svg" alt="" /></div>
     </a>
 
     <!-- 04 The National -->
-    <a href="project-04.html" class="project reveal">
-      <div class="project-num">04</div>
-      <div class="project-body">
-        <div class="project-tags">
+    <a href="project-04.html" class="proj-card reveal">
+      <div class="proj-card-img">
+        <img class="card-bg" src="work/Nat/ScottishElec_tN_OnlineDisplay_LTmockup-copy-2.png" alt="The National" />
+        <img class="proj-card-logo" src="work/Nat/THE_NATIONAL_MASTwht.png" alt="The National logo" />
+      </div>
+      <div class="proj-card-body">
+        <span class="proj-card-num">04 — 2024</span>
+        <div class="proj-card-tags">
           <span class="tag">Data Viz</span><span class="tag">News</span><span class="tag">Digital</span>
         </div>
-        <h3 class="project-name">The National</h3>
-        <p class="project-desc">Designed impactful editorial graphics and comprehensive data visualisations for major local elections and breaking news coverage, translating complex political data into clear, engaging visual stories.</p>
-        <span class="project-arrow">View Project</span>
       </div>
-      <div class="project-thumb">
-        <div class="project-thumb-inner" style="position:relative;background:#0D0B09;">
-          <img src="work/Nat/BannerDesign_Nat_Salmond.jpg" alt="The National" />
-          <img src="work/Nat/THE_NATIONAL_MASTwht.png" alt="National Logo" style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:90px;height:auto;opacity:.85;" />
-        </div>
-      </div>
+      <div class="proj-card-arrow"><img src="work/cursor.svg" alt="" /></div>
     </a>
 
   </div>
 </section>
 
-<!-- FEATURED -->
+<!-- DESIGN PHILOSOPHY -->
 <section id="featured">
   <div class="featured-strip">
-    <div class="featured-bg"></div>
-    <div class="featured-grid"></div>
     <div class="featured-tex"></div>
+    <div class="featured-tex2"></div>
     <div class="featured-text reveal">
       <p class="featured-eyebrow">Design Philosophy</p>
       <h2 class="featured-headline">
         MAKE<br/>
-        <span class="ghost">DESIGNS</span><br/>
-        <span class="red">THAT LAST</span>
+        DESIGNS<br/>
+        THAT LAST
       </h2>
       <p class="featured-sub">Good design doesn't just communicate — it lasts.</p>
     </div>
@@ -613,22 +624,22 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="tex-canvas-overlay"></div>
-  <div class="tex-linen-overlay"></div>
+  <div class="tex-right-overlay"></div>
   <div class="about-grid">
 
-    <div class="about-left reveal-left">
-      <div class="section-label">About</div>
-      <h2 class="about-heading">ALAN<br/>TODD<br/><em>Designer</em></h2>
+    <div class="reveal-left">
+      <div class="section-label-dark">About</div>
+      <h2 class="about-heading">ALAN<br/>TODD<br/><em>designer</em></h2>
       <div class="about-stat-row">
-        <div class="about-stat">
+        <div>
           <div class="about-stat-num">21+</div>
           <div class="about-stat-label">Years of Experience</div>
         </div>
       </div>
       <p class="about-bio">
-        I'm a graphic designer with over <strong>21 years of experience</strong> keeping design standards high at Newsquest Scotland / The Herald and Times, The Scottish Farmer, etc. My approach to design is simple: I take a rough creative brief and turn it into a <strong>striking final asset that connects with people.</strong>
+        I'm a graphic designer with over <strong>21 years of experience</strong> keeping design standards high at Newsquest Scotland / The Herald and Times, The Scottish Farmer, and more. My approach to design is simple: I take a rough creative brief and turn it into a <strong>striking final asset that connects with people.</strong>
         <br/><br/>
-        For over two decades, I've evolved from print and traditional layout design into <strong>video, motion graphics, and animation.</strong> I am a reliable pair of hands in the studio. No fuss, honest communication, and getting the job done right the first time.
+        For over two decades, I've evolved from print and traditional layout design into <strong>video, motion graphics, and animation.</strong> No fuss, honest communication, and getting the job done right the first time.
       </p>
       <div class="philosophy-block">
         <div class="philosophy-label">Design Philosophy</div>
@@ -636,8 +647,8 @@
       </div>
     </div>
 
-    <div class="about-right reveal">
-      <div class="section-label">Expertise</div>
+    <div class="reveal">
+      <div class="section-label-dark">Expertise</div>
       <div class="skills-grid">
         <span class="skill-pill">Brand Identity</span>
         <span class="skill-pill">Editorial Design</span>
@@ -650,8 +661,6 @@
         <span class="skill-pill">Visual Systems</span>
         <span class="skill-pill">Adobe CC</span>
       </div>
-
-      <!-- AT watermark with layered textures replacing testimonials -->
       <div class="about-watermark-wrap">
         <div class="about-watermark">AT</div>
         <div class="about-watermark-tex"></div>
@@ -662,13 +671,11 @@
   </div>
 </section>
 
-<!-- PROCESS -->
+<!-- MY PROCESS -->
 <section id="process">
-  <div style="position:relative;z-index:1;margin-bottom:56px;" class="reveal">
+  <div style="position:relative;z-index:1;" class="reveal">
     <div class="section-label">How I Work</div>
-    <h2 style="font-family:var(--nhg);font-size:clamp(40px,5vw,72px);font-weight:900;text-transform:uppercase;line-height:.88;letter-spacing:-.02em;color:var(--paper);">
-      MY<br/><span style="-webkit-text-stroke:1px rgba(217,181,150,.2);color:transparent;">PROCESS</span>
-    </h2>
+    <h2 class="process-heading">MY PROCESS</h2>
   </div>
   <div class="process-grid">
     <div class="process-item reveal">
@@ -694,10 +701,10 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- START A PROJECT -->
 <section id="contact">
   <p class="contact-label reveal">Get in Touch</p>
-  <h2 class="contact-headline reveal">START A<br/><span class="ghost">PROJECT</span></h2>
+  <h2 class="contact-headline reveal">START A<br/>PROJECT</h2>
   <p class="contact-sub reveal">Let's work together.</p>
   <a href="mailto:altodrs@icloud.com" class="contact-cta reveal">altodrs@icloud.com</a>
 </section>
@@ -714,31 +721,24 @@
 </footer>
 
 <script>
-  /* Cursor */
+  /* SVG Cursor */
   const cursor = document.getElementById('cursor');
   const ring   = document.getElementById('cursorRing');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{
-    mx=e.clientX; my=e.clientY;
-    cursor.style.left=mx+'px'; cursor.style.top=my+'px';
+  let mx=0, my=0, rx=0, ry=0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
   });
   (function loop(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
-  document.querySelectorAll('a,button,.project,.skill-pill').forEach(el=>{
+  document.querySelectorAll('a,button,.proj-card,.skill-pill').forEach(el=>{
     el.addEventListener('mouseenter',()=>{ cursor.classList.add('hover'); ring.classList.add('hover'); });
     el.addEventListener('mouseleave',()=>{ cursor.classList.remove('hover'); ring.classList.remove('hover'); });
   });
   /* Reveals */
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*80); obs.unobserve(e.target); } });
-  },{threshold:0.1});
+  },{ threshold: 0.08 });
   document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
-  /* Active nav */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const sObs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ navLinks.forEach(a=>{ a.style.opacity=a.getAttribute('href')==='#'+e.target.id?'1':'.65'; a.style.color=a.getAttribute('href')==='#'+e.target.id?'var(--gold)':''; }); } });
-  },{threshold:0.4});
-  sections.forEach(s=>sObs.observe(s));
 </script>
 </body>
 </html>
