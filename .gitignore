@@ -1,0 +1,14 @@
+.DS_Store
+
+# Raw source masters too large for GitHub (100MB hard limit) — not used by the live site.
+# The compressed, web-ready exports derived from these are what's actually referenced in the HTML.
+work/AT Video slide.mov
+*.psd
+
+# Unused stock textures left over from an earlier design iteration (not referenced anywhere)
+work/AdobeStock_512158715.png
+work/AdobeStock_570342115.png
+work/AdobeStock_503961023.png
+
+# Superseded by AdobeStock_504131485.jpg (same texture, resized/compressed — 20MB -> 1.2MB)
+work/AdobeStock_504131485.png

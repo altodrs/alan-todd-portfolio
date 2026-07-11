@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "portfolio",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "3400", "."],
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["/Users/alantodd/Desktop/alan-todd-portfolio/serve.sh"],
       "port": 3400
     }
   ]

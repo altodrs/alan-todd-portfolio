@@ -4,468 +4,154 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alan Todd — Senior Graphic Designer</title>
+  <link rel="icon" href="work/atgd_favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* ══ HERO ══ */
+    #hero { padding-top: 76px; background: var(--white); }
 
-    /* ═══════════════════════════════════════════════
-       SITE FOUNDATION — PARCHMENT
-    ═══════════════════════════════════════════════ */
-    body { background: var(--paper); color: var(--ink); }
-
-    /* Right-side double texture layer (fixed, behind everything) */
-    body::after {
-      content: '';
-      position: fixed; top: 0; right: 0;
-      width: 40vw; height: 100vh;
-      pointer-events: none; z-index: 0;
-      background:
-        url('work/AdobeStock_503747442.png') right center/cover,
-        url('work/AdobeStock_566224854.png') right center/cover;
-      mix-blend-mode: multiply;
-      opacity: .09;
+    .hero-main {
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: var(--sp-5);
+      padding: var(--sp-5) var(--margin);
+      border-bottom: 1px solid var(--ink-10);
+      background: var(--white);
     }
-
-    /* ═══════════════════════════════════════════════
-       NAV — RED BANNER
-    ═══════════════════════════════════════════════ */
-    nav { background: var(--red); }
-    nav::before { display: none; }
-    .nav-logo img { opacity: 1; height: 38px; }
-    .nav-links a { color: var(--paper); opacity: .9; }
-    .nav-links a:hover { color: var(--gold); opacity: 1; }
-
-    /* ═══════════════════════════════════════════════
-       HERO — DARK INK, WHITE TYPE
-    ═══════════════════════════════════════════════ */
-    #hero {
-      position: relative; min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 64px 80px; overflow: hidden;
-      background: var(--ink);
-    }
-    #hero::before {
-      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      background: url('work/AdobeStock_504131485.png') center/cover;
-      mix-blend-mode: overlay; opacity: .09;
-    }
-    #hero::after {
-      content: ''; position: absolute; top: 0; right: 0;
-      width: 55%; height: 100%; z-index: 0; pointer-events: none;
-      background: url('work/AdobeStock_566224854.png') right center/cover;
-      mix-blend-mode: overlay; opacity: .14;
-    }
-    /* large ghost AT */
-    .hero-at {
-      position: absolute; right: -1vw; top: 50%; transform: translateY(-50%);
-      font-family: var(--nhg); font-size: clamp(300px, 36vw, 500px); font-weight: 900;
-      color: rgba(193,39,45,.055); line-height: .85;
-      pointer-events: none; user-select: none; letter-spacing: -.04em; z-index: 1;
-    }
-    .hero-content { position: relative; z-index: 2; }
-    .hero-label {
-      font-family: var(--nhg-text); font-size: .68rem; font-weight: 500;
-      letter-spacing: .3em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 28px;
-      display: flex; align-items: center; gap: 18px;
-    }
-    .hero-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+    .hero-left { display: flex; flex-direction: column; gap: var(--sp-4); }
     .hero-name {
-      font-family: var(--nhg);
-      font-size: clamp(80px, 11vw, 170px);
-      font-weight: 900; line-height: .86; letter-spacing: -.03em;
-      color: #FFFFFF; text-transform: uppercase; margin-bottom: 8px;
+      font-family: var(--display);
+      font-size: clamp(34px, 4.6vw, 72px);
+      font-weight: 700; line-height: .9; letter-spacing: -.02em;
+      text-transform: uppercase; color: var(--clay);
+      white-space: nowrap;
     }
-    .hero-sub {
-      font-family: var(--nhg);
-      font-size: clamp(28px, 3.8vw, 60px);
-      font-weight: 800; letter-spacing: .04em;
-      color: #FFFFFF; text-transform: uppercase;
-      margin-bottom: 0;
+    .hero-meta-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-2); }
+    .hero-discipline {
+      font-family: var(--mono); font-size: .74rem; font-weight: 400;
+      text-transform: uppercase; letter-spacing: .1em; color: var(--ink);
     }
-    .hero-bottom {
-      display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
-      margin-top: 48px;
-      border-top: 1px solid rgba(217,181,150,.12); padding-top: 36px;
+    .hero-location { font-family: var(--mono); font-size: .64rem; font-weight: 400; color: var(--ink-40); letter-spacing: .04em; }
+
+    .hero-intro-label {
+      font-family: var(--mono); font-size: .64rem; font-weight: 400;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--clay);
+      margin-bottom: var(--sp-2);
     }
-    .hero-desc {
-      max-width: 460px;
-      font-family: var(--nhg-text); font-size: .88rem; font-weight: 300;
-      line-height: 1.85; color: rgba(217,181,150,.6); letter-spacing: .01em;
-    }
-    .hero-meta {
-      text-align: right; font-family: var(--nhg-text); font-size: .68rem; font-weight: 300;
-      letter-spacing: .16em; color: rgba(217,181,150,.45); line-height: 2.3; text-transform: uppercase;
-    }
-    .hero-scroll {
-      position: absolute; right: 64px; top: 50%; transform: translateY(-50%); z-index: 2;
-      display: flex; flex-direction: column; align-items: center; gap: 12px;
-      writing-mode: vertical-rl;
-      font-family: var(--nhg-text); font-size: .58rem; font-weight: 300;
-      letter-spacing: .28em; text-transform: uppercase; color: rgba(217,181,150,.3);
-    }
-    .hero-scroll::after {
-      content: ''; display: block; width: 1px; height: 80px;
-      background: linear-gradient(to bottom, rgba(217,181,150,.3), transparent);
+    .hero-intro-text {
+      font-family: var(--text); font-size: clamp(15px, 1.4vw, 19px);
+      font-weight: 300; line-height: 1.6; color: var(--ink);
     }
 
-    /* ═══════════════════════════════════════════════
-       MARQUEE — WHITE BACKGROUND
-    ═══════════════════════════════════════════════ */
-    .marquee-wrap {
-      background: #FFFFFF;
-      border-top: 1px solid rgba(38,25,8,.07);
-      border-bottom: 1px solid rgba(38,25,8,.07);
-      padding: 14px 0;
-    }
-    .marquee-track span.word {
-      color: rgba(38,25,8,.28);
-      font-size: 1rem;
-    }
-    .ptr { color: var(--ink); opacity: .35; }
-    .ptr img { width: 18px; height: 18px; object-fit: contain; vertical-align: middle; }
+    .hero-video-frame { width: 100%; }
+    .hero-video-frame video { width: 100%; display: block; }
 
-    /* ═══════════════════════════════════════════════
-       WORK — PARCHMENT, 2-COL LOGO CARD GRID
-    ═══════════════════════════════════════════════ */
-    #work {
-      padding: 100px 64px 120px; background: var(--paper);
-      position: relative; overflow: hidden;
+    .hero-below {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      border-bottom: 1px solid var(--ink-10);
     }
-    #work::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: url('work/AdobeStock_504131485.png') center/cover;
-      mix-blend-mode: multiply; opacity: .07;
-    }
-    #work::after {
-      content: ''; position: absolute; top: 0; right: 0;
-      width: 50%; height: 100%; pointer-events: none;
-      background: url('work/AdobeStock_566224854.png') right center/cover;
-      mix-blend-mode: multiply; opacity: .09;
-    }
+    .hero-below-col { padding: var(--sp-4) var(--margin); border-right: 1px solid var(--ink-10); }
+    .hero-below-col:last-child { border-right: none; }
+    .hbc-label { font-family: var(--mono); font-size: .58rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-40); margin-bottom: 10px; }
+    .hbc-value { font-family: var(--display); font-size: clamp(14px,1.2vw,16px); font-weight: 700; color: var(--ink); line-height: 1.5; }
+    .hbc-value strong { color: var(--clay); }
+
+    /* ══ WORK ══ */
+    #work { background: var(--white); }
     .work-header {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      margin-bottom: 64px; gap: 40px; position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--sp-6) var(--margin) var(--sp-4);
+      border-bottom: 1px solid var(--ink-10);
     }
     .work-title {
-      font-family: var(--nhg);
-      font-size: clamp(56px, 7.5vw, 120px); font-weight: 900;
-      line-height: .88; letter-spacing: -.02em; text-transform: uppercase; color: var(--ink);
+      font-family: var(--display); font-size: clamp(32px,4.6vw,64px); font-weight: 700;
+      letter-spacing: -.02em; text-transform: uppercase; color: var(--ink);
     }
-    .work-count {
-      font-family: var(--nhg-text); font-size: .68rem; font-weight: 300;
-      letter-spacing: .2em; color: rgba(38,25,8,.35); text-transform: uppercase;
-    }
-    .section-label-dark {
-      font-family: var(--nhg-text); font-size: .68rem; font-weight: 600;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--red);
-      display: flex; align-items: center; gap: 14px; margin-bottom: 48px;
-    }
-    .section-label-dark::before { content: ''; display: block; width: 28px; height: 1px; background: var(--red); }
+    .work-count { font-family: var(--mono); font-size: .64rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-40); }
 
-    /* 2-col project card grid */
-    .projects-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
-      position: relative; z-index: 1;
-    }
-    .proj-card {
-      position: relative; overflow: hidden; display: block;
-      text-decoration: none; color: inherit;
-      background: var(--ash);
-    }
-    .proj-card-img {
-      position: relative; aspect-ratio: 4/3; overflow: hidden;
-    }
-    .proj-card-img img.card-bg {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform .7s cubic-bezier(.4,0,.2,1);
-    }
-    .proj-card:hover .proj-card-img img.card-bg { transform: scale(1.07); }
-    .proj-card-img::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(38,25,8,.92) 0%, rgba(38,25,8,.4) 50%, rgba(38,25,8,.15) 100%);
-      pointer-events: none; z-index: 1;
-    }
-    .proj-card-img::before {
-      content: ''; position: absolute; inset: 0;
-      background: url('work/AdobeStock_566224854.png') center/cover;
-      mix-blend-mode: overlay; opacity: .1; z-index: 2; pointer-events: none;
-    }
-    /* white logo centred in card */
-    .proj-card-logo {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -65%);
-      z-index: 3; pointer-events: none;
-      max-width: 55%; max-height: 80px;
-      object-fit: contain;
-      opacity: .85; transition: opacity .3s;
-      filter: brightness(0) invert(1);
-    }
-    .proj-card:hover .proj-card-logo { opacity: 1; }
-    /* text overlaid bottom left */
-    .proj-card-body {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 24px 28px; z-index: 3;
-    }
-    .proj-card-num {
-      font-family: var(--nhg-text); font-size: .6rem; font-weight: 600;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 6px; display: block;
-    }
-    .proj-card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-    .proj-card-tags .tag {
-      background: rgba(217,181,150,.1); border-color: rgba(217,181,150,.22);
-      color: rgba(217,181,150,.75); font-size: .5rem; padding: 3px 8px;
-    }
-    /* arrow reveal on hover */
-    .proj-card-arrow {
-      position: absolute; top: 24px; right: 24px; z-index: 3;
-      opacity: 0; transform: translate(6px,-6px); transition: opacity .3s, transform .3s;
-    }
-    .proj-card-arrow img { width: 24px; height: 24px; object-fit: contain; }
-    .proj-card:hover .proj-card-arrow { opacity: 1; transform: translate(0,0); }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .proj-card { display: block; text-decoration: none; color: inherit; position: relative; border-right: 1px solid var(--ink-10); border-bottom: 1px solid var(--ink-10); }
+    .proj-card:nth-child(3n) { border-right: none; }
+    .proj-card-img { position: relative; overflow: hidden; background: var(--white); aspect-ratio: 4/3; }
+    .proj-card-img img.card-bg, .proj-card-img video.card-bg { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.4,0,.2,1); }
+    .proj-card:hover .proj-card-img img.card-bg, .proj-card:hover .proj-card-img video.card-bg { transform: scale(1.04); }
+    .proj-card-logo { position: absolute; top: var(--sp-2); left: var(--sp-2); z-index: 2; pointer-events: none; max-width: 34%; max-height: 34px; object-fit: contain; }
+    .proj-card-info { padding: var(--sp-3); display: flex; align-items: center; justify-content: space-between; }
+    .proj-card-num { font-family: var(--mono); font-size: .58rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); display: block; margin-bottom: 6px; }
+    .proj-card-name { font-family: var(--display); font-size: clamp(16px,1.6vw,22px); font-weight: 700; color: var(--ink); letter-spacing: -.005em; text-transform: uppercase; }
+    .proj-card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .proj-card-arrow { width: 34px; height: 34px; border: 1px solid var(--ink-20); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; color: var(--ink); transition: background .2s, color .2s, border-color .2s; }
+    .proj-card:hover .proj-card-arrow { background: var(--clay); color: var(--white); border-color: var(--clay); }
 
-    /* ═══════════════════════════════════════════════
-       FEATURED — RED FLAT
-    ═══════════════════════════════════════════════ */
-    #featured { padding: 0; overflow: hidden; }
-    .featured-strip {
-      position: relative; min-height: 60vh;
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
-      background: var(--red);
-    }
-    .featured-tex {
-      position: absolute; inset: 0;
-      background: url('work/AdobeStock_566224854.png') center/cover;
-      mix-blend-mode: multiply; opacity: .3; pointer-events: none;
-    }
-    .featured-tex2 {
-      position: absolute; top: 0; right: 0; width: 55%; height: 100%;
-      background: url('work/AdobeStock_503747442.png') right center/cover;
-      mix-blend-mode: multiply; opacity: .2; pointer-events: none;
-    }
-    .featured-text { position: relative; z-index: 2; text-align: center; padding: 80px 24px; }
-    .featured-eyebrow {
-      font-family: var(--nhg-text); font-size: .72rem; font-weight: 600;
-      letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
-    }
-    .featured-headline {
-      font-family: var(--nhg);
-      font-size: clamp(64px, 10vw, 144px); font-weight: 900; line-height: .86;
-      color: var(--paper); text-transform: uppercase; letter-spacing: -.02em;
-    }
-    .featured-sub {
-      margin-top: 40px;
-      font-family: var(--nhg-text); font-size: clamp(17px,1.8vw,24px); font-weight: 800;
-      color: var(--gold); letter-spacing: .01em;
-    }
+    /* ══ PHILOSOPHY ══ */
+    #philosophy { background: var(--ink); padding: var(--sp-6) var(--margin); text-align: center; }
+    .phil-label { font-family: var(--mono); font-size: .64rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: var(--clay-40); margin-bottom: var(--sp-3); }
+    .phil-headline { font-family: var(--display); font-size: clamp(44px,8vw,120px); font-weight: 700; line-height: .9; letter-spacing: -.02em; text-transform: uppercase; color: var(--white); }
+    .phil-sub { margin-top: var(--sp-3); font-family: var(--text); font-size: clamp(14px,1.4vw,18px); font-weight: 300; color: var(--white-70); }
 
-    /* ═══════════════════════════════════════════════
-       ABOUT — PARCHMENT
-    ═══════════════════════════════════════════════ */
-    #about {
-      padding: 120px 64px 100px;
-      background: var(--paper);
-      color: var(--ink); position: relative; overflow: hidden;
-    }
-    #about .tex-canvas-overlay {
-      position: absolute; inset: 0; pointer-events: none;
-      background: url('work/AdobeStock_504131485.png') center/cover;
-      mix-blend-mode: multiply; opacity: .09;
-    }
-    #about .tex-right-overlay {
-      position: absolute; top: 0; right: 0; width: 50%; height: 100%; pointer-events: none;
-      background: url('work/AdobeStock_566224854.png') right center/cover;
-      mix-blend-mode: multiply; opacity: .1;
-    }
-    .about-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .about-heading {
-      font-family: var(--nhg); font-size: clamp(48px, 6vw, 92px); font-weight: 900; line-height: .88;
-      text-transform: uppercase; color: var(--ink); margin-bottom: 40px; letter-spacing: -.02em;
-    }
-    .about-heading em {
-      font-family: var(--nhg-text); font-style: normal; font-size: .42em;
-      font-weight: 300; color: var(--dark-brown); display: block; letter-spacing: .1em;
-      margin-top: 6px; text-transform: lowercase;
-    }
-    .about-stat-row { display: flex; gap: 48px; margin-bottom: 48px; }
-    .about-stat-num { font-family: var(--nhg); font-size: 3.8rem; font-weight: 900; line-height: 1; color: var(--red); }
-    .about-stat-label {
-      font-family: var(--nhg-text); font-size: .64rem; font-weight: 400;
-      letter-spacing: .18em; text-transform: uppercase; color: var(--mid); margin-top: 6px;
-    }
-    .about-bio {
-      font-family: var(--nhg-text); font-size: clamp(15px,1.4vw,17px); font-weight: 300;
-      line-height: 1.9; color: rgba(38,25,8,.72); max-width: 540px;
-    }
-    .about-bio strong { color: var(--ink); font-weight: 600; }
-    .philosophy-block { margin-top: 48px; border-left: 3px solid var(--red); padding-left: 24px; }
-    .philosophy-label {
-      font-family: var(--nhg-text); font-size: .6rem; font-weight: 600;
-      letter-spacing: .25em; text-transform: uppercase; color: var(--dark-brown); margin-bottom: 14px;
-    }
-    .philosophy-text {
-      font-family: var(--nhg-text); font-size: clamp(17px,1.8vw,23px);
-      font-weight: 800; line-height: 1.5; color: var(--gold); letter-spacing: -.01em;
-    }
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 56px; }
-    .skill-pill {
-      font-family: var(--nhg-text); font-size: .6rem; font-weight: 400;
-      letter-spacing: .16em; text-transform: uppercase;
-      padding: 7px 16px; border: 1px solid rgba(38,25,8,.22); color: var(--ink);
-      background: transparent; transition: background .2s, color .2s; cursor: default;
-    }
-    .skill-pill:hover { background: var(--ink); color: var(--paper); }
-    .about-watermark-wrap {
-      position: relative; overflow: hidden; min-height: 360px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .about-watermark {
-      font-family: var(--nhg); font-size: clamp(200px, 28vw, 340px); font-weight: 900;
-      color: rgba(193,39,45,.08); line-height: .85;
-      pointer-events: none; user-select: none; letter-spacing: -.04em;
-      position: relative; z-index: 1;
-    }
-    .about-watermark-tex {
-      position: absolute; inset: 0;
-      background: url('work/AdobeStock_503747442.png') center/cover;
-      mix-blend-mode: multiply; opacity: .14; z-index: 2;
-    }
-    .about-watermark-tex2 {
-      position: absolute; inset: 0;
-      background: url('work/AdobeStock_566224854.png') center/cover;
-      mix-blend-mode: multiply; opacity: .1; z-index: 3;
-    }
+    /* ══ ABOUT ══ */
+    #about { background: var(--white); }
+    .about-header { padding: var(--sp-6) var(--margin) var(--sp-4); border-bottom: 1px solid var(--ink-10); display: flex; align-items: flex-end; justify-content: space-between; }
+    .about-title { font-family: var(--display); font-size: clamp(32px,4.6vw,64px); font-weight: 700; letter-spacing: -.02em; text-transform: uppercase; color: var(--ink); }
+    .about-years { font-family: var(--display); font-size: 3.4rem; font-weight: 700; color: var(--clay); line-height: 1; }
+    .about-years-label { font-family: var(--mono); font-size: .58rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-40); margin-top: 6px; }
+    .about-body { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--ink-10); }
+    .about-col { padding: var(--sp-5) var(--margin); border-right: 1px solid var(--ink-10); }
+    .about-col:last-child { border-right: none; }
+    .about-bio { font-family: var(--text); font-size: clamp(14px,1.3vw,16px); font-weight: 300; line-height: 1.8; color: var(--ink-60); }
+    .about-bio strong { font-weight: 600; color: var(--ink); }
+    .about-quote { font-family: var(--display); font-size: clamp(14px,1.75vw,24px); font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: var(--sp-4); letter-spacing: -.01em; white-space: nowrap; }
+    .about-quote em { color: var(--clay); font-style: normal; }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-pill { font-family: var(--mono); font-size: .6rem; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; padding: 7px 14px; border: 1px solid var(--ink-20); color: var(--ink); }
+    .about-logo-cell { display: flex; align-items: center; justify-content: center; }
+    .about-logo-cell img { max-width: 140px; opacity: .08; }
 
-    /* ═══════════════════════════════════════════════
-       PROCESS — RED FLAT
-    ═══════════════════════════════════════════════ */
-    #process {
-      padding: 80px 64px; background: var(--red); position: relative; overflow: hidden;
-    }
-    #process::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: url('work/AdobeStock_566224854.png') center/cover;
-      mix-blend-mode: multiply; opacity: .28;
-    }
-    #process::after {
-      content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; pointer-events: none;
-      background: url('work/AdobeStock_503747442.png') right center/cover;
-      mix-blend-mode: multiply; opacity: .18;
-    }
-    #process .section-label { color: var(--gold); margin-bottom: 24px; }
-    #process .section-label::before { background: var(--gold); }
-    .process-heading {
-      font-family: var(--nhg);
-      font-size: clamp(44px,5.5vw,80px); font-weight: 900;
-      text-transform: uppercase; line-height: .88; letter-spacing: -.02em;
-      color: var(--paper); margin-bottom: 60px; position: relative; z-index: 1;
-    }
-    .process-grid {
-      position: relative; z-index: 1;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
-    }
-    .process-item { padding: 40px 28px; border-left: 1px solid rgba(217,181,150,.15); }
-    .process-num {
-      font-family: var(--nhg); font-size: 3.2rem; font-weight: 900;
-      color: rgba(217,181,150,.14); line-height: 1; margin-bottom: 16px;
-    }
-    .process-name {
-      font-family: var(--nhg); font-size: .9rem; font-weight: 700;
-      letter-spacing: .08em; text-transform: uppercase; color: var(--paper); margin-bottom: 12px;
-    }
-    .process-desc {
-      font-family: var(--nhg-text); font-size: .72rem; font-weight: 300;
-      line-height: 1.9; color: rgba(217,181,150,.65); letter-spacing: .01em;
-    }
+    /* ══ PROCESS ══ */
+    #process { background: var(--sand); border-top: 1px solid var(--ink-10); }
+    .process-header { padding: var(--sp-6) var(--margin) var(--sp-4); border-bottom: 1px solid var(--ink-10); }
+    .process-label { font-family: var(--mono); font-size: .64rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); margin-bottom: var(--sp-2); }
+    .process-title { font-family: var(--display); font-size: clamp(32px,4.6vw,64px); font-weight: 700; letter-spacing: -.02em; text-transform: uppercase; color: var(--ink); }
+    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); }
+    .process-item { padding: var(--sp-4); border-right: 1px solid var(--ink-10); border-bottom: 1px solid var(--ink-10); }
+    .process-item:last-child { border-right: none; }
+    .process-num { font-family: var(--display); font-size: 2.2rem; font-weight: 700; color: var(--clay); line-height: 1; margin-bottom: var(--sp-2); }
+    .process-name { font-family: var(--display); font-size: .86rem; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; color: var(--ink); margin-bottom: var(--sp-2); }
+    .process-desc { font-family: var(--text); font-size: .78rem; font-weight: 300; line-height: 1.75; color: var(--ink-60); }
 
-    /* ═══════════════════════════════════════════════
-       CONTACT — PARCHMENT (same as About)
-    ═══════════════════════════════════════════════ */
-    #contact {
-      padding: 140px 64px 100px; background: var(--paper);
-      text-align: center; position: relative; overflow: hidden;
-      color: var(--ink);
-    }
-    #contact::before {
-      content: ''; position: absolute; inset: 0;
-      background: url('work/AdobeStock_504131485.png') center/cover;
-      mix-blend-mode: multiply; opacity: .09; pointer-events: none;
-    }
-    #contact::after {
-      content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%;
-      background: url('work/AdobeStock_566224854.png') right center/cover;
-      mix-blend-mode: multiply; opacity: .1; pointer-events: none;
-    }
-    .contact-label {
-      font-family: var(--nhg-text); font-size: .7rem; font-weight: 600;
-      letter-spacing: .28em; text-transform: uppercase;
-      color: var(--red); margin-bottom: 32px; position: relative; z-index: 1;
-    }
-    .contact-headline {
-      font-family: var(--nhg);
-      font-size: clamp(52px,8vw,128px); font-weight: 900; line-height: .88;
-      text-transform: uppercase; color: var(--ink); margin-bottom: 16px; letter-spacing: -.02em;
-      position: relative; z-index: 1;
-    }
-    .contact-sub {
-      font-family: var(--nhg-text); font-size: clamp(16px,1.7vw,22px); font-weight: 300;
-      color: rgba(38,25,8,.55); margin-bottom: 56px; position: relative; z-index: 1;
-    }
-    .contact-cta {
-      display: inline-flex; align-items: center; gap: 16px;
-      font-family: var(--nhg-text); font-size: .75rem; font-weight: 600;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: var(--paper); background: var(--red);
-      padding: 20px 48px; text-decoration: none; position: relative; z-index: 1;
-      transition: background .25s;
-    }
-    .contact-cta:hover { background: var(--ink); }
-    .contact-cta::after { content: '→'; font-size: 1rem; }
+    /* ══ CONTACT ══ */
+    #contact { background: var(--white); border-top: 1px solid var(--ink-10); padding: var(--sp-6) var(--margin); text-align: center; }
+    .contact-label { font-family: var(--mono); font-size: .64rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-40); margin-bottom: var(--sp-3); }
+    .contact-headline { font-family: var(--display); font-size: clamp(44px,8vw,128px); font-weight: 700; line-height: .9; text-transform: uppercase; color: var(--ink); letter-spacing: -.02em; margin-bottom: var(--sp-4); }
+    .contact-cta { display: inline-flex; align-items: center; gap: var(--sp-2); font-family: var(--mono); font-size: .72rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 16px 40px; text-decoration: none; transition: background .2s; }
+    .contact-cta:hover { background: var(--clay); }
+    .contact-cta::after { content: '→'; font-size: .95rem; }
 
-    /* ═══════════════════════════════════════════════
-       FOOTER — RED BANNER
-    ═══════════════════════════════════════════════ */
-    footer {
-      background: var(--red) !important;
-      border-top: none !important;
-      position: relative; overflow: hidden;
-    }
-    footer::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: url('work/AdobeStock_566224854.png') center/cover;
-      mix-blend-mode: multiply; opacity: .22;
-    }
-    footer > * { position: relative; z-index: 1; }
-    .footer-sig img { height: 40px; opacity: .95; }
-    .footer-copy { color: rgba(217,181,150,.6); }
-    .footer-links a { color: rgba(217,181,150,.6); }
-    .footer-links a:hover { color: var(--gold); }
-
-    /* ═══════════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════════ */
-    @media (max-width: 960px) {
-      #hero,#work,#about,#process,#contact,footer { padding-left: 28px; padding-right: 28px; }
+    @media (max-width: 900px) {
+      .hero-main { grid-template-columns: 1fr; gap: var(--sp-4); }
+      .hero-name { white-space: normal; }
+      .hero-below { grid-template-columns: 1fr; }
+      .hero-below-col { border-right: none; border-bottom: 1px solid var(--ink-10); }
       .projects-grid { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .proj-card { border-right: none; }
+      .about-body { grid-template-columns: 1fr; }
+      .about-col { border-right: none; }
       .process-grid { grid-template-columns: 1fr 1fr; }
-      .hero-scroll { display: none; }
-      .hero-bottom { flex-direction: column; gap: 24px; }
     }
     @media (max-width: 560px) {
       .process-grid { grid-template-columns: 1fr; }
-      body::after { display: none; }
+      .about-quote { white-space: normal; }
     }
   </style>
 </head>
 <body>
 
-<div class="grain"></div>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo"><img src="work/AlanTodd_Signature-wht.png" alt="Alan Todd" /></a>
+  <a href="#hero" class="nav-logo">
+    <img class="nav-logo-icon" src="work/atgd_logo.png" alt="ATGD" />
+  </a>
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
@@ -473,182 +159,165 @@
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <section id="hero">
-  <div class="hero-at" aria-hidden="true">AT</div>
-  <div class="hero-scroll">Scroll</div>
-  <div class="hero-content">
-    <div class="hero-label">Senior Graphic Designer &nbsp;·&nbsp; Brand &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Identity</div>
-    <div class="hero-name">ALAN TODD</div>
-    <div class="hero-sub">GRAPHIC DESIGN</div>
-    <div class="hero-bottom">
-      <p class="hero-desc">
-        Crafting visual systems that carry weight — where every texture, type choice, and mark is a deliberate act of communication.
-      </p>
-      <div class="hero-meta">
-        Based in Ayrshire, Scotland<br/>
-        Available for Freelance<br/>
-        <span style="color:var(--gold);font-weight:600;">Est. 2010</span>
+
+  <div class="hero-main reveal">
+    <div class="hero-left">
+      <h1 class="hero-name">Alan Todd</h1>
+      <div class="hero-meta-row">
+        <div class="hero-discipline">Graphic Designer</div>
+        <div class="hero-location">Ayrshire, Scotland · Est. 2010</div>
+      </div>
+      <div class="hero-intro-block">
+        <div class="hero-intro-label">Introduction</div>
+        <p class="hero-intro-text">
+          21 years turning rough briefs into striking, considered work —<br/>brand, editorial and campaign design that holds up.
+        </p>
       </div>
     </div>
+    <div class="hero-video-frame">
+      <video autoplay muted loop playsinline preload="auto" poster="work/at-hero.jpg">
+        <source src="work/at-hero.mp4" type="video/mp4" />
+      </video>
+    </div>
   </div>
+
+  <div class="hero-below">
+    <div class="hero-below-col reveal">
+      <div class="hbc-label">Experience</div>
+      <div class="hbc-value"><strong>21+</strong> Years</div>
+    </div>
+    <div class="hero-below-col reveal">
+      <div class="hbc-label">Discipline</div>
+      <div class="hbc-value">Brand · Editorial · Motion · Print</div>
+    </div>
+    <div class="hero-below-col reveal">
+      <div class="hbc-label">Availability</div>
+      <div class="hbc-value">Open to Freelance</div>
+    </div>
+  </div>
+
 </section>
 
-<!-- MARQUEE -->
+<!-- ══ MARQUEE ══ -->
 <div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="word">Brand Identity</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">Editorial Design</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">Print &amp; Production</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">Typography</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">Motion Graphics</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">Animation</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">21+ Years</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <!-- duplicate for seamless loop -->
-    <span class="word">Brand Identity</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">Editorial Design</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">Print &amp; Production</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">Typography</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">Motion Graphics</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">Animation</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
-    <span class="word">21+ Years</span>
-    <span class="ptr"><img src="work/cursor.svg" alt="" /></span>
+  <div class="marquee-track" id="marquee">
+    <span class="word">Brand Identity</span><span class="sep">/</span>
+    <span class="word">Editorial Design</span><span class="sep">/</span>
+    <span class="word">Campaign Design</span><span class="sep">/</span>
+    <span class="word">Typography</span><span class="sep">/</span>
+    <span class="word">Motion Graphics</span><span class="sep">/</span>
+    <span class="word">Print Production</span><span class="sep">/</span>
+    <span class="word">21+ Years</span><span class="sep">/</span>
+    <span class="word">Brand Identity</span><span class="sep">/</span>
+    <span class="word">Editorial Design</span><span class="sep">/</span>
+    <span class="word">Campaign Design</span><span class="sep">/</span>
+    <span class="word">Typography</span><span class="sep">/</span>
+    <span class="word">Motion Graphics</span><span class="sep">/</span>
+    <span class="word">Print Production</span><span class="sep">/</span>
+    <span class="word">21+ Years</span><span class="sep">/</span>
   </div>
 </div>
 
-<!-- WORK -->
+<!-- ══ WORK ══ -->
 <section id="work">
   <div class="work-header reveal">
-    <div>
-      <div class="section-label-dark">Selected Work</div>
-      <h2 class="work-title">MY WORK</h2>
-    </div>
-    <div class="work-count">004 Projects</div>
+    <h2 class="work-title">Selected Work</h2>
+    <span class="work-count">003 Projects</span>
   </div>
 
   <div class="projects-grid">
 
-    <!-- 01 The Scottish Farmer -->
+    <!-- 01 The Herald -->
+    <a href="project-02.html" class="proj-card reveal">
+      <div class="proj-card-img">
+        <img class="card-bg" src="work/Her/25for25_Herald_LTmockup_OnlineDisplay_ATGD.png" alt="The Herald" />
+        <img class="proj-card-logo" src="work/Her/The Herald_logo.png" alt="The Herald" />
+      </div>
+      <div class="proj-card-info">
+        <div class="proj-card-left">
+          <span class="proj-card-num">01 — Subscription Campaign</span>
+          <div class="proj-card-name">The Herald</div>
+          <div class="proj-card-tags">
+            <span class="tag">Event</span>
+            <span class="tag">Digital Display</span>
+          </div>
+        </div>
+        <div class="proj-card-arrow">→</div>
+      </div>
+    </a>
+
+    <!-- 02 Glasgow Times -->
+    <a href="project-03.html" class="proj-card reveal">
+      <div class="proj-card-img">
+        <img class="card-bg" src="work/GT/GT150yr_TaxiLivery-2026_v3.jpg" alt="Glasgow Times" />
+        <img class="proj-card-logo" src="work/GT/GlasgowTimes_logo.png" alt="Glasgow Times" />
+      </div>
+      <div class="proj-card-info">
+        <div class="proj-card-left">
+          <span class="proj-card-num">02 — 150th Anniversary</span>
+          <div class="proj-card-name">Glasgow Times</div>
+          <div class="proj-card-tags">
+            <span class="tag">Out-of-Home</span>
+            <span class="tag">Print</span>
+          </div>
+        </div>
+        <div class="proj-card-arrow">→</div>
+      </div>
+    </a>
+
+    <!-- 03 The Scottish Farmer -->
     <a href="project-01.html" class="proj-card reveal">
       <div class="proj-card-img">
         <img class="card-bg" src="work/tsf/Ardbeg_Sub_TSF_OnlineDisplay_LTmockup.png" alt="The Scottish Farmer" />
-        <img class="proj-card-logo" src="work/tsf/TSFwhtlogo.png" alt="The Scottish Farmer logo" />
+        <img class="proj-card-logo" src="work/tsf/TSFlogo.png" alt="The Scottish Farmer" />
       </div>
-      <div class="proj-card-body">
-        <span class="proj-card-num">01 — 2024</span>
-        <div class="proj-card-tags">
-          <span class="tag">Print</span><span class="tag">Digital</span><span class="tag">Subscription</span>
+      <div class="proj-card-info">
+        <div class="proj-card-left">
+          <span class="proj-card-num">03 — Brand Collaboration</span>
+          <div class="proj-card-name">The Scottish Farmer</div>
+          <div class="proj-card-tags">
+            <span class="tag">Print</span>
+            <span class="tag">Digital</span>
+            <span class="tag">Subscription</span>
+          </div>
         </div>
+        <div class="proj-card-arrow">→</div>
       </div>
-      <div class="proj-card-arrow"><img src="work/cursor.svg" alt="" /></div>
-    </a>
-
-    <!-- 02 The Herald -->
-    <a href="project-02.html" class="proj-card reveal">
-      <div class="proj-card-img">
-        <img class="card-bg" src="work/Her/BannerDesign_Herald_BHQ.jpg" alt="The Herald" />
-        <img class="proj-card-logo" src="work/Her/The-Herald_logowht.png" alt="The Herald logo" />
-      </div>
-      <div class="proj-card-body">
-        <span class="proj-card-num">02 — 2024</span>
-        <div class="proj-card-tags">
-          <span class="tag">Editorial</span><span class="tag">Events</span><span class="tag">Sports</span>
-        </div>
-      </div>
-      <div class="proj-card-arrow"><img src="work/cursor.svg" alt="" /></div>
-    </a>
-
-    <!-- 03 The Glasgow Times -->
-    <a href="project-03.html" class="proj-card reveal">
-      <div class="proj-card-img">
-        <img class="card-bg" src="work/GT/TheWeeRedBook_GT_OnlineDisplay_LTmockup-copy.png" alt="The Glasgow Times" />
-        <img class="proj-card-logo" src="work/GT/GlasgowTimes_logoWht.png" alt="The Glasgow Times logo" />
-      </div>
-      <div class="proj-card-body">
-        <span class="proj-card-num">03 — 2024</span>
-        <div class="proj-card-tags">
-          <span class="tag">Subscription</span><span class="tag">Print</span><span class="tag">Community</span>
-        </div>
-      </div>
-      <div class="proj-card-arrow"><img src="work/cursor.svg" alt="" /></div>
-    </a>
-
-    <!-- 04 The National -->
-    <a href="project-04.html" class="proj-card reveal">
-      <div class="proj-card-img">
-        <img class="card-bg" src="work/Nat/ScottishElec_tN_OnlineDisplay_LTmockup-copy-2.png" alt="The National" />
-        <img class="proj-card-logo" src="work/Nat/THE_NATIONAL_MASTwht.png" alt="The National logo" />
-      </div>
-      <div class="proj-card-body">
-        <span class="proj-card-num">04 — 2024</span>
-        <div class="proj-card-tags">
-          <span class="tag">Data Viz</span><span class="tag">News</span><span class="tag">Digital</span>
-        </div>
-      </div>
-      <div class="proj-card-arrow"><img src="work/cursor.svg" alt="" /></div>
     </a>
 
   </div>
 </section>
 
-<!-- DESIGN PHILOSOPHY -->
-<section id="featured">
-  <div class="featured-strip">
-    <div class="featured-tex"></div>
-    <div class="featured-tex2"></div>
-    <div class="featured-text reveal">
-      <p class="featured-eyebrow">Design Philosophy</p>
-      <h2 class="featured-headline">
-        MAKE<br/>
-        DESIGNS<br/>
-        THAT LAST
-      </h2>
-      <p class="featured-sub">Good design doesn't just communicate — it lasts.</p>
-    </div>
-  </div>
+<!-- ══ PHILOSOPHY ══ -->
+<section id="philosophy">
+  <p class="phil-label reveal">Design Philosophy</p>
+  <h2 class="phil-headline reveal">NO NOISE.<br/>JUST MEANING.</h2>
+  <p class="phil-sub reveal">Good communication doesn't need to shout to be heard.</p>
 </section>
 
-<!-- ABOUT -->
+<!-- ══ ABOUT ══ -->
 <section id="about">
-  <div class="tex-canvas-overlay"></div>
-  <div class="tex-right-overlay"></div>
-  <div class="about-grid">
-
-    <div class="reveal-left">
-      <div class="section-label-dark">About</div>
-      <h2 class="about-heading">ALAN<br/>TODD<br/><em>designer</em></h2>
-      <div class="about-stat-row">
-        <div>
-          <div class="about-stat-num">21+</div>
-          <div class="about-stat-label">Years of Experience</div>
-        </div>
-      </div>
-      <p class="about-bio">
-        I'm a graphic designer with over <strong>21 years of experience</strong> keeping design standards high at Newsquest Scotland / The Herald and Times, The Scottish Farmer, and more. My approach to design is simple: I take a rough creative brief and turn it into a <strong>striking final asset that connects with people.</strong>
-        <br/><br/>
-        For over two decades, I've evolved from print and traditional layout design into <strong>video, motion graphics, and animation.</strong> No fuss, honest communication, and getting the job done right the first time.
-      </p>
-      <div class="philosophy-block">
-        <div class="philosophy-label">Design Philosophy</div>
-        <p class="philosophy-text">"The best design doesn't shout — it holds its ground."</p>
-      </div>
+  <div class="about-header reveal">
+    <h2 class="about-title">About</h2>
+    <div style="text-align:right;">
+      <div class="about-years">21+</div>
+      <div class="about-years-label">Years of Experience</div>
     </div>
-
-    <div class="reveal">
-      <div class="section-label-dark">Expertise</div>
+  </div>
+  <div class="about-body">
+    <div class="about-col reveal">
+      <p class="about-quote">
+        "The best design doesn't shout — <em>it holds its ground.</em>"
+      </p>
+      <p class="about-bio">
+        I'm a graphic designer with over <strong>21 years of experience</strong> keeping design standards high at Newsquest Scotland — The Herald, Glasgow Times, The Scottish Farmer and more. My approach is simple: take a rough creative brief and turn it into a <strong>striking final asset that connects with people.</strong>
+        <br/><br/>
+        For two decades I've evolved from print and traditional layout into <strong>video, motion graphics, and animation.</strong> No fuss, honest communication, and getting the job done right the first time.
+      </p>
+    </div>
+    <div class="about-col reveal" style="display:flex;flex-direction:column;justify-content:space-between;">
       <div class="skills-grid">
         <span class="skill-pill">Brand Identity</span>
         <span class="skill-pill">Editorial Design</span>
@@ -661,57 +330,53 @@
         <span class="skill-pill">Visual Systems</span>
         <span class="skill-pill">Adobe CC</span>
       </div>
-      <div class="about-watermark-wrap">
-        <div class="about-watermark">AT</div>
-        <div class="about-watermark-tex"></div>
-        <div class="about-watermark-tex2"></div>
+      <div class="about-logo-cell" style="margin-top:48px;">
+        <img src="work/atgd_logo.png" alt="ATGD" />
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- MY PROCESS -->
+<!-- ══ PROCESS ══ -->
 <section id="process">
-  <div style="position:relative;z-index:1;" class="reveal">
-    <div class="section-label">How I Work</div>
-    <h2 class="process-heading">MY PROCESS</h2>
+  <div class="process-header reveal">
+    <div class="process-label">How I Work</div>
+    <h2 class="process-title">My Process</h2>
   </div>
   <div class="process-grid">
     <div class="process-item reveal">
       <div class="process-num">01</div>
       <div class="process-name">Listen &amp; Research</div>
-      <p class="process-desc">Every project starts with understanding — the audience, the history, the competitive space. Good marks come from knowing what's already been said.</p>
+      <p class="process-desc">Every project starts with understanding — the audience, the history, the competitive space.</p>
     </div>
     <div class="process-item reveal">
       <div class="process-num">02</div>
       <div class="process-name">Concept</div>
-      <p class="process-desc">Wide exploration before narrowing down. I work through dozens of directions before committing — because the second idea is rarely the right one.</p>
+      <p class="process-desc">Wide exploration before narrowing down. The second idea is rarely the right one.</p>
     </div>
     <div class="process-item reveal">
       <div class="process-num">03</div>
       <div class="process-name">Craft &amp; Refine</div>
-      <p class="process-desc">Details are where design earns its keep. Kerning, weight, texture, spacing — the gap between good and great lives in these decisions.</p>
+      <p class="process-desc">Kerning, weight, texture, spacing — the gap between good and great lives in these decisions.</p>
     </div>
     <div class="process-item reveal">
       <div class="process-num">04</div>
       <div class="process-name">Deliver &amp; Document</div>
-      <p class="process-desc">A brand handed off without a system is a brand that degrades. I document every decision so teams can extend the work with confidence.</p>
+      <p class="process-desc">A brand handed off without a system is a brand that degrades. I document every decision.</p>
     </div>
   </div>
 </section>
 
-<!-- START A PROJECT -->
+<!-- ══ CONTACT ══ -->
 <section id="contact">
   <p class="contact-label reveal">Get in Touch</p>
-  <h2 class="contact-headline reveal">START A<br/>PROJECT</h2>
-  <p class="contact-sub reveal">Let's work together.</p>
+  <h2 class="contact-headline reveal">LET'S<br/>WORK</h2>
   <a href="mailto:altodrs@icloud.com" class="contact-cta reveal">altodrs@icloud.com</a>
 </section>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-sig"><img src="work/AlanTodd_Signature-wht.png" alt="Alan Todd" /></div>
+  <div class="footer-sig"><img src="work/atgd_logo.png" alt="ATGD" /></div>
   <p class="footer-copy">© 2026 Alan Todd Design — All Rights Reserved</p>
   <ul class="footer-links">
     <li><a href="#">Instagram</a></li>
@@ -721,24 +386,27 @@
 </footer>
 
 <script>
-  /* SVG Cursor */
-  const cursor = document.getElementById('cursor');
-  const ring   = document.getElementById('cursorRing');
-  let mx=0, my=0, rx=0, ry=0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-  });
-  (function loop(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
-  document.querySelectorAll('a,button,.proj-card,.skill-pill').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{ cursor.classList.add('hover'); ring.classList.add('hover'); });
-    el.addEventListener('mouseleave',()=>{ cursor.classList.remove('hover'); ring.classList.remove('hover'); });
-  });
-  /* Reveals */
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*80); obs.unobserve(e.target); } });
-  },{ threshold: 0.08 });
-  document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const track = document.getElementById('marquee');
+  if (track) {
+    let pos = 0;
+    const half = () => track.scrollWidth / 2;
+    (function tick() {
+      pos -= 0.5;
+      if (Math.abs(pos) >= half()) pos = 0;
+      track.style.transform = `translateX(${pos}px)`;
+      requestAnimationFrame(tick);
+    })();
+  }
 </script>
 </body>
 </html>
