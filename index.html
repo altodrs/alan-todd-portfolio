@@ -45,8 +45,14 @@
       font-weight: 300; line-height: 1.6; color: var(--ink);
     }
 
+    .hero-video-col { display: flex; flex-direction: column; align-items: center; }
     .hero-video-frame { width: 100%; transform: scale(1.2); transform-origin: center; }
     .hero-video-frame video { width: 100%; display: block; }
+    .hero-video-caption {
+      font-family: var(--text); font-size: .78rem; font-weight: 300;
+      line-height: 1.6; color: var(--ink-40); text-align: center;
+      max-width: 380px; margin-top: 44px;
+    }
 
     .hero-below {
       display: grid; grid-template-columns: repeat(3,1fr);
@@ -176,10 +182,13 @@
         </p>
       </div>
     </div>
-    <div class="hero-video-frame">
-      <video autoplay muted loop playsinline preload="auto" poster="work/at-hero.jpg">
-        <source src="work/at-hero.mp4" type="video/mp4" />
-      </video>
+    <div class="hero-video-col">
+      <div class="hero-video-frame">
+        <video autoplay muted loop playsinline preload="auto" poster="work/at-hero.jpg">
+          <source src="work/at-hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p class="hero-video-caption">A glimpse of the video and motion work I do alongside graphic design — animation, edits and motion graphics for clients across print and digital.</p>
     </div>
   </div>
 
