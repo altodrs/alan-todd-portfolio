@@ -14,9 +14,9 @@
     #hero { padding-top: 76px; background: var(--white); }
 
     .hero-main {
-      display: grid; grid-template-columns: 528px 1fr;
-      align-items: center; gap: var(--sp-4);
-      padding: var(--sp-5) 0 var(--sp-5) var(--margin);
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: var(--sp-5);
+      padding: var(--sp-5) var(--margin);
       border-bottom: 1px solid var(--ink-10);
       background: var(--white);
     }
@@ -46,7 +46,7 @@
     }
 
     .hero-video-col { display: flex; flex-direction: column; align-items: center; }
-    .hero-video-frame { width: 100%; transform: scale(1.05); transform-origin: right center; }
+    .hero-video-frame { width: 100%; transform: scale(1.2); transform-origin: center; }
     .hero-video-frame video { width: 100%; display: block; }
     .hero-video-caption {
       font-family: var(--text); font-size: .78rem; font-weight: 300;
@@ -136,8 +136,7 @@
     .contact-cta::after { content: '→'; font-size: .95rem; }
 
     @media (max-width: 900px) {
-      .hero-main { grid-template-columns: 1fr; gap: var(--sp-4); padding-right: var(--margin); }
-      .hero-video-frame { transform: none; }
+      .hero-main { grid-template-columns: 1fr; gap: var(--sp-4); }
       .hero-name { white-space: normal; }
       .hero-below { grid-template-columns: 1fr; }
       .hero-below-col { border-right: none; border-bottom: 1px solid var(--ink-10); }
@@ -189,7 +188,7 @@
           <source src="work/at-hero.mp4" type="video/mp4" />
         </video>
       </div>
-      <p class="hero-video-caption">A glimpse of the video and motion work I do alongside graphic design — animation, edits and motion graphics for clients across print and digital.</p>
+      <p class="hero-video-caption">A glimpse of the video and motion work<br/>I do alongside graphic design.</p>
     </div>
   </div>
 
