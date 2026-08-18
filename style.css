@@ -129,7 +129,7 @@ nav {
   padding: 0 var(--sp-4);
   text-transform: uppercase;
 }
-.marquee-track .sep { color: var(--white); opacity: .7; }
+.marquee-track .sep { color: var(--ink); opacity: 1; }
 
 /* ── Slider / carousel ── */
 .slider { position: relative; overflow: hidden; background: var(--ink); }
