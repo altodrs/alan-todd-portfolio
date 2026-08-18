@@ -15,23 +15,24 @@
 
     .hero-main {
       display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center; gap: var(--sp-5);
+      align-items: end; gap: var(--sp-5);
       padding: var(--sp-5) var(--margin);
       border-bottom: 1px solid var(--ink-10);
       background: var(--white);
     }
     .hero-left { display: flex; flex-direction: column; gap: var(--sp-4); }
+    .hero-name-block { display: flex; flex-direction: column; gap: 12px; }
     .hero-name {
       font-family: var(--display);
-      font-size: clamp(34px, 4.6vw, 72px);
+      font-size: clamp(40px, 5.6vw, 92px);
       font-weight: 700; line-height: .9; letter-spacing: -.02em;
       text-transform: uppercase; color: var(--clay);
       white-space: nowrap;
     }
-    .hero-meta-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-2); }
     .hero-discipline {
-      font-family: var(--mono); font-size: .74rem; font-weight: 400;
-      text-transform: uppercase; letter-spacing: .1em; color: var(--ink);
+      font-family: var(--display); font-size: clamp(18px, 3.2vw, 44px);
+      font-weight: 700; text-transform: uppercase; letter-spacing: -.01em;
+      color: var(--ink); line-height: 1; white-space: nowrap;
     }
     .hero-location { font-family: var(--mono); font-size: .64rem; font-weight: 400; color: var(--ink-40); letter-spacing: .04em; }
 
@@ -83,7 +84,7 @@
     .proj-card-img { position: relative; overflow: hidden; background: var(--white); aspect-ratio: 4/3; }
     .proj-card-img img.card-bg, .proj-card-img video.card-bg { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.4,0,.2,1); }
     .proj-card:hover .proj-card-img img.card-bg, .proj-card:hover .proj-card-img video.card-bg { transform: scale(1.04); }
-    .proj-card-logo { position: absolute; top: var(--sp-2); left: var(--sp-2); z-index: 2; pointer-events: none; max-width: 34%; max-height: 34px; object-fit: contain; }
+    .proj-card-logo { position: absolute; top: var(--sp-2); left: var(--sp-2); z-index: 2; pointer-events: none; max-width: 48%; max-height: 34px; object-fit: contain; object-position: left center; }
     .proj-card-info { padding: var(--sp-3); display: flex; align-items: center; justify-content: space-between; }
     .proj-card-num { font-family: var(--mono); font-size: .58rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); display: block; margin-bottom: 6px; }
     .proj-card-name { font-family: var(--display); font-size: clamp(16px,1.6vw,22px); font-weight: 700; color: var(--ink); letter-spacing: -.005em; text-transform: uppercase; }
@@ -170,15 +171,15 @@
 
   <div class="hero-main reveal">
     <div class="hero-left">
-      <h1 class="hero-name">Alan Todd</h1>
-      <div class="hero-meta-row">
+      <div class="hero-name-block">
+        <h1 class="hero-name">Alan Todd</h1>
         <div class="hero-discipline">Graphic Designer</div>
         <div class="hero-location">Ayrshire, Scotland · Est. 2010</div>
       </div>
       <div class="hero-intro-block">
         <div class="hero-intro-label">Introduction</div>
         <p class="hero-intro-text">
-          21 years turning rough briefs into striking, considered work —<br/>brand, editorial and campaign design that holds up.
+          21 years turning briefs into designs that work as intended. Branding, editorial, and campaigns that do the job.
         </p>
       </div>
     </div>
@@ -302,8 +303,8 @@
 <!-- ══ PHILOSOPHY ══ -->
 <section id="philosophy">
   <p class="phil-label reveal">Design Philosophy</p>
-  <h2 class="phil-headline reveal">NO NOISE.<br/>JUST MEANING.</h2>
-  <p class="phil-sub reveal">Good communication doesn't need to shout to be heard.</p>
+  <h2 class="phil-headline reveal">DESIGNS MADE<br/>SIMPLE.</h2>
+  <p class="phil-sub reveal">Honest work that holds its value.</p>
 </section>
 
 <!-- ══ ABOUT ══ -->
@@ -318,12 +319,12 @@
   <div class="about-body">
     <div class="about-col reveal">
       <p class="about-quote">
-        "The best design doesn't shout — <em>it holds its ground.</em>"
+        Simple design. Honest work that <em>holds its ground.</em>
       </p>
       <p class="about-bio">
-        I'm a graphic designer with over <strong>21 years of experience</strong> keeping design standards high at Newsquest Scotland — The Herald, Glasgow Times, The Scottish Farmer and more. My approach is simple: take a rough creative brief and turn it into a <strong>striking final asset that connects with people.</strong>
+        I'm a graphic designer with <strong>21 years of experience</strong> delivering solid work across a wide range of departments and publications for Newsquest Scotland — including The Herald, Glasgow Times, and The Scottish Farmer. My job is straightforward: I take a rough idea and build it into a <strong>striking piece of design that makes sense.</strong>
         <br/><br/>
-        For two decades I've evolved from print and traditional layout into <strong>video, motion graphics, and animation.</strong> No fuss, honest communication, and getting the job done right the first time.
+        Over two decades, I've grown my trade from traditional print layout into <strong>video, motion, and animation.</strong> No fuss, honest communication, and getting the job done right the first time.
       </p>
     </div>
     <div class="about-col reveal" style="display:flex;flex-direction:column;justify-content:space-between;">
@@ -355,23 +356,23 @@
   <div class="process-grid">
     <div class="process-item reveal">
       <div class="process-num">01</div>
-      <div class="process-name">Listen &amp; Research</div>
-      <p class="process-desc">Every project starts with understanding — the audience, the history, the competitive space.</p>
+      <div class="process-name">Understand the Job</div>
+      <p class="process-desc">Every project starts with getting the full story. I take the time to learn your crowd, your history, and your competition before making a single mark.</p>
     </div>
     <div class="process-item reveal">
       <div class="process-num">02</div>
-      <div class="process-name">Concept</div>
-      <p class="process-desc">Wide exploration before narrowing down. The second idea is rarely the right one.</p>
+      <div class="process-name">Test the Ideas</div>
+      <p class="process-desc">I explore a wide range of options before narrowing anything down. The first or second idea is rarely the right one, so I put in the work to find what actually fits.</p>
     </div>
     <div class="process-item reveal">
       <div class="process-num">03</div>
       <div class="process-name">Craft &amp; Refine</div>
-      <p class="process-desc">Kerning, weight, texture, spacing — the gap between good and great lives in these decisions.</p>
+      <p class="process-desc">Spacing, weight, clean lines, and details. The difference between a rushed job and a great piece of work lives entirely in these final adjustments.</p>
     </div>
     <div class="process-item reveal">
       <div class="process-num">04</div>
-      <div class="process-name">Deliver &amp; Document</div>
-      <p class="process-desc">A brand handed off without a system is a brand that degrades. I document every decision.</p>
+      <div class="process-name">Finish It Right</div>
+      <p class="process-desc">Handing over a design without a proper system means it won't last. I organize and document everything so your brand continues to hold its value down the line.</p>
     </div>
   </div>
 </section>

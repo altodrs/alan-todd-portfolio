@@ -115,7 +115,7 @@ nav {
   border-top: 1px solid var(--ink-10);
   border-bottom: 1px solid var(--ink-10);
   padding: var(--sp-2) 0;
-  background: var(--white);
+  background: var(--clay-dark);
 }
 .marquee-track {
   display: flex; align-items: center; gap: 0;
@@ -125,11 +125,11 @@ nav {
   font-family: var(--mono);
   font-size: .78rem; font-weight: 400;
   letter-spacing: .12em;
-  color: var(--ink-40);
+  color: var(--white);
   padding: 0 var(--sp-4);
   text-transform: uppercase;
 }
-.marquee-track .sep { color: var(--clay); opacity: .7; }
+.marquee-track .sep { color: var(--white); opacity: .7; }
 
 /* ── Slider / carousel ── */
 .slider { position: relative; overflow: hidden; background: var(--ink); }
