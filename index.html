@@ -14,14 +14,11 @@
     #hero { padding-top: 76px; background: var(--white); }
 
     .hero-main {
-      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto;
-      column-gap: var(--sp-5); row-gap: var(--sp-4);
       padding: var(--sp-5) var(--margin);
       border-bottom: 1px solid var(--ink-10);
       background: var(--white);
     }
     .hero-name-block {
-      grid-column: 1; grid-row: 1; align-self: start; order: 1;
       display: flex; flex-direction: column; gap: 12px;
     }
     .hero-name {
@@ -38,7 +35,18 @@
     }
     .hero-location { font-family: var(--mono); font-size: .64rem; font-weight: 400; color: var(--ink-40); letter-spacing: .04em; }
 
-    .hero-intro-block { grid-column: 1; grid-row: 2; align-self: end; order: 2; }
+    .hero-video-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      margin: var(--sp-5) 0;
+    }
+    .hero-video-frame { width: 100%; }
+    .hero-video-frame video { width: 100%; display: block; }
+    .hero-video-caption {
+      margin-top: 14px;
+      font-family: var(--text); font-size: .78rem; font-weight: 300;
+      color: var(--ink-40); text-align: center; white-space: nowrap;
+    }
+
     .hero-intro-label {
       font-family: var(--mono); font-size: .64rem; font-weight: 400;
       letter-spacing: .14em; text-transform: uppercase; color: var(--clay);
@@ -47,18 +55,6 @@
     .hero-intro-text {
       font-family: var(--text); font-size: clamp(15px, 1.4vw, 19px);
       font-weight: 300; line-height: 1.6; color: var(--ink);
-    }
-
-    .hero-video-frame {
-      grid-column: 2; grid-row: 1; align-self: start; order: 3;
-      width: 100%; transform: scale(1.2); transform-origin: top center;
-    }
-    .hero-video-frame video { width: 100%; display: block; }
-    .hero-video-caption {
-      grid-column: 2; grid-row: 2; align-self: end; justify-self: center; order: 4;
-      font-family: var(--text); font-size: .78rem; font-weight: 300;
-      line-height: 1.6; color: var(--ink-40); text-align: center;
-      max-width: 380px;
     }
 
     .hero-below {
@@ -143,11 +139,9 @@
     .contact-cta::after { content: '→'; font-size: .95rem; }
 
     @media (max-width: 900px) {
-      .hero-main { grid-template-columns: 1fr; grid-template-rows: auto; row-gap: var(--sp-4); }
-      .hero-name-block, .hero-video-frame, .hero-intro-block, .hero-video-caption { grid-column: 1; }
-      .hero-video-caption { justify-self: start; }
-      .hero-video-frame { transform: none; }
       .hero-name { white-space: normal; }
+      .hero-discipline { white-space: normal; }
+      .hero-video-caption { white-space: normal; }
       .hero-below { grid-template-columns: 1fr; }
       .hero-below-col { border-right: none; border-bottom: 1px solid var(--ink-10); }
       .projects-grid { grid-template-columns: 1fr; }
@@ -184,10 +178,13 @@
       <div class="hero-discipline">Graphic Designer</div>
       <div class="hero-location">Ayrshire, Scotland · Est. 2010</div>
     </div>
-    <div class="hero-video-frame">
-      <video autoplay muted loop playsinline preload="auto" poster="work/at-hero.jpg">
-        <source src="work/at-hero.mp4" type="video/mp4" />
-      </video>
+    <div class="hero-video-wrap">
+      <div class="hero-video-frame">
+        <video autoplay muted loop playsinline preload="auto" poster="work/at-hero.jpg">
+          <source src="work/at-hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p class="hero-video-caption">A glimpse of the video and motion work I do alongside graphic design.</p>
     </div>
     <div class="hero-intro-block">
       <div class="hero-intro-label">Introduction</div>
@@ -195,7 +192,6 @@
         21 years turning briefs into designs that work as intended. Branding, editorial, and campaigns that do the job.
       </p>
     </div>
-    <p class="hero-video-caption">A glimpse of the video and motion work<br/>I do alongside graphic design.</p>
   </div>
 
   <div class="hero-below">

@@ -3,6 +3,7 @@
 # Raw source masters too large for GitHub (100MB hard limit) — not used by the live site.
 # The compressed, web-ready exports derived from these are what's actually referenced in the HTML.
 work/AT Video slide.mov
+work/AT Video slide_1.mp4
 *.psd
 
 # Unused stock textures left over from an earlier design iteration (not referenced anywhere)
