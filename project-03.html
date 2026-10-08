@@ -3,178 +3,199 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Glasgow Times — Alan Todd Design</title>
+  <title>150 Years — Alan Todd</title>
+  <meta name="description" content="Design and brand work across print, digital and out-of-home — marking 150 years of Glasgow&#x27;s own paper." />
   <link rel="icon" href="work/atgd_favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .proj-hero-img { position: absolute; inset: 0; z-index: 0; background: url('work/GT/extracted/taxi-wrap-side.jpg') center 35%/cover; opacity: .6; }
-    .proj-hero-img::after { content: ''; position: absolute; inset: 0; background: var(--ink); opacity: .4; }
-    .cat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--sp-4); margin-top: var(--sp-4); }
-    .cat-item { border-top: 1px solid var(--ink-10); padding-top: var(--sp-2); }
-    .cat-item-label { font-family: var(--mono); font-size: .56rem; letter-spacing: .1em; text-transform: uppercase; color: var(--clay); margin-bottom: 6px; }
-    .cat-item-name { font-family: var(--display); font-weight: 700; font-size: .84rem; text-transform: uppercase; color: var(--ink); margin-bottom: 6px; }
-    .cat-item-desc { font-family: var(--text); font-size: .72rem; font-weight: 300; line-height: 1.6; color: var(--ink-60); }
-    @media (max-width: 700px) { .cat-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 420px) { .cat-grid { grid-template-columns: 1fr; } }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="atgd.css?v=20261008c" />
 </head>
-<body>
+<body class="page-project">
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img class="nav-logo-icon" src="work/atgd_logo.png" alt="ATGD" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html#work">Work</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
+<!-- ══ TOP BAR ══ -->
+<header class="site-nav site-nav--light">
+  <div class="site-nav__id">
+    <a class="t-nav site-nav__name link-line" href="index.html">AlanTodd</a>
+    <a class="t-nav site-nav__email link-line" href="mailto:altodrs@gmail.com">altodrs@gmail.com</a>
+  </div>
+  <div class="site-nav__end">
+    <button class="burger" type="button" data-menu-toggle aria-controls="menu" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ══ MENU OVERLAY ══ -->
+<nav class="menu" id="menu" aria-label="Main">
+  <div class="menu__head">
+    <h2 class="menu__title t-display" style="--d:2">Online<br />Portfolio</h2>
+    <div class="menu__photo media" style="--d:0">
+      <img src="work/alan-portrait.jpg" alt="Alan Todd" loading="lazy" />
+    </div>
+  </div>
+  <div class="menu__side">
+    <ul class="menu__links">
+      <li style="--d:1"><a class="menu__link" href="about.html"><span class="roll" data-roll>About me</span></a></li>
+      <li style="--d:2"><a class="menu__link" href="index.html#work"><span class="roll" data-roll>Portfolio</span></a></li>
+      <li style="--d:3"><a class="menu__link" href="index.html#services"><span class="roll" data-roll>Services</span></a></li>
+      <li style="--d:4"><a class="menu__link" href="index.html#contact"><span class="roll" data-roll>Contact</span></a></li>
+    </ul>
+    <a class="btn-corners btn-corners--light" style="--d:5" href="mailto:altodrs@gmail.com"><span class="roll" data-roll>Get in touch</span></a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<div class="proj-hero">
-  <div class="proj-hero-img"></div>
-  <div class="proj-hero-content reveal">
-    <img class="proj-logo" src="work/GT/GlasgowTimes_logoWht.png" alt="Glasgow Times" />
-    <h1 class="proj-title">150 Years</h1>
-    <div class="proj-rule"></div>
-    <p class="proj-subtitle">Design and brand work across print, digital and out-of-home — marking 150 years of Glasgow's own paper.</p>
-  </div>
-</div>
+<main id="main">
 
-<!-- OVERVIEW -->
-<div class="proj-body-section bg-white">
-  <div class="section-head-row reveal">
-    <div class="section-label"><span class="num">01</span>Overview</div>
-    <img src="work/GT/GlasgowTimes_logo.png" alt="Glasgow Times" />
-  </div>
-  <div class="reveal">
-    <h2 class="heading-2">150 years of Glasgow's paper, brought to the street, the screen and the front page.</h2>
-    <p class="overview-text" style="max-width:760px;">
-      Glasgow Times marked its 150th anniversary in 2026 with a campaign spanning out-of-home, digital and print. The work covers a wrapped taxi touring the city, a roll-up banner for the paper's newsletter arm, competition creative for online display, and the front pages that carried the celebration home.
-    </p>
-  </div>
-  <div class="cat-grid reveal">
-    <div class="cat-item">
-      <div class="cat-item-label">Out-of-Home</div>
-      <div class="cat-item-name">Taxi Wrap</div>
-      <p class="cat-item-desc">A full vehicle wrap marking 150 years, touring Glasgow and picking up press coverage of its own.</p>
-    </div>
-    <div class="cat-item">
-      <div class="cat-item-label">Event &amp; Retail</div>
-      <div class="cat-item-name">Roll-Up Banner</div>
-      <p class="cat-item-desc">Stand banner for The Glasgow Wrap, the paper's ad-free daily newsletter on Substack.</p>
-    </div>
-    <div class="cat-item">
-      <div class="cat-item-label">Digital Display</div>
-      <div class="cat-item-name">Campaign Creative</div>
-      <p class="cat-item-desc">Online display for reader competitions and partner promotions, built for web and app.</p>
-    </div>
-    <div class="cat-item">
-      <div class="cat-item-label">Print</div>
-      <div class="cat-item-name">Front Pages</div>
-      <p class="cat-item-desc">Daily front page design and masthead lockups carrying the paper's identity into print.</p>
-    </div>
-  </div>
-</div>
+  <!-- ══ CASE STUDY · 150 Years ══ -->
+  <section class="section cm" aria-labelledby="project-title">
+    <div class="cm-container">
 
-<!-- OUT-OF-HOME -->
-<div class="proj-body-section bg-ink">
-  <div class="section-label reveal"><span class="num">02</span>Out-of-Home</div>
-  <h2 class="heading-2" style="color:var(--white);">A taxi wrap for the city's paper.</h2>
-  <p class="overview-text reveal" style="color:var(--white-70);max-width:600px;margin-top:var(--sp-2);margin-bottom:var(--sp-4);">
-    Take the masthead off the page and onto the street — a working black cab wrapped end to end, marking the paper's 150th year in a bold, unmissable way across the city.
-  </p>
-  <div class="feature-row reveal">
-    <div class="feature-img"><img src="work/GT/extracted/taxi-wrap-side.jpg" alt="Glasgow Times taxi wrap — Riverside, full vehicle wrap" /></div>
-    <div class="feature-img"><img src="work/GT/extracted/taxi-wrap-rear.jpg" alt="Glasgow Times taxi wrap — rear, 150 Years" /></div>
-  </div>
-</div>
+      <div class="head-line">
+        <span class="head-line__num">01</span>
+        <span class="head-line__rule"></span>
+        <span class="head-line__name">/portfolio</span>
+      </div>
 
-<!-- FRONT PAGE FEATURE -->
-<div class="proj-body-section bg-sand">
-  <div class="section-label reveal"><span class="num">03</span>Print</div>
-  <div class="feature-row reveal" style="grid-template-columns: 1fr 420px;">
-    <div class="feature-copy" style="padding-left:0;">
-      <h2 class="heading-2">The wrap made its own front page.</h2>
-      <p class="overview-text">The taxi did its job twice over — once on the road, and again as a story in itself. Glasgow Times ran its own front-page feature on the wrap, turning the campaign into earned coverage.</p>
-      <div class="stat-pair">
-        <div>
-          <div class="meta-value large">150</div>
-          <div class="meta-label" style="margin-top:6px;">Years Celebrated</div>
+      <!-- Header: title + metadata -->
+      <header class="cm-head">
+        <h1 class="cm-title" id="project-title" data-split>150 Years</h1>
+        <dl class="cm-meta reveal">
+          <div><dt>Year</dt><dd>2026</dd></div>
+          <div><dt>Client</dt><dd>Glasgow Times<br />Newsquest Scotland</dd></div>
+          <div><dt>Discipline</dt><dd>Out-of-home<br />Print &amp; digital</dd></div>
+          <div><dt>Deliverables</dt><dd>Taxi wrap · Roll-up banner<br />Display · Front-page feature</dd></div>
+        </dl>
+      </header>
+
+      <div class="cm-flow">
+
+        <!-- 1 · Hero -->
+        <figure class="cm-shot cm-hero reveal">
+          <img src="work/gt-web/taxi-side.jpg" alt="Glasgow Times 150th anniversary taxi wrap by the River Clyde" fetchpriority="high" />
+        </figure>
+
+        <!-- 2 · About -->
+        <div class="cm-text cm-read">
+          <h2 class="pr__title" data-split>Design and brand work across print, digital and out-of-home — marking 150 years of Glasgow's own paper.</h2>
+          <p class="cm-text__label reveal">About project</p>
+          <p class="t-body reveal">Glasgow Times marked its 150th anniversary in 2026 with a campaign spanning out-of-home, digital and print. The work covers a wrapped taxi touring the city, a roll-up banner for the paper's newsletter arm, competition creative for online display, and the front pages that carried the celebration home.</p>
         </div>
-        <div>
-          <div class="meta-value large">8–9</div>
-          <div class="meta-label" style="margin-top:6px;">Feature Spread</div>
+
+        <!-- 3 · Split 60 / 40 -->
+        <div class="cm-split">
+          <figure class="cm-shot reveal" style="--focus:50% 40%">
+            <img src="work/gt-web/pupils-front-page.jpg" alt="Pupils holding the Glasgow Times 150 Years front page" loading="lazy" />
+          </figure>
+          <figure class="cm-shot reveal" style="--focus:50% 30%; --delay:.1s">
+            <img src="work/gt-web/front-page.jpg" alt="Glasgow Times front page: Taxi helps celebrate 150 years" loading="lazy" />
+          </figure>
         </div>
+
+        <!-- 4 · Overview -->
+        <div class="cm-text cm-read reveal">
+          <p class="cm-text__label">Project overview</p>
+          <p class="t-body"><strong>CHALLENGE:</strong> Mark 150 years in a way that felt earned, not just decorative — something people would notice on the street, not just in print.</p>
+          <p class="t-body"><strong>STRATEGY:</strong> Take the masthead physically into the city, then let the paper cover its own campaign as a genuine news story.</p>
+        </div>
+
+        <!-- 5 · Split 40 / 60 -->
+        <div class="cm-split cm-split--rev">
+          <figure class="cm-shot reveal" style="--focus:50% 55%">
+            <img src="work/gt-web/pupils-taxi.jpg" alt="Pupils with the paper beside the wrapped Glasgow Times taxi" loading="lazy" />
+          </figure>
+          <figure class="cm-shot reveal" style="--delay:.1s">
+            <img src="work/gt-web/roll-up.jpg" alt="The Glasgow Wrap newsletter roll-up banner" loading="lazy" />
+          </figure>
+        </div>
+
+        <!-- 6 · What I did -->
+        <div class="cm-text cm-read reveal">
+          <p class="cm-text__label">What I did</p>
+          <p class="t-body"><strong>EXECUTION:</strong> A full taxi wrap, a roll-up banner for the newsletter arm, digital display creative and a dedicated front-page feature.</p>
+          <p class="t-body"><strong>RESULTS:</strong> Earned press coverage on top of the paid campaign — the wrap became a front-page story in its own right.</p>
+        </div>
+
+        <!-- 7 · Grand finale -->
+        <section class="cm-finale cm-finale--device" aria-label="Meet the GT taxi driver — mobile video">
+          <figure class="cm-finale__device reveal">
+            <video src="work/GT/Mobile video GT Taxi.mp4" poster="work/gt-web/taxi-video-poster.jpg" controls playsinline preload="none" aria-label="Meet the GT taxi driver — mobile video"></video>
+          </figure>
+        </section>
+
+        <!-- 8 · CTA -->
+        <div class="cm-cta reveal">
+          <p class="t-body">Let's talk about your next<br />amazing project</p>
+          <a class="btn-corners" href="mailto:altodrs@gmail.com"><span class="roll" data-roll>Get in touch</span></a>
+        </div>
+
       </div>
     </div>
-    <div class="feature-img" style="min-height:0;"><img src="work/GT/extracted/front-page-spread.jpg" alt="Glasgow Times front page — taxi wrap feature" /></div>
-  </div>
-</div>
+  </section>
 
-<!-- MOBILE VIDEO -->
-<div class="proj-body-section bg-white">
-  <div class="section-label reveal"><span class="num">04</span>Digital Display</div>
-  <div class="overview-grid reveal" style="align-items:center;">
-    <div>
-      <h2 class="heading-2">The wrap, in motion.</h2>
-      <p class="overview-text" style="max-width:480px;">A short mobile edit of the taxi wrap, cut for social and on-site placements alongside the campaign's online display creative.</p>
+  <!-- ══ MORE PROJECTS ══ -->
+  <section class="section section--surface more" aria-labelledby="more-title">
+    <div class="head-line">
+      <span class="head-line__num">02</span>
+      <span class="head-line__rule"></span>
+      <span class="head-line__name">/see more</span>
     </div>
-    <video muted loop playsinline controls preload="metadata" poster="work/GT/extracted/taxi-wrap-side.jpg" style="width:100%;display:block;">
-      <source src="work/GT/Mobile video GT Taxi.mp4" type="video/mp4" />
-    </video>
-  </div>
-</div>
+    <div class="title-row more__header">
+      <span class="dots reveal" aria-hidden="true"><i></i><i></i></span>
+      <h2 class="principles__title" id="more-title" data-split>more projects</h2>
+    </div>
+    <div class="more__list">
+      <a class="work-card work-card--tiny reveal" href="project-01.html">
+        <div class="work-card__media"><img src="work/featured/ardbeg-scottish-farmer.jpg" alt="Ardbeg × Scottish Farmer billboard" loading="lazy" width="1500" height="1050" /></div>
+        <div class="work-card__details">
+          <h4 class="t-nav">Ardbeg × Scottish Farmer</h4>
+          <p class="t-small">Scottish Farmer</p>
+        </div>
+      </a>
+      <a class="work-card work-card--tiny reveal" href="project-04.html" style="--delay:.1s">
+        <div class="work-card__media"><img src="work/latest/national-1-year.jpg" alt="The National Black Friday bus stop poster" loading="lazy" width="1250" height="875" /></div>
+        <div class="work-card__details">
+          <h4 class="t-nav">1 year for £20</h4>
+          <p class="t-small">The National</p>
+        </div>
+      </a>
+    </div>
+  </section>
 
-<!-- CASE STUDY -->
-<div class="proj-body-section bg-ink">
-  <div class="section-label reveal" style="color:var(--clay-40);"><span class="num">05</span>Case Study</div>
-  <div class="case-grid reveal" style="background:rgba(255,255,255,.08);">
-    <div class="case-block" style="background:var(--ink);">
-      <div class="case-block-label">Challenge</div>
-      <p class="case-block-text" style="color:var(--white-70);">Mark 150 years in a way that felt earned, not just decorative — something people would notice on the street, not just in print.</p>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer" id="contact">
+  <div class="footer__contacts">
+    <div class="footer__top">
+      <a class="t-nav footer__brand link-line" href="index.html#hero">atgd</a>
+      <nav class="footer__social" aria-label="Social">
+        <a class="t-nav" href="#">Instagram</a>
+        <a class="t-nav" href="#">LinkedIn</a>
+        <a class="t-nav" href="#">Behance</a>
+        <a class="t-nav" href="#">Dribbble</a>
+      </nav>
     </div>
-    <div class="case-block" style="background:var(--ink);">
-      <div class="case-block-label">Strategy</div>
-      <p class="case-block-text" style="color:var(--white-70);">Take the masthead physically into the city, then let the paper cover its own campaign as a genuine news story.</p>
-    </div>
-    <div class="case-block" style="background:var(--ink);">
-      <div class="case-block-label">Execution</div>
-      <p class="case-block-text" style="color:var(--white-70);">A full taxi wrap, a roll-up banner for the newsletter arm, digital display creative and a dedicated front-page feature.</p>
-    </div>
-    <div class="case-block" style="background:var(--ink);">
-      <div class="case-block-label">Results</div>
-      <p class="case-block-text" style="color:var(--white-70);">Earned press coverage on top of the paid campaign — the wrap became a front-page story in its own right.</p>
+
+    <div class="footer__cta">
+      <div class="footer__cta-text reveal">
+        <p class="t-small footer__status"><i class="footer__live" aria-hidden="true"></i>I’m available for new projects</p>
+        <h3 class="pr__title">Let’s work<br />together</h3>
+      </div>
+      <a class="btn-corners btn-corners--light reveal" style="--delay:.1s" href="mailto:altodrs@gmail.com"><span class="roll" data-roll>Get in touch</span></a>
     </div>
   </div>
-</div>
 
-<!-- LOGO STRIP + BACK -->
-<div class="logo-strip">
-  <img src="work/GT/GlasgowTimes_logo.png" alt="Glasgow Times" />
-  <a href="project-01.html" class="meta-link" style="justify-content:center;margin-bottom:var(--sp-3);">Next Project — The Scottish Farmer →</a>
-  <div>
-    <a href="index.html#work" class="proj-back-cta">Back to All Work</a>
+  <div class="footer__bottom">
+    <p class="footer__giant" aria-hidden="true">Get in touch</p>
+    <div class="footer__strip"><img src="work/hero-ardbeg.jpg" alt="" loading="lazy" /></div>
+    <div class="footer__legal">
+      <p class="t-small">© 2026 Alan Todd Design — All rights reserved</p>
+      <p class="t-small">Ayrshire, Scotland</p>
+    </div>
   </div>
-</div>
-
-<footer>
-  <div class="footer-sig"><img src="work/atgd_logo.png" alt="ATGD" /></div>
-  <p class="footer-copy">© 2026 Alan Todd Design</p>
-  <ul class="footer-links">
-    <li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Dribbble</a></li>
-  </ul>
 </footer>
 
-<script>
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 70); obs.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
+<script src="atgd.js?v=20261008c" defer></script>
 </body>
 </html>

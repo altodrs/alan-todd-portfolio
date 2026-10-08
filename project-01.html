@@ -3,149 +3,199 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Scottish Farmer — Alan Todd Design</title>
+  <title>Ardbeg × Scottish Farmer — Alan Todd</title>
+  <meta name="description" content="A premium whisky collaboration built to feel native to Scotland&#x27;s longest-running farming publication — print, digital display and subscription incentives in one campaign." />
   <link rel="icon" href="work/atgd_favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .proj-hero-img { position: absolute; inset: 0; z-index: 0; background: url('work/tsf/Ardbeg BG.jpg') center/cover; opacity: .5; }
-    .proj-hero-img::after { content: ''; position: absolute; inset: 0; background: var(--ink); opacity: .35; }
-    #overview-logo { max-height: 29px; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="atgd.css?v=20261008c" />
 </head>
-<body>
+<body class="page-project">
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img class="nav-logo-icon" src="work/atgd_logo.png" alt="ATGD" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html#work">Work</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
+<!-- ══ TOP BAR ══ -->
+<header class="site-nav site-nav--light">
+  <div class="site-nav__id">
+    <a class="t-nav site-nav__name link-line" href="index.html">AlanTodd</a>
+    <a class="t-nav site-nav__email link-line" href="mailto:altodrs@gmail.com">altodrs@gmail.com</a>
+  </div>
+  <div class="site-nav__end">
+    <button class="burger" type="button" data-menu-toggle aria-controls="menu" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ══ MENU OVERLAY ══ -->
+<nav class="menu" id="menu" aria-label="Main">
+  <div class="menu__head">
+    <h2 class="menu__title t-display" style="--d:2">Online<br />Portfolio</h2>
+    <div class="menu__photo media" style="--d:0">
+      <img src="work/alan-portrait.jpg" alt="Alan Todd" loading="lazy" />
+    </div>
+  </div>
+  <div class="menu__side">
+    <ul class="menu__links">
+      <li style="--d:1"><a class="menu__link" href="about.html"><span class="roll" data-roll>About me</span></a></li>
+      <li style="--d:2"><a class="menu__link" href="index.html#work"><span class="roll" data-roll>Portfolio</span></a></li>
+      <li style="--d:3"><a class="menu__link" href="index.html#services"><span class="roll" data-roll>Services</span></a></li>
+      <li style="--d:4"><a class="menu__link" href="index.html#contact"><span class="roll" data-roll>Contact</span></a></li>
+    </ul>
+    <a class="btn-corners btn-corners--light" style="--d:5" href="mailto:altodrs@gmail.com"><span class="roll" data-roll>Get in touch</span></a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<div class="proj-hero">
-  <div class="proj-hero-img"></div>
-  <div class="proj-hero-content reveal">
-    <img class="proj-logo" src="work/tsf/TSFwhtlogo.png" alt="The Scottish Farmer" />
-    <h1 class="proj-title">Ardbeg ×<br/>Scottish Farmer</h1>
-    <div class="proj-rule"></div>
-    <p class="proj-subtitle">A premium whisky collaboration built to feel native to Scotland's longest-running farming publication — print, digital display and subscription incentives in one campaign.</p>
-  </div>
-</div>
+<main id="main">
 
-<!-- OVERVIEW -->
-<div class="proj-body-section bg-white">
-  <div class="section-head-row reveal">
-    <div class="section-label"><span class="num">01</span>Overview</div>
-    <img id="overview-logo" src="work/tsf/TSFlogo.png" alt="The Scottish Farmer" />
-  </div>
-  <div class="overview-grid">
-    <div class="reveal">
-      <h2 class="heading-2">A whisky collaboration that reads native to the publication.</h2>
-      <p class="overview-text">
-        <strong>The Scottish Farmer</strong> is Scotland's longest-running and most widely-read farming publication. As lead designer, I was responsible for the full visual output — from print layouts to multi-channel digital campaigns and commercial partnership assets.
-        <br/><br/>
-        The flagship piece was <strong>Ardbeg × Scottish Farmer</strong> — a premium Islay whisky brand requiring an editorial aesthetic that felt at home in the publication while carrying the advertiser's own premium positioning.
-      </p>
-    </div>
-    <aside class="proj-meta reveal">
-      <div class="proj-meta-block">
-        <div class="meta-label">Client</div>
-        <div class="meta-value">The Scottish Farmer</div>
-      </div>
-      <div class="proj-meta-block">
-        <div class="meta-label">Partner</div>
-        <div class="meta-value">Ardbeg Whisky</div>
-      </div>
-      <div class="proj-meta-block">
-        <div class="meta-label">Scope</div>
-        <div class="meta-value">Print · Digital Display<br/>Subscription Offer</div>
-      </div>
-      <div class="proj-meta-block">
-        <div class="meta-label">Offer Value</div>
-        <div class="meta-value large">£39</div>
-      </div>
-      <div class="proj-meta-block">
-        <div class="meta-label">Next Project</div>
-        <a href="project-02.html" class="meta-link">The Herald →</a>
-      </div>
-    </aside>
-  </div>
-</div>
+  <!-- ══ CASE STUDY · Ardbeg × Scottish Farmer ══ -->
+  <section class="section cm" aria-labelledby="project-title">
+    <div class="cm-container">
 
-<!-- DIGITAL MOCKUPS -->
-<div class="proj-body-section bg-ink">
-  <div class="section-head-row reveal">
-    <div class="section-label"><span class="num">02</span>Digital Display</div>
-  </div>
-  <h2 class="heading-2" style="color:var(--white);">Print edition plus digital access, on every screen.</h2>
-  <p class="overview-text reveal" style="color:var(--white-70);max-width:640px;margin-top:var(--sp-2);margin-bottom:var(--sp-4);">The campaign banner ran alongside matching laptop and mobile display creative, carrying the same offer from the printed page to the screen.</p>
-  <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:3px;">
-    <div class="gallery-item" style="aspect-ratio:3/4;"><img src="work/tsf/BannerDesign_TSF_Ardbeg.jpg" alt="Ardbeg × Scottish Farmer campaign banner" /></div>
-    <div style="display:grid;grid-template-rows:1fr 1fr;gap:3px;">
-      <div class="gallery-item"><img src="work/tsf/Ardbeg_Sub_TSF_OnlineDisplay_LTmockup.png" alt="Ardbeg subscription offer — laptop display" style="object-fit:contain;background:#0D0B09;" /></div>
-      <div class="gallery-item"><img src="work/tsf/Ardbeg_TSF_iPhonemockup_OnlineDisplay_ATGD.png" alt="Ardbeg subscription offer — iPhone display" style="object-fit:contain;background:#0D0B09;" /></div>
-    </div>
-  </div>
-</div>
+      <div class="head-line">
+        <span class="head-line__num">01</span>
+        <span class="head-line__rule"></span>
+        <span class="head-line__name">/portfolio</span>
+      </div>
 
-<!-- CASE STUDY -->
-<div class="proj-body-section bg-sand">
-  <div class="section-label reveal"><span class="num">03</span>Case Study</div>
-  <div class="case-grid reveal">
-    <div class="case-block">
-      <div class="case-block-label">Challenge</div>
-      <p class="case-block-text">Create campaign work that resonates with a traditional agricultural audience while modernising digital subscription acquisition.</p>
-    </div>
-    <div class="case-block">
-      <div class="case-block-label">Strategy</div>
-      <p class="case-block-text">A visual framework balancing heritage imagery with clean, modern typography — readable on newsprint and on a phone screen alike.</p>
-    </div>
-    <div class="case-block">
-      <div class="case-block-label">Execution</div>
-      <p class="case-block-text">Full-page print advertisements, high-converting digital banners and a bundled subscription incentive built around the Ardbeg partnership.</p>
-    </div>
-    <div class="case-block">
-      <div class="case-block-label">Results</div>
-      <p class="case-block-text">A unified campaign message that drove subscription sign-ups and strengthened the commercial partnership with Ardbeg.</p>
-    </div>
-  </div>
-  <div class="feature-row reveal" style="grid-template-columns: 1fr 420px; margin-top:var(--sp-5);">
-    <div class="feature-copy" style="padding-left:0;">
-      <h2 class="heading-2">Ardbeg Whisky Campaign</h2>
-      <p class="overview-text">A bespoke promotional campaign developed in partnership with Ardbeg, the Islay single malt distillery — premium print and digital materials tailored for The Scottish Farmer's readership while sitting comfortably alongside Ardbeg's own brand identity.</p>
-    </div>
-    <div class="feature-img" style="min-height:520px;"><img src="work/tsf/Ardbeg BG.jpg" alt="Ardbeg campaign backdrop" /></div>
-  </div>
-</div>
+      <!-- Header: title + metadata -->
+      <header class="cm-head">
+        <h1 class="cm-title" id="project-title" data-split aria-label="Ardbeg × Scottish Farmer">Ardbeg ×<br />Scottish Farmer</h1>
+        <dl class="cm-meta reveal">
+          <div><dt>Partnership</dt><dd>Ardbeg Islay whisky</dd></div>
+          <div><dt>Client</dt><dd>The Scottish Farmer<br />Newsquest Scotland</dd></div>
+          <div><dt>Role</dt><dd>Lead designer<br />Campaign design</dd></div>
+          <div><dt>Deliverables</dt><dd>Print ads · Digital banners<br />Roll-up banner · Subscription offer</dd></div>
+        </dl>
+      </header>
 
-<!-- LOGO STRIP + BACK -->
-<div class="logo-strip">
-  <img src="work/tsf/TSFlogo.png" alt="The Scottish Farmer" />
-  <div>
-    <a href="index.html#work" class="proj-back-cta">Back to All Work</a>
-  </div>
-</div>
+      <div class="cm-flow">
 
-<footer>
-  <div class="footer-sig"><img src="work/atgd_logo.png" alt="ATGD" /></div>
-  <p class="footer-copy">© 2026 Alan Todd Design</p>
-  <ul class="footer-links">
-    <li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Dribbble</a></li>
-  </ul>
+        <!-- 1 · Hero -->
+        <figure class="cm-shot cm-hero reveal">
+          <img src="work/tsf-web/station-billboard.jpg" alt="Ardbeg × Scottish Farmer subscription billboard on a station wall" fetchpriority="high" />
+        </figure>
+
+        <!-- 2 · About -->
+        <div class="cm-text cm-read">
+          <h2 class="pr__title" data-split>A premium whisky collaboration built to feel native to Scotland's longest-running farming publication — print, digital display and subscription incentives in one campaign.</h2>
+          <p class="cm-text__label reveal">About project</p>
+          <p class="t-body reveal">The Scottish Farmer is Scotland's longest-running and most widely-read farming publication. As lead designer, I was responsible for the full visual output — from print layouts to multi-channel digital campaigns and commercial partnership assets. The flagship piece was Ardbeg × Scottish Farmer — a premium Islay whisky brand requiring an editorial aesthetic that felt at home in the publication while carrying the advertiser's own premium positioning.</p>
+        </div>
+
+        <!-- 3 · Split 60 / 40 -->
+        <div class="cm-split">
+          <figure class="cm-shot reveal">
+            <img src="work/tsf-web/street-billboard.jpg" alt="Print edition + digital access billboard at a city-street bus stop" loading="lazy" />
+          </figure>
+          <figure class="cm-shot reveal" style="--focus:44% 50%; --delay:.1s">
+            <img src="work/tsf-web/roll-up.jpg" alt="Ardbeg × Scottish Farmer roll-up banner" loading="lazy" />
+          </figure>
+        </div>
+
+        <!-- 4 · Overview -->
+        <div class="cm-text cm-read reveal">
+          <p class="cm-text__label">Project overview</p>
+          <p class="t-body"><strong>CHALLENGE:</strong> Create campaign work that resonates with a traditional agricultural audience while modernising digital subscription acquisition.</p>
+          <p class="t-body"><strong>STRATEGY:</strong> A visual framework balancing heritage imagery with clean, modern typography — readable on newsprint and on a phone screen alike.</p>
+        </div>
+
+        <!-- 5 · Split 40 / 60 -->
+        <div class="cm-split cm-split--rev">
+          <figure class="cm-shot reveal" style="--focus:50% 60%">
+            <img src="work/tsf-web/ardbeg-key-visual.jpg" alt="Ardbeg Ten bottle and box in smoke — the campaign key visual" loading="lazy" />
+          </figure>
+          <figure class="cm-shot reveal" style="--delay:.1s">
+            <img src="work/tsf-web/spread.jpg" alt="Ardbeg subscription advert in The Scottish Farmer print edition" loading="lazy" />
+          </figure>
+        </div>
+
+        <!-- 6 · What I did -->
+        <div class="cm-text cm-read reveal">
+          <p class="cm-text__label">What I did</p>
+          <p class="t-body"><strong>EXECUTION:</strong> Full-page print advertisements, high-converting digital banners and a bundled subscription incentive built around the Ardbeg partnership.</p>
+          <p class="t-body"><strong>RESULTS:</strong> A unified campaign message that drove subscription sign-ups and strengthened the commercial partnership with Ardbeg.</p>
+        </div>
+
+        <!-- 7 · Grand finale -->
+        <section class="cm-finale" aria-label="The Scottish Farmer app">
+          <figure class="cm-shot cm-finale__shot reveal">
+            <img src="work/tsf-web/tsf-app.jpg" alt="The Scottish Farmer app icon on a smartphone home screen" loading="lazy" width="2000" height="1342" />
+          </figure>
+        </section>
+
+        <!-- 8 · CTA -->
+        <div class="cm-cta reveal">
+          <p class="t-body">Let's talk about your next<br />amazing project</p>
+          <a class="btn-corners" href="mailto:altodrs@gmail.com"><span class="roll" data-roll>Get in touch</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MORE PROJECTS ══ -->
+  <section class="section section--surface more" aria-labelledby="more-title">
+    <div class="head-line">
+      <span class="head-line__num">02</span>
+      <span class="head-line__rule"></span>
+      <span class="head-line__name">/see more</span>
+    </div>
+    <div class="title-row more__header">
+      <span class="dots reveal" aria-hidden="true"><i></i><i></i></span>
+      <h2 class="principles__title" id="more-title" data-split>more projects</h2>
+    </div>
+    <div class="more__list">
+      <a class="work-card work-card--tiny reveal" href="project-02.html">
+        <div class="work-card__media"><img src="work/featured/herald-25for25.jpg" alt="The Herald 25 for £25 building billboard" loading="lazy" width="1800" height="1260" /></div>
+        <div class="work-card__details">
+          <h4 class="t-nav">25 for 25</h4>
+          <p class="t-small">Herald / 2025</p>
+        </div>
+      </a>
+      <a class="work-card work-card--tiny reveal" href="project-04.html" style="--delay:.1s">
+        <div class="work-card__media"><img src="work/latest/national-1-year.jpg" alt="The National Black Friday bus stop poster" loading="lazy" width="1250" height="875" /></div>
+        <div class="work-card__details">
+          <h4 class="t-nav">1 year for £20</h4>
+          <p class="t-small">The National</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer" id="contact">
+  <div class="footer__contacts">
+    <div class="footer__top">
+      <a class="t-nav footer__brand link-line" href="index.html#hero">atgd</a>
+      <nav class="footer__social" aria-label="Social">
+        <a class="t-nav" href="#">Instagram</a>
+        <a class="t-nav" href="#">LinkedIn</a>
+        <a class="t-nav" href="#">Behance</a>
+        <a class="t-nav" href="#">Dribbble</a>
+      </nav>
+    </div>
+
+    <div class="footer__cta">
+      <div class="footer__cta-text reveal">
+        <p class="t-small footer__status"><i class="footer__live" aria-hidden="true"></i>I’m available for new projects</p>
+        <h3 class="pr__title">Let’s work<br />together</h3>
+      </div>
+      <a class="btn-corners btn-corners--light reveal" style="--delay:.1s" href="mailto:altodrs@gmail.com"><span class="roll" data-roll>Get in touch</span></a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__giant" aria-hidden="true">Get in touch</p>
+    <div class="footer__strip"><img src="work/hero-ardbeg.jpg" alt="" loading="lazy" /></div>
+    <div class="footer__legal">
+      <p class="t-small">© 2026 Alan Todd Design — All rights reserved</p>
+      <p class="t-small">Ayrshire, Scotland</p>
+    </div>
+  </div>
 </footer>
 
-<script>
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 70); obs.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
+<script src="atgd.js?v=20261008c" defer></script>
 </body>
 </html>

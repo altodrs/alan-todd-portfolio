@@ -4,420 +4,574 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alan Todd — Graphic Designer</title>
+  <meta name="description" content="Alan Todd — graphic designer with 21 years of experience across Newsquest Scotland publications. Branding, editorial, campaigns and motion." />
   <link rel="icon" href="work/atgd_favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ══ HERO ══ */
-    #hero { padding-top: 76px; background: var(--white); }
-
-    .hero-main {
-      padding: var(--sp-5) var(--margin);
-      border-bottom: 1px solid var(--ink-10);
-      background: var(--white);
-    }
-    .hero-name-block {
-      display: flex; flex-direction: column; gap: 12px;
-    }
-    .hero-name {
-      font-family: var(--display);
-      font-size: clamp(48px, 7vw, 108px);
-      font-weight: 700; line-height: .9; letter-spacing: -.02em;
-      text-transform: uppercase; color: var(--clay);
-      white-space: nowrap;
-    }
-    .hero-discipline {
-      font-family: var(--display); font-size: clamp(18px, 3.2vw, 44px);
-      font-weight: 700; text-transform: uppercase; letter-spacing: -.01em;
-      color: var(--ink); line-height: 1; white-space: nowrap;
-    }
-    .hero-location { font-family: var(--mono); font-size: .64rem; font-weight: 400; color: var(--ink-40); letter-spacing: .04em; }
-
-    .hero-video-wrap {
-      display: flex; flex-direction: column; align-items: center;
-      margin: var(--sp-5) 0;
-    }
-    .hero-video-frame { width: 100%; }
-    .hero-video-frame video { width: 100%; display: block; }
-    .hero-video-caption {
-      margin-top: 14px;
-      font-family: var(--text); font-size: .78rem; font-weight: 300;
-      color: var(--ink-40); text-align: center; white-space: nowrap;
-    }
-
-    .hero-intro-label {
-      font-family: var(--mono); font-size: .64rem; font-weight: 400;
-      letter-spacing: .14em; text-transform: uppercase; color: var(--clay);
-      margin-bottom: var(--sp-2);
-    }
-    .hero-intro-text {
-      font-family: var(--text); font-size: clamp(15px, 1.4vw, 19px);
-      font-weight: 300; line-height: 1.6; color: var(--ink);
-    }
-
-    .hero-below {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      border-bottom: 1px solid var(--ink-10);
-    }
-    .hero-below-col { padding: var(--sp-4) var(--margin); border-right: 1px solid var(--ink-10); }
-    .hero-below-col:last-child { border-right: none; }
-    .hbc-label { font-family: var(--mono); font-size: .58rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-40); margin-bottom: 10px; }
-    .hbc-value { font-family: var(--display); font-size: clamp(14px,1.2vw,16px); font-weight: 700; color: var(--ink); line-height: 1.5; }
-    .hbc-value strong { color: var(--clay); }
-
-    /* ══ WORK ══ */
-    #work { background: var(--white); }
-    .work-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: var(--sp-6) var(--margin) var(--sp-4);
-      border-bottom: 1px solid var(--ink-10);
-    }
-    .work-title {
-      font-family: var(--display); font-size: clamp(32px,4.6vw,64px); font-weight: 700;
-      letter-spacing: -.02em; text-transform: uppercase; color: var(--ink);
-    }
-    .work-count { font-family: var(--mono); font-size: .64rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-40); }
-
-    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-    .proj-card { display: block; text-decoration: none; color: inherit; position: relative; border-right: 1px solid var(--ink-10); border-bottom: 1px solid var(--ink-10); }
-    .proj-card:nth-child(3n) { border-right: none; }
-    .proj-card-img { position: relative; overflow: hidden; background: var(--white); aspect-ratio: 4/3; }
-    .proj-card-img img.card-bg, .proj-card-img video.card-bg { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.4,0,.2,1); }
-    .proj-card:hover .proj-card-img img.card-bg, .proj-card:hover .proj-card-img video.card-bg { transform: scale(1.04); }
-    .proj-card-logo { position: absolute; top: var(--sp-2); left: var(--sp-2); z-index: 2; pointer-events: none; max-width: 48%; max-height: 34px; object-fit: contain; object-position: left center; }
-    .proj-card-info { padding: var(--sp-3); display: flex; align-items: center; justify-content: space-between; }
-    .proj-card-num { font-family: var(--mono); font-size: .58rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); display: block; margin-bottom: 6px; }
-    .proj-card-name { font-family: var(--display); font-size: clamp(16px,1.6vw,22px); font-weight: 700; color: var(--ink); letter-spacing: -.005em; text-transform: uppercase; }
-    .proj-card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-    .proj-card-arrow { width: 34px; height: 34px; border: 1px solid var(--ink-20); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; color: var(--ink); transition: background .2s, color .2s, border-color .2s; }
-    .proj-card:hover .proj-card-arrow { background: var(--clay); color: var(--white); border-color: var(--clay); }
-
-    /* ══ PHILOSOPHY ══ */
-    #philosophy { background: var(--ink); padding: var(--sp-6) var(--margin); text-align: center; }
-    .phil-label { font-family: var(--mono); font-size: .64rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: var(--clay-40); margin-bottom: var(--sp-3); }
-    .phil-headline { font-family: var(--display); font-size: clamp(44px,8vw,120px); font-weight: 700; line-height: .9; letter-spacing: -.02em; text-transform: uppercase; color: var(--white); }
-    .phil-sub { margin-top: var(--sp-3); font-family: var(--text); font-size: clamp(14px,1.4vw,18px); font-weight: 300; color: var(--white-70); }
-
-    /* ══ ABOUT ══ */
-    #about { background: var(--white); }
-    .about-header { padding: var(--sp-6) var(--margin) var(--sp-4); border-bottom: 1px solid var(--ink-10); display: flex; align-items: flex-end; justify-content: space-between; }
-    .about-title { font-family: var(--display); font-size: clamp(32px,4.6vw,64px); font-weight: 700; letter-spacing: -.02em; text-transform: uppercase; color: var(--ink); }
-    .about-years { font-family: var(--display); font-size: 3.4rem; font-weight: 700; color: var(--clay); line-height: 1; }
-    .about-years-label { font-family: var(--mono); font-size: .58rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-40); margin-top: 6px; }
-    .about-body { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--ink-10); }
-    .about-col { padding: var(--sp-5) var(--margin); border-right: 1px solid var(--ink-10); }
-    .about-col:last-child { border-right: none; }
-    .about-bio { font-family: var(--text); font-size: clamp(14px,1.3vw,16px); font-weight: 300; line-height: 1.8; color: var(--ink-60); }
-    .about-bio strong { font-weight: 600; color: var(--ink); }
-    .about-quote { font-family: var(--display); font-size: clamp(14px,1.75vw,24px); font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: var(--sp-4); letter-spacing: -.01em; white-space: nowrap; }
-    .about-quote em { color: var(--clay); font-style: normal; }
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-pill { font-family: var(--mono); font-size: .6rem; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; padding: 7px 14px; border: 1px solid var(--ink-20); color: var(--ink); }
-    .about-logo-cell { display: flex; align-items: center; justify-content: center; }
-    .about-logo-cell img { max-width: 140px; opacity: .08; }
-
-    /* ══ PROCESS ══ */
-    #process { background: var(--sand); border-top: 1px solid var(--ink-10); }
-    .process-header { padding: var(--sp-6) var(--margin) var(--sp-4); border-bottom: 1px solid var(--ink-10); }
-    .process-label { font-family: var(--mono); font-size: .64rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); margin-bottom: var(--sp-2); }
-    .process-title { font-family: var(--display); font-size: clamp(32px,4.6vw,64px); font-weight: 700; letter-spacing: -.02em; text-transform: uppercase; color: var(--ink); }
-    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); }
-    .process-item { padding: var(--sp-4); border-right: 1px solid var(--ink-10); border-bottom: 1px solid var(--ink-10); }
-    .process-item:last-child { border-right: none; }
-    .process-num { font-family: var(--display); font-size: 2.2rem; font-weight: 700; color: var(--clay); line-height: 1; margin-bottom: var(--sp-2); }
-    .process-name { font-family: var(--display); font-size: .86rem; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; color: var(--ink); margin-bottom: var(--sp-2); }
-    .process-desc { font-family: var(--text); font-size: .78rem; font-weight: 300; line-height: 1.75; color: var(--ink-60); }
-
-    /* ══ CONTACT ══ */
-    #contact { background: var(--white); border-top: 1px solid var(--ink-10); padding: var(--sp-6) var(--margin); text-align: center; }
-    .contact-label { font-family: var(--mono); font-size: .64rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-40); margin-bottom: var(--sp-3); }
-    .contact-headline { font-family: var(--display); font-size: clamp(44px,8vw,128px); font-weight: 700; line-height: .9; text-transform: uppercase; color: var(--ink); letter-spacing: -.02em; margin-bottom: var(--sp-4); }
-    .contact-cta { display: inline-flex; align-items: center; gap: var(--sp-2); font-family: var(--mono); font-size: .72rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 16px 40px; text-decoration: none; transition: background .2s; }
-    .contact-cta:hover { background: var(--clay); }
-    .contact-cta::after { content: '→'; font-size: .95rem; }
-
-    @media (max-width: 900px) {
-      .hero-name { white-space: normal; }
-      .hero-discipline { white-space: normal; }
-      .hero-video-caption { white-space: normal; }
-      .hero-below { grid-template-columns: 1fr; }
-      .hero-below-col { border-right: none; border-bottom: 1px solid var(--ink-10); }
-      .projects-grid { grid-template-columns: 1fr; }
-      .proj-card { border-right: none; }
-      .about-body { grid-template-columns: 1fr; }
-      .about-col { border-right: none; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 560px) {
-      .process-grid { grid-template-columns: 1fr; }
-      .about-quote { white-space: normal; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="atgd.css?v=20261008c" />
 </head>
 <body>
 
-<nav>
-  <a href="#hero" class="nav-logo">
-    <img class="nav-logo-icon" src="work/atgd_logo.png" alt="ATGD" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<!-- ══ TOP BAR ══ -->
+<header class="site-nav">
+  <div class="site-nav__id">
+    <a class="t-nav site-nav__name link-line" href="#hero">AlanTodd</a>
+    <a class="t-nav site-nav__email link-line" href="mailto:altodrs@gmail.com">altodrs@gmail.com</a>
+  </div>
+  <div class="site-nav__end">
+    <button class="burger" type="button" data-menu-toggle aria-controls="menu" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ══ MENU OVERLAY ══ -->
+<nav class="menu" id="menu" aria-label="Main">
+  <div class="menu__head">
+    <h2 class="menu__title t-display" style="--d:2">Online<br />Portfolio</h2>
+    <div class="menu__photo media" style="--d:0">
+      <img src="work/alan-portrait.jpg" alt="Alan Todd" loading="lazy" />
+    </div>
+  </div>
+  <div class="menu__side">
+    <ul class="menu__links">
+      <li style="--d:1"><a class="menu__link" href="about.html"><span class="roll" data-roll>About me</span></a></li>
+      <li style="--d:2"><a class="menu__link" href="#work"><span class="roll" data-roll>Portfolio</span></a></li>
+      <li style="--d:3"><a class="menu__link" href="#services"><span class="roll" data-roll>Services</span></a></li>
+      <li style="--d:4"><a class="menu__link" href="#contact"><span class="roll" data-roll>Contact</span></a></li>
+    </ul>
+    <a class="btn-corners btn-corners--light" style="--d:5" href="mailto:altodrs@gmail.com"><span class="roll" data-roll>Get in touch</span></a>
+  </div>
 </nav>
 
-<!-- ══ HERO ══ -->
-<section id="hero">
+<main id="main">
 
-  <div class="hero-main reveal">
-    <div class="hero-name-block">
-      <h1 class="hero-name">Alan Todd</h1>
-      <div class="hero-discipline">Graphic Designer</div>
-      <div class="hero-location">Ayrshire, Scotland · Est. 2010</div>
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="hero" aria-label="Introduction">
+    <div class="hero__bg" aria-hidden="true">
+      <img src="work/hero-ardbeg.jpg" alt="" fetchpriority="high" />
     </div>
-    <div class="hero-video-wrap">
-      <div class="hero-video-frame">
-        <video autoplay muted loop playsinline preload="auto" poster="work/at-hero.jpg">
-          <source src="work/at-hero.mp4" type="video/mp4" />
-        </video>
+
+    <div class="hero__top">
+      <p class="t-body hero__role" data-load style="--d:0">Creative Designer</p>
+      <div class="hero__place" data-load style="--d:1">
+        <span class="t-nav">Ayrshire /</span>
+        <span class="clock" data-clock></span>
       </div>
-      <p class="hero-video-caption">A glimpse of the video and motion work I do alongside graphic design.</p>
     </div>
-    <div class="hero-intro-block">
-      <div class="hero-intro-label">Introduction</div>
-      <p class="hero-intro-text">
-        21 years turning briefs into designs that work as intended. Branding, editorial, and campaigns that do the job.
-      </p>
-    </div>
-  </div>
 
-  <div class="hero-below">
-    <div class="hero-below-col reveal">
-      <div class="hbc-label">Experience</div>
-      <div class="hbc-value"><strong>21+</strong> Years</div>
-    </div>
-    <div class="hero-below-col reveal">
-      <div class="hbc-label">Discipline</div>
-      <div class="hbc-value">Brand · Editorial · Motion · Print</div>
-    </div>
-    <div class="hero-below-col reveal">
-      <div class="hbc-label">Availability</div>
-      <div class="hbc-value">Open to Freelance</div>
-    </div>
-  </div>
-
-</section>
-
-<!-- ══ MARQUEE ══ -->
-<div class="marquee-wrap">
-  <div class="marquee-track" id="marquee">
-    <span class="word">Brand Identity</span><span class="sep">/</span>
-    <span class="word">Editorial Design</span><span class="sep">/</span>
-    <span class="word">Campaign Design</span><span class="sep">/</span>
-    <span class="word">Typography</span><span class="sep">/</span>
-    <span class="word">Motion Graphics</span><span class="sep">/</span>
-    <span class="word">Print Production</span><span class="sep">/</span>
-    <span class="word">21+ Years</span><span class="sep">/</span>
-    <span class="word">Brand Identity</span><span class="sep">/</span>
-    <span class="word">Editorial Design</span><span class="sep">/</span>
-    <span class="word">Campaign Design</span><span class="sep">/</span>
-    <span class="word">Typography</span><span class="sep">/</span>
-    <span class="word">Motion Graphics</span><span class="sep">/</span>
-    <span class="word">Print Production</span><span class="sep">/</span>
-    <span class="word">21+ Years</span><span class="sep">/</span>
-  </div>
-</div>
-
-<!-- ══ WORK ══ -->
-<section id="work">
-  <div class="work-header reveal">
-    <h2 class="work-title">Selected Work</h2>
-    <span class="work-count">003 Projects</span>
-  </div>
-
-  <div class="projects-grid">
-
-    <!-- 01 The Herald -->
-    <a href="project-02.html" class="proj-card reveal">
-      <div class="proj-card-img">
-        <img class="card-bg" src="work/Her/25for25_Herald_LTmockup_OnlineDisplay_ATGD.png" alt="The Herald" />
-        <img class="proj-card-logo" src="work/Her/The Herald_logo.png" alt="The Herald" />
+    <div class="hero__bottom">
+      <div class="hero__slogan">
+        <div class="hero__count" data-load style="--d:2">
+          <span class="hero__num">/07</span>
+          <span class="t-label">Selected projects</span>
+        </div>
+        <h1 class="hero__title" data-split aria-label="Creative Portfolio">Creative<br />Portfolio</h1>
       </div>
-      <div class="proj-card-info">
-        <div class="proj-card-left">
-          <span class="proj-card-num">01 — Subscription Campaign</span>
-          <div class="proj-card-name">The Herald</div>
-          <div class="proj-card-tags">
-            <span class="tag">Event</span>
-            <span class="tag">Digital Display</span>
+      <div class="hero__rule" data-load style="--d:4"></div>
+      <div class="hero__links" data-load style="--d:5">
+        <a class="t-label link-line" href="#work" style="font-size:var(--fs-small)">Portfolio</a>
+        <div class="hero__social">
+          <a class="t-nav" href="#" aria-label="LinkedIn">li</a>
+          <a class="t-nav" href="#" aria-label="Instagram">ig</a>
+          <a class="t-nav" href="#" aria-label="Behance">be</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 01 INTRODUCTION ══ -->
+  <section class="section intro" id="about" aria-labelledby="intro-title">
+    <div class="head-line">
+      <span class="head-line__num">01</span>
+      <span class="head-line__rule"></span>
+      <span class="head-line__name">/introduction</span>
+    </div>
+
+    <div class="intro__body">
+      <h2 class="side-label side-label--abs" aria-hidden="true">/about me</h2>
+
+      <h3 class="intro__lead t-lead" id="intro-title" data-split>
+        21 years turning briefs into designs that work as intended.
+        <span class="c-muted">Branding, editorial, and campaigns that do the job.</span>
+      </h3>
+
+      <div class="intro__row">
+        <div class="intro__me">
+          <div class="reveal">
+            <div class="intro__avatar media" data-tilt>
+              <img src="work/alan-intro.jpg" alt="Alan Todd" loading="lazy" width="700" height="945" />
+            </div>
+          </div>
+          <p class="intro__bio t-body reveal" style="--delay:.1s">
+            Hi, I'm Alan Todd. I'm a graphic designer with over <strong>21 years of experience</strong>
+            delivering solid work across a wide range of media for a variety of clients.
+          </p>
+        </div>
+        <a class="btn-corners reveal" style="--delay:.2s" href="Alan_Todd_CV.pdf" target="_blank" rel="noopener"><span class="roll" data-roll>Resume</span></a>
+      </div>
+
+      <div class="intro__clients reveal">
+        <h4 class="intro__clients-label t-nav">/Worked with</h4>
+        <div class="marquee intro__logos" style="--marquee-gap: 100px; --marquee-dur: 36s">
+          <ul class="marquee__track">
+            <li><img src="work/logos/herald.png" alt="The Herald" /></li>
+            <li><img src="work/logos/scottish-farmer.png" alt="The Scottish Farmer" /></li>
+            <li><img src="work/logos/glasgow-times.png" alt="Glasgow Times" /></li>
+            <li><img src="work/logos/the-national.png" alt="The National" /></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 02 FEATURED WORK ══ -->
+  <section class="section section--surface work" id="work" aria-labelledby="work-title">
+    <div class="head-line">
+      <span class="head-line__num">02</span>
+      <span class="head-line__rule"></span>
+      <span class="head-line__name">/featured</span>
+    </div>
+
+    <div class="work__body">
+      <h2 class="side-label side-label--abs work__side" aria-hidden="true">/featured</h2>
+
+      <div class="work__header">
+        <span class="dots reveal" aria-hidden="true"><i></i><i></i></span>
+        <h2 class="work__title" id="work-title" data-split>My work</h2>
+      </div>
+
+      <div class="work__list">
+        <a class="work-card reveal" href="project-02.html">
+          <div class="work-card__media">
+            <img src="work/featured/herald-25for25.jpg" alt="The Herald 25 for £25 campaign on a city-centre building billboard" loading="lazy" width="1800" height="1260" />
+          </div>
+          <div class="work-card__details">
+            <p class="work-card__name">25 for 25</p>
+            <p class="t-small">Herald / 2025</p>
+          </div>
+        </a>
+
+        <a class="work-card reveal" href="project-03.html">
+          <div class="work-card__media">
+            <img src="work/featured/glasgow-times-150.jpg" alt="Glasgow Times 150th anniversary taxi livery" loading="lazy" width="1200" height="630" />
+          </div>
+          <div class="work-card__details">
+            <p class="work-card__name">150 Years</p>
+            <p class="t-small">Glasgow Times</p>
+          </div>
+        </a>
+
+        <a class="work-card reveal" href="project-01.html">
+          <div class="work-card__media">
+            <img src="work/featured/ardbeg-scottish-farmer.jpg" alt="Ardbeg × The Scottish Farmer subscription billboard" loading="lazy" width="1500" height="1050" />
+          </div>
+          <div class="work-card__details">
+            <p class="work-card__name">Ardbeg × Scottish Farmer</p>
+            <p class="t-small">Scottish Farmer</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Work principles -->
+    <div class="principles" aria-labelledby="principles-title">
+      <h2 class="side-label side-label--abs principles__side" aria-hidden="true">/principles</h2>
+
+      <div class="title-row principles__header">
+        <span class="dots reveal" aria-hidden="true"><i></i><i></i></span>
+        <h2 class="principles__title" id="principles-title" data-split>work principles</h2>
+      </div>
+
+      <div class="principles__intro reveal">
+        <p class="principles__sub t-body">Formats are tailored for web, social media, or print.</p>
+        <h3 class="principles__lead">Every project is tailored to the client and business</h3>
+      </div>
+
+      <div class="bento">
+        <div class="bento__row bento__row--top">
+          <article class="pr pr--dark pr--center reveal">
+            <img class="pr__tex" src="work/principles/scratches.webp" alt="" aria-hidden="true" loading="lazy" />
+            <span class="pr__dot" aria-hidden="true"></span>
+            <div class="pr__text">
+              <h3 class="pr__title">Understand the job</h3>
+              <p class="t-body">the full story before<br />a single mark</p>
+            </div>
+          </article>
+          <article class="pr pr--light pr--split reveal" style="--delay:.08s">
+            <img class="pr__tex" src="work/principles/creases.webp" alt="" aria-hidden="true" loading="lazy" />
+            <span class="pr__dot" aria-hidden="true"></span>
+            <p class="t-small">The first idea is rarely the right one — so I explore widely before narrowing down.</p>
+            <h3 class="pr__title">Test the ideas</h3>
+          </article>
+        </div>
+
+        <div class="bento__row bento__row--bottom">
+          <div class="bento__pair">
+            <article class="pr pr--glow pr--center reveal">
+              <div class="pr__tools" aria-label="Adobe Photoshop, Illustrator, InDesign and After Effects">
+                <span>Ps</span><span>Ai</span><span>Id</span><span>Ae</span>
+              </div>
+              <h4 class="t-nav">Print, digital &amp; motion</h4>
+            </article>
+            <article class="pr pr--dark pr--foot reveal" style="--delay:.08s">
+              <img class="pr__tex" src="work/principles/folds.webp" alt="" aria-hidden="true" loading="lazy" />
+              <h4 class="t-nav">Craft &amp; refine</h4>
+              <p class="t-small">the details make the work</p>
+            </article>
+          </div>
+          <div class="bento__stack">
+            <article class="pr pr--dark pr--clock reveal" style="--delay:.16s">
+              <img class="pr__tex" src="work/principles/grunge.webp" alt="" aria-hidden="true" loading="lazy" />
+              <span class="clock" data-clock="short"></span>
+              <p class="t-small">21 years of newspaper deadlines. Always on time, quality owned.</p>
+            </article>
+            <article class="pr pr--white pr--inline reveal" style="--delay:.24s">
+              <span class="pr__mark" aria-hidden="true">©</span>
+              <p class="t-small">Licensed assets only. Organised files you keep.</p>
+            </article>
           </div>
         </div>
-        <div class="proj-card-arrow">→</div>
       </div>
-    </a>
+    </div>
+  </section>
 
-    <!-- 02 Glasgow Times -->
-    <a href="project-03.html" class="proj-card reveal">
-      <div class="proj-card-img">
-        <img class="card-bg" src="work/GT/GT150yr_TaxiLivery-2026_v3.jpg" alt="Glasgow Times" />
-        <img class="proj-card-logo" src="work/GT/GlasgowTimes_logo.png" alt="Glasgow Times" />
+  <!-- ══ 03 LATEST PORTFOLIO ══ -->
+  <section class="section latest" id="portfolio" aria-labelledby="latest-title">
+    <div class="head-line">
+      <span class="head-line__num">03</span>
+      <span class="head-line__rule"></span>
+      <span class="head-line__name">/portfolio</span>
+    </div>
+
+    <div class="latest__body">
+      <h2 class="side-label side-label--abs latest__side" aria-hidden="true">/works</h2>
+
+      <div class="title-row principles__header">
+        <span class="dots reveal" aria-hidden="true"><i></i><i></i></span>
+        <h2 class="principles__title" id="latest-title" data-split>latest portfolio</h2>
       </div>
-      <div class="proj-card-info">
-        <div class="proj-card-left">
-          <span class="proj-card-num">02 — 150th Anniversary</span>
-          <div class="proj-card-name">Glasgow Times</div>
-          <div class="proj-card-tags">
-            <span class="tag">Out-of-Home</span>
-            <span class="tag">Print</span>
+
+      <div class="latest__line latest__line--split">
+        <a class="work-card work-card--medium reveal" href="project-04.html">
+          <div class="work-card__media"><img src="work/latest/national-1-year.jpg" alt="The National Black Friday subscription poster at a bus stop" loading="lazy" width="1250" height="875" /></div>
+          <div class="work-card__details">
+            <p class="work-card__name">1 year for £20</p>
+            <p class="t-small">The National</p>
+          </div>
+        </a>
+        <article class="work-card work-card--tiny work-card--static reveal" style="--delay:.1s">
+            <div class="work-card__media"><img src="work/latest/scottish-walks.jpg" alt="Scottish Walks magazine cover" loading="lazy" width="900" height="600" /></div>
+            <div class="work-card__details">
+              <h4 class="t-nav">Editorial</h4>
+              <p class="t-small">Scottish Walks</p>
+            </div>
+          </article>
+      </div>
+
+      <div class="latest__line">
+        <article class="work-card work-card--static reveal">
+          <div class="work-card__media"><img src="work/latest/herald-euros.jpg" alt="The Herald Euro 2024 roll-up banner" loading="lazy" width="1800" height="1252" /></div>
+          <div class="work-card__details">
+            <p class="work-card__name">Video &amp; Animation</p>
+            <p class="t-small">Newsquest Scotland</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="latest__line latest__line--split">
+        <article class="work-card work-card--tiny work-card--static reveal">
+            <div class="work-card__media"><img src="work/latest/music-room-1.jpg" alt="The Music Room logo embossed on dark fabric" loading="lazy" width="800" height="534" /></div>
+            <div class="work-card__details">
+              <h4 class="t-nav">The Music Room</h4>
+              <p class="t-small">Brand identity</p>
+            </div>
+          </article>
+      </div>
+
+      <div class="latest__cta reveal">
+        <a class="btn-corners" href="mailto:altodrs@gmail.com?subject=Portfolio%20request"><span class="roll" data-roll>see all my works</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 04 ABOUT / SERVICES ══ -->
+  <section class="section section--surface about" id="services" aria-labelledby="services-title">
+    <div class="head-line">
+      <span class="head-line__num">04</span>
+      <span class="head-line__rule"></span>
+      <span class="head-line__name">/about</span>
+    </div>
+
+    <div class="about__top">
+      <div class="about__me">
+        <ul class="about__stats reveal" aria-label="At a glance">
+          <li><span class="about__stat-num">21+</span><span class="t-small">years in design</span></li>
+          <li><span class="about__stat-num">04</span><span class="t-small">Newsquest titles</span></li>
+          <li><span class="about__stat-num">07</span><span class="t-small">selected projects</span></li>
+          <li><span class="about__stat-num">2010</span><span class="t-small">ATGD established</span></li>
+        </ul>
+        <h2 class="side-label side-label--abs about__side" aria-hidden="true">/experience</h2>
+
+        <div class="about__text">
+          <div class="about__copy">
+            <h3 class="pr__title about__lead" data-split>I'm Alan Todd — I take a rough idea <span class="c-muted">and build it into a striking piece of design that makes sense.</span></h3>
+            <p class="t-body reveal">Over two decades I've grown from traditional print layout into video, motion and animation. No fuss, honest communication, and getting the job done right the first time.</p>
+            <div class="about__social reveal">
+              <a class="t-nav" href="#" aria-label="LinkedIn">li</a>
+              <a class="t-nav" href="#" aria-label="Instagram">ig</a>
+              <a class="t-nav" href="#" aria-label="Behance">be</a>
+            </div>
+          </div>
+          <div class="about__photo media reveal">
+            <img src="work/alan-portrait.jpg" alt="Alan Todd" loading="lazy" width="900" height="1200" />
           </div>
         </div>
-        <div class="proj-card-arrow">→</div>
       </div>
-    </a>
 
-    <!-- 03 The Scottish Farmer -->
-    <a href="project-01.html" class="proj-card reveal">
-      <div class="proj-card-img">
-        <img class="card-bg" src="work/tsf/Ardbeg_Sub_TSF_OnlineDisplay_LTmockup.png" alt="The Scottish Farmer" />
-        <img class="proj-card-logo" src="work/tsf/TSFlogo.png" alt="The Scottish Farmer" />
-      </div>
-      <div class="proj-card-info">
-        <div class="proj-card-left">
-          <span class="proj-card-num">03 — Brand Collaboration</span>
-          <div class="proj-card-name">The Scottish Farmer</div>
-          <div class="proj-card-tags">
-            <span class="tag">Print</span>
-            <span class="tag">Digital</span>
-            <span class="tag">Subscription</span>
+      <div class="facts">
+        <div class="facts__cell facts__cell--title">
+          <h3 class="pr__title reveal">/facts &amp; figures</h3>
+        </div>
+        <div class="facts__cell facts__cell--side">
+          <div class="fact reveal">
+            <span class="fact__num" data-count="7" data-pad="2">07</span>
+            <span class="fact__meta"><i class="fact__dot" aria-hidden="true"></i><span class="t-body">Selected projects</span></span>
           </div>
         </div>
-        <div class="proj-card-arrow">→</div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- ══ PHILOSOPHY ══ -->
-<section id="philosophy">
-  <p class="phil-label reveal">Design Philosophy</p>
-  <h2 class="phil-headline reveal">DESIGNS MADE<br/>SIMPLE.</h2>
-  <p class="phil-sub reveal">Honest work that holds its value.</p>
-</section>
-
-<!-- ══ ABOUT ══ -->
-<section id="about">
-  <div class="about-header reveal">
-    <h2 class="about-title">About</h2>
-    <div style="text-align:right;">
-      <div class="about-years">21+</div>
-      <div class="about-years-label">Years of Experience</div>
-    </div>
-  </div>
-  <div class="about-body">
-    <div class="about-col reveal">
-      <p class="about-quote">
-        Simple design. Honest work that <em>holds its ground.</em>
-      </p>
-      <p class="about-bio">
-        I'm a graphic designer with <strong>21 years of experience</strong> delivering solid work across a wide range of departments and publications for Newsquest Scotland — including The Herald, Glasgow Times, and The Scottish Farmer. My job is straightforward: I take a rough idea and build it into a <strong>striking piece of design that makes sense.</strong>
-        <br/><br/>
-        Over two decades, I've grown my trade from traditional print layout into <strong>video, motion, and animation.</strong> No fuss, honest communication, and getting the job done right the first time.
-      </p>
-    </div>
-    <div class="about-col reveal" style="display:flex;flex-direction:column;justify-content:space-between;">
-      <div class="skills-grid">
-        <span class="skill-pill">Brand Identity</span>
-        <span class="skill-pill">Editorial Design</span>
-        <span class="skill-pill">Campaign Design</span>
-        <span class="skill-pill">Typography</span>
-        <span class="skill-pill">Print Production</span>
-        <span class="skill-pill">Motion Graphics</span>
-        <span class="skill-pill">Animation</span>
-        <span class="skill-pill">Video</span>
-        <span class="skill-pill">Visual Systems</span>
-        <span class="skill-pill">Adobe CC</span>
-      </div>
-      <div class="about-logo-cell" style="margin-top:48px;">
-        <img src="work/atgd_logo.png" alt="ATGD" />
+        <div class="facts__cell facts__cell--low facts__cell--base">
+          <div class="fact reveal">
+            <span class="fact__num" data-count="21">21</span>
+            <span class="fact__meta"><i class="fact__dot" aria-hidden="true"></i><span class="t-body">Years of experience</span></span>
+          </div>
+        </div>
+        <div class="facts__cell facts__cell--low facts__cell--side">
+          <div class="fact reveal">
+            <span class="fact__num" data-count="4" data-pad="2">04</span>
+            <span class="fact__meta"><i class="fact__dot" aria-hidden="true"></i><span class="t-body">Newsquest titles</span></span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ══ PROCESS ══ -->
-<section id="process">
-  <div class="process-header reveal">
-    <div class="process-label">How I Work</div>
-    <h2 class="process-title">My Process</h2>
-  </div>
-  <div class="process-grid">
-    <div class="process-item reveal">
-      <div class="process-num">01</div>
-      <div class="process-name">Understand the Job</div>
-      <p class="process-desc">Every project starts with getting the full story. I take the time to learn your crowd, your history, and your competition before making a single mark.</p>
+    <div class="press">
+      <article class="press__card reveal">
+        <div class="press__media media"><img src="work/press/music-room-modern.jpg" alt="The Music Room modern moodboard" loading="lazy" width="2000" height="563" style="object-position: 20% 50%" /></div>
+        <div class="press__text">
+          <h4 class="t-nav">Brand process</h4>
+          <hr class="rule" />
+          <p class="t-small">The Music Room — a modern direction: sleek, minimal and sophisticated, built on clarity and precision.</p>
+        </div>
+      </article>
+      <article class="press__card reveal" style="--delay:.1s">
+        <div class="press__media media"><img src="work/press/music-room-vibrant.jpg" alt="The Music Room vibrant moodboard" loading="lazy" width="2000" height="563" style="object-position: 0% 50%" /></div>
+        <div class="press__text">
+          <h4 class="t-nav">Brand process</h4>
+          <hr class="rule" />
+          <p class="t-small">The Music Room — a vibrant direction: energetic, playful and expressive, with colour, rhythm and bold design moves.</p>
+        </div>
+      </article>
     </div>
-    <div class="process-item reveal">
-      <div class="process-num">02</div>
-      <div class="process-name">Test the Ideas</div>
-      <p class="process-desc">I explore a wide range of options before narrowing anything down. The first or second idea is rarely the right one, so I put in the work to find what actually fits.</p>
-    </div>
-    <div class="process-item reveal">
-      <div class="process-num">03</div>
-      <div class="process-name">Craft &amp; Refine</div>
-      <p class="process-desc">Spacing, weight, clean lines, and details. The difference between a rushed job and a great piece of work lives entirely in these final adjustments.</p>
-    </div>
-    <div class="process-item reveal">
-      <div class="process-num">04</div>
-      <div class="process-name">Finish It Right</div>
-      <p class="process-desc">Handing over a design without a proper system means it won't last. I organize and document everything so your brand continues to hold its value down the line.</p>
-    </div>
-  </div>
-</section>
 
-<!-- ══ CONTACT ══ -->
-<section id="contact">
-  <p class="contact-label reveal">Get in Touch</p>
-  <h2 class="contact-headline reveal">LET'S<br/>WORK</h2>
-  <a href="mailto:altodrs@icloud.com" class="contact-cta reveal">altodrs@icloud.com</a>
-</section>
+    <div class="services">
+      <h2 class="side-label side-label--abs services__side" aria-hidden="true">/what i do</h2>
+
+      <div class="title-row principles__header">
+        <span class="dots reveal" aria-hidden="true"><i></i><i></i></span>
+        <h2 class="principles__title" id="services-title" data-split>services</h2>
+      </div>
+
+      <div class="services__list">
+        <article class="service">
+          <div class="service__text reveal">
+            <h3 class="pr__title">Campaign Design</h3>
+            <p class="t-body">Subscription and promotional campaigns built to run everywhere — print, digital display and out-of-home.</p>
+          </div>
+          <div class="service__work">
+            <a class="work-card work-card--tiny reveal" href="project-01.html">
+            <div class="work-card__media"><img src="work/featured/ardbeg-scottish-farmer.jpg" alt="Ardbeg × The Scottish Farmer billboard" loading="lazy" width="1500" height="1050" /></div>
+            <div class="work-card__details">
+              <h4 class="t-nav">Ardbeg × Scottish Farmer</h4>
+              <p class="t-small">Scottish Farmer</p>
+            </div>
+          </a>
+            <a class="work-card work-card--tiny reveal" href="project-03.html" style="--delay:.1s">
+            <div class="work-card__media"><img src="work/featured/glasgow-times-150.jpg" alt="Glasgow Times 150th anniversary taxi livery" loading="lazy" width="1200" height="630" /></div>
+            <div class="work-card__details">
+              <h4 class="t-nav">150 Years</h4>
+              <p class="t-small">Glasgow Times</p>
+            </div>
+          </a>
+          </div>
+        </article>
+
+        <article class="service">
+          <div class="service__text reveal">
+            <h3 class="pr__title">Video &amp; Motion</h3>
+            <p class="t-body">Motion graphics, animation and short-form video that bring campaigns to life on screen and social.</p>
+          </div>
+          <div class="service__work">
+            <article class="work-card work-card--tiny work-card--static reveal">
+            <div class="work-card__media"><img src="work/latest/herald-euros.jpg" alt="The Herald Euro 2024 roll-up banner" loading="lazy" width="1800" height="1252" /></div>
+            <div class="work-card__details">
+              <h4 class="t-nav">Video &amp; Animation</h4>
+              <p class="t-small">Newsquest Scotland</p>
+            </div>
+          </article>
+            <a class="work-card work-card--tiny reveal" href="project-04.html" style="--delay:.1s">
+            <div class="work-card__media"><img src="work/latest/national-1-year.jpg" alt="The National Black Friday subscription poster" loading="lazy" width="1250" height="875" /></div>
+            <div class="work-card__details">
+              <h4 class="t-nav">1 year for £20</h4>
+              <p class="t-small">The National</p>
+            </div>
+          </a>
+          </div>
+        </article>
+
+        <article class="service">
+          <div class="service__text reveal">
+            <h3 class="pr__title">Brand Identity</h3>
+            <p class="t-body">From first concepts to full guidelines — logos, palettes and visual systems built to hold their value.</p>
+          </div>
+          <div class="service__work">
+            <article class="work-card work-card--tiny work-card--static reveal">
+            <div class="work-card__media"><img src="work/latest/music-room-3.jpg" alt="The Music Room logo concept embossed on fabric" loading="lazy" width="800" height="534" /></div>
+            <div class="work-card__details">
+              <h4 class="t-nav">The Music Room</h4>
+              <p class="t-small">Brand identity</p>
+            </div>
+          </article>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 05 FAQ ══ -->
+  <section class="section section--surface faq" id="faq" aria-labelledby="faq-title">
+    <div class="head-line">
+      <span class="head-line__num">05</span>
+      <span class="head-line__rule"></span>
+      <span class="head-line__name">/FAQ</span>
+    </div>
+
+    <div class="faq__body">
+      <h2 class="side-label side-label--abs faq__side" aria-hidden="true">/faq</h2>
+      <h3 class="pr__title" id="faq-title" data-split>Before you ask — here’s what most people want to know.</h3>
+
+      <div class="faq__list reveal">
+        <div class="faq__item">
+          <h4 class="faq__q">
+            <button type="button" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+              <span class="t-nav">What kind of projects do you usually take on?</span><i class="faq__dot" aria-hidden="true"></i>
+            </button>
+          </h4>
+          <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <div class="faq__a-inner">
+              <p class="t-body">Brand identities, editorial layouts, subscription and promotional campaigns, out-of-home, digital display, and motion graphics or short video — for publishers, brands and local businesses.</p>
+              <span class="faq__num" aria-hidden="true">01</span>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <h4 class="faq__q">
+            <button type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+              <span class="t-nav">What’s your creative process like?</span><i class="faq__dot" aria-hidden="true"></i>
+            </button>
+          </h4>
+          <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <div class="faq__a-inner">
+              <p class="t-body">I start by understanding the job — your audience, history and competition. Then I test a wide range of ideas, craft and refine the strongest one, and finish it properly with organised, documented files.</p>
+              <span class="faq__num" aria-hidden="true">02</span>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <h4 class="faq__q">
+            <button type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+              <span class="t-nav">What do you need from me to get started?</span><i class="faq__dot" aria-hidden="true"></i>
+            </button>
+          </h4>
+          <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <div class="faq__a-inner">
+              <p class="t-body">A rough idea is enough. Share the brief, who it’s for, your deadline and any brand assets you already have, and I’ll take it from there.</p>
+              <span class="faq__num" aria-hidden="true">03</span>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <h4 class="faq__q">
+            <button type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+              <span class="t-nav">What makes your work different from others?</span><i class="faq__dot" aria-hidden="true"></i>
+            </button>
+          </h4>
+          <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <div class="faq__a-inner">
+              <p class="t-body">21 years of newspaper deadlines. I work fast without cutting corners, communicate honestly, and aim to get the job done right the first time.</p>
+              <span class="faq__num" aria-hidden="true">04</span>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <h4 class="faq__q">
+            <button type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+              <span class="t-nav">Can I see more examples of your work?</span><i class="faq__dot" aria-hidden="true"></i>
+            </button>
+          </h4>
+          <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+            <div class="faq__a-inner">
+              <p class="t-body">Yes — get in touch and I’ll send a fuller portfolio tailored to the kind of project you have in mind.</p>
+              <span class="faq__num" aria-hidden="true">05</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__cta">
+        <div class="faq__cta-text reveal">
+          <h3 class="pr__title">Still have questions?</h3>
+          <p class="t-body">Feel free to get in touch — I’ll gladly clarify the details and help you decide if this is the right fit for your project.</p>
+        </div>
+        <a class="btn-corners reveal" href="mailto:altodrs@gmail.com"><span class="roll" data-roll>ask me</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <!-- ══ FOOTER ══ -->
-<footer>
-  <div class="footer-sig"><img src="work/atgd_logo.png" alt="ATGD" /></div>
-  <p class="footer-copy">© 2026 Alan Todd Design — All Rights Reserved</p>
-  <ul class="footer-links">
-    <li><a href="#">Instagram</a></li>
-    <li><a href="#">LinkedIn</a></li>
-    <li><a href="#">Dribbble</a></li>
-  </ul>
+<footer class="footer" id="contact">
+  <div class="footer__contacts">
+    <div class="footer__top">
+      <a class="t-nav footer__brand link-line" href="#hero">atgd</a>
+      <nav class="footer__social" aria-label="Social">
+        <a class="t-nav" href="#">Instagram</a>
+        <a class="t-nav" href="#">LinkedIn</a>
+        <a class="t-nav" href="#">Behance</a>
+        <a class="t-nav" href="#">Dribbble</a>
+      </nav>
+    </div>
+
+    <div class="footer__cta">
+      <div class="footer__cta-text reveal">
+        <p class="t-small footer__status"><i class="footer__live" aria-hidden="true"></i>I’m available for new projects</p>
+        <h3 class="pr__title">Let’s work<br />together</h3>
+      </div>
+      <a class="btn-corners btn-corners--light reveal" style="--delay:.1s" href="mailto:altodrs@gmail.com"><span class="roll" data-roll>Get in touch</span></a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__giant" aria-hidden="true">Get in touch</p>
+    <div class="footer__strip"><img src="work/hero-ardbeg.jpg" alt="" loading="lazy" /></div>
+    <div class="footer__legal">
+      <p class="t-small">© 2026 Alan Todd Design — All rights reserved</p>
+      <p class="t-small">Ayrshire, Scotland</p>
+    </div>
+  </div>
 </footer>
 
-<script>
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 60);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.06 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  const track = document.getElementById('marquee');
-  if (track) {
-    let pos = 0;
-    const half = () => track.scrollWidth / 2;
-    (function tick() {
-      pos -= 0.5;
-      if (Math.abs(pos) >= half()) pos = 0;
-      track.style.transform = `translateX(${pos}px)`;
-      requestAnimationFrame(tick);
-    })();
-  }
-</script>
+<script src="atgd.js?v=20261008c" defer></script>
 </body>
 </html>
