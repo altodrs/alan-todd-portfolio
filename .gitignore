@@ -19,3 +19,6 @@ _backup-old-site/
 
 # Adobe Stock source files: kept locally, never published (the site uses compressed copies in work/principles/)
 work/AdobeStock_*
+
+# Old hero video (no longer used by the site)
+work/at-hero.mp4
