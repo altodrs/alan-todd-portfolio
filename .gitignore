@@ -16,3 +16,6 @@ work/AdobeStock_504131485.png
 
 # Local backup of the pre-redesign site (not for publishing)
 _backup-old-site/
+
+# Adobe Stock source files: kept locally, never published (the site uses compressed copies in work/principles/)
+work/AdobeStock_*
