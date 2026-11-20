@@ -963,14 +963,17 @@ a:hover > .media > video,
 }
 .latest__side { top: 125px; }
 .latest__line { display: flex; }
-.latest__line > .work-card:not(.work-card--tiny) { flex: 1; }
+.latest__line > .work-card:not(.work-card--tiny):not(.work-card--reel) { flex: 1; }
 .latest__line--split { justify-content: space-between; align-items: flex-start; }
 
 .work-card--static { cursor: default; }
 .work-card--medium { width: 660px; max-width: 60%; }
 .work-card--medium .work-card__media { aspect-ratio: 660 / 453; }
+.work-card--reel { width: 460px; max-width: 100%; }
+.work-card--reel .work-card__media { aspect-ratio: 600 / 416; }
 .work-card--tiny { width: 220px; flex-shrink: 0; }
 .work-card--tiny .work-card__media { aspect-ratio: 220 / 179; }
+.work-card--reel-tiny .work-card__media { aspect-ratio: 600 / 416; }
 .work-card--tiny .work-card__details { display: flex; flex-direction: column; }
 
 /* ── S8. SERVICES ──────────────────────────────────────────── */
