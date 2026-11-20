@@ -154,3 +154,16 @@
     });
   });
 })();
+
+
+/* Play showreel videos only while on screen */
+(() => {
+  const vids = document.querySelectorAll('video[data-autoplay]');
+  if (!vids.length) return;
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) e.target.play().catch(() => {});
+    else e.target.pause();
+  }), { threshold: 0.25 });
+  vids.forEach(v => io.observe(v));
+})();

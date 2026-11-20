@@ -772,9 +772,11 @@ a:hover > .media > video,
   background: var(--line);
   transition: transform var(--dur) var(--ease-out);
 }
-.work-card__media img {
+.work-card__media img,
+.work-card__media video {
   width: 100%; height: 100%;
   object-fit: cover;
+  display: block;
 }
 .work-card:hover .work-card__media { transform: scale(1.02); }
 .work-card__name {
