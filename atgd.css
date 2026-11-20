@@ -1598,6 +1598,8 @@ a:hover > .media > video,
 }
 .cm-shot:hover > img { transform: scale(1.03); }
 .cm-hero { aspect-ratio: 16 / 9; }
+.cm-reel { width: 100%; max-width: 860px; margin-inline: auto; border-radius: var(--radius-m); overflow: hidden; background: var(--line); }
+.cm-reel video { display: block; width: 100%; aspect-ratio: 600 / 416; background: #000; }
 
 /* Text */
 .cm-text { display: flex; flex-direction: column; gap: 20px; }
